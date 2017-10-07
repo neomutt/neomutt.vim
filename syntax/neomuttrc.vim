@@ -548,11 +548,11 @@ syntax keyword muttrcVarStr	contained skipwhite
 			\ assumed_charset attach_charset attach_sep attribution_locale charset
 			\ config_charset content_type default_hook dsn_notify dsn_return empty_subject
 			\ escape forward_attribution_intro forward_attribution_trailer forward_format
-			\ header_cache_pagesize hostname imap_authenticators imap_delim_chars
-			\ imap_headers imap_login imap_pass imap_user indent_string mailcap_path
-			\ mark_macro_prefix mh_seq_flagged mh_seq_replied mh_seq_unseen
+			\ header_cache_pagesize hidden_tags hostname imap_authenticators
+			\ imap_delim_chars imap_headers imap_login imap_pass imap_user indent_string
+			\ mailcap_path mark_macro_prefix mh_seq_flagged mh_seq_replied mh_seq_unseen
 			\ mime_type_query_command newsgroups_charset news_server nm_default_uri
-			\ nm_exclude_tags nm_hidden_tags nm_query_type nm_query_window_current_search
+			\ nm_exclude_tags nm_query_type nm_query_window_current_search
 			\ nm_query_window_timebase nm_record_tags nm_unread_tag nntp_authenticators
 			\ nntp_pass nntp_user pgp_self_encrypt_as pgp_sign_as pipe_sep
 			\ pop_authenticators pop_host pop_pass pop_user post_indent_string
