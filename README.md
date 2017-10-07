@@ -1,4 +1,4 @@
-# neomuttrc.vim
+# neomutt.vim
 
 ## Description
 
