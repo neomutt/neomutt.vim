@@ -1,0 +1,16 @@
+*ft_neomuttrc.txt*      Filetype plugin for Neomutt
+
+==============================================================================
+CONTENTS                                                    *neomutt* *neomuttrc*
+
+1. Introduction                                                 |neomutt-intro|
+
+==============================================================================
+INTRODUCTION                                                    *neomutt-intro*
+
+This plugin provides syntax for the neomutt configuration file.
+In addition, it sets the mail filetype to temporary mail files created by
+neomutt when writing or editing emails.
+
+==============================================================================
+vim:tw=78:sw=4:noet:ts=8:ft=help:norl:
