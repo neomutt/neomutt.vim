@@ -134,7 +134,7 @@ syntax region muttrcStrftimeFormatStr contained skipwhite keepend start=+'+ skip
 
 " Format escapes and conditionals
 syntax match muttrcFormatConditionals2 contained /[^?]*?/
-function s:escapesConditionals(baseName, sequence, alignment, secondary)
+function! s:escapesConditionals(baseName, sequence, alignment, secondary)
 	exec 'syntax match muttrc' . a:baseName . 'Escapes contained /%\%(\%(-\?[0-9]\+\)\?\%(\.[0-9]\+\)\?\)\?[:_]\?\%(' . a:sequence . '\|%\)/'
 	if a:alignment
 		exec 'syntax match muttrc' . a:baseName . 'Escapes contained /%[>|*]./'
@@ -396,7 +396,7 @@ syntax keyword muttrcColorComposeField skipwhite contained
 syntax region muttrcColorLine keepend start=/^\s*color\s\+/ skip=+\\$+ end=+$+ contains=muttrcColorKeyword,muttrcComment,muttrcUnHighlightSpace
 
 
-function s:boolQuadGen(type, vars, deprecated)
+function! s:boolQuadGen(type, vars, deprecated)
 	let l:novars = copy(a:vars)
 	call map(l:novars, '"no" . v:val')
 	let l:invvars = copy(a:vars)
