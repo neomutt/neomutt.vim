@@ -435,14 +435,13 @@ call s:boolQuadGen('Bool', [
 			\ 'idn_encode', 'ignore_linear_white_space', 'ignore_list_reply_to',
 			\ 'imap_check_subscribed', 'imap_idle', 'imap_list_subscribed', 'imap_passive',
 			\ 'imap_peek', 'imap_servernoise', 'implicit_autoview', 'include_onlyfirst',
-			\ 'keep_flagged', 'keywords_legacy', 'keywords_standard', 'mailcap_sanitize',
-			\ 'mail_check_recent', 'mail_check_stats', 'maildir_check_cur',
-			\ 'maildir_header_cache_verify', 'maildir_trash', 'markers', 'mark_old',
-			\ 'menu_move_off', 'menu_scroll', 'message_cache_clean', 'meta_key', 'metoo',
-			\ 'mh_purge', 'mime_forward_decode', 'mime_subject', 'mime_type_query_first',
-			\ 'narrow_tree', 'nm_record', 'nntp_listgroup', 'nntp_load_description',
-			\ 'pager_stop', 'pgp_auto_decode', 'pgp_autoinline', 'pgp_check_exit',
-			\ 'pgp_ignore_subkeys', 'pgp_long_ids', 'pgp_replyinline',
+			\ 'keep_flagged', 'mailcap_sanitize', 'mail_check_recent', 'mail_check_stats',
+			\ 'maildir_check_cur', 'maildir_header_cache_verify', 'maildir_trash',
+			\ 'markers', 'mark_old', 'menu_move_off', 'menu_scroll', 'message_cache_clean',
+			\ 'meta_key', 'metoo', 'mh_purge', 'mime_forward_decode', 'mime_subject',
+			\ 'mime_type_query_first', 'narrow_tree', 'nm_record', 'nntp_listgroup',
+			\ 'nntp_load_description', 'pager_stop', 'pgp_auto_decode', 'pgp_autoinline',
+			\ 'pgp_check_exit', 'pgp_ignore_subkeys', 'pgp_long_ids', 'pgp_replyinline',
 			\ 'pgp_retainable_sigs', 'pgp_self_encrypt', 'pgp_show_unusable',
 			\ 'pgp_strict_enc', 'pgp_use_gpg_agent', 'pipe_decode', 'pipe_split',
 			\ 'pop_auth_try_all', 'pop_last', 'postpone_encrypt', 'print_decode',
@@ -560,7 +559,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 			\ show_multipart_alternative sidebar_delim_chars sidebar_divider_char
 			\ sidebar_indent_string simple_search smime_default_key smime_encrypt_with
 			\ smime_self_encrypt_as smime_sign_digest_alg smtp_authenticators smtp_pass
-			\ smtp_url spam_separator ssl_ciphers tunnel xlabel_delimiter
+			\ smtp_url spam_separator ssl_ciphers tunnel
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedStr	contained skipwhite
@@ -696,6 +695,7 @@ syntax match muttrcFunction contained "\<edit-label\>"
 syntax match muttrcFunction contained "\<edit-message\>"
 syntax match muttrcFunction contained "\<edit-mime\>"
 syntax match muttrcFunction contained "\<edit-newsgroups\>"
+syntax match muttrcFunction contained "\<edit-or-view-raw-message\>"
 syntax match muttrcFunction contained "\<edit-reply-to\>"
 syntax match muttrcFunction contained "\<edit-subject\>"
 syntax match muttrcFunction contained "\<edit-to\>"
@@ -869,6 +869,7 @@ syntax match muttrcFunction contained "\<view-attachments\>"
 syntax match muttrcFunction contained "\<view-file\>"
 syntax match muttrcFunction contained "\<view-mailcap\>"
 syntax match muttrcFunction contained "\<view-name\>"
+syntax match muttrcFunction contained "\<view-raw-message\>"
 syntax match muttrcFunction contained "\<view-text\>"
 syntax match muttrcFunction contained "\<what-key\>"
 syntax match muttrcFunction contained "\<write-fcc\>"
