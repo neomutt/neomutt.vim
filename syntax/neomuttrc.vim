@@ -146,8 +146,6 @@ function! s:escapesConditionals(baseName, sequence, alignment, secondary)
 	endif
 endfunction
 
-" flatcap compiled a list of formats here: https://pastebin.com/raw/5QXhiP6L
-" UPDATE
 " The following info was pulled from hdr_format_str in hdrline.c
 call s:escapesConditionals('IndexFormat', '[AaBbCcDdEeFfgHIiJKLlMmNnOPqrSsTtuvWXxYyZz(<[{]\|G[a-zA-Z]\+', 1, 1)
 " The following info was pulled from alias_format_str in addrbook.c
@@ -167,20 +165,20 @@ syntax match muttrcComposeFormatEscapes contained /%[>|*]./
 call s:escapesConditionals('FolderFormat', '[CDdfFglNstu]', 1, 0)
 " The following info was pulled from mix_entry_fmt in remailer.c
 call s:escapesConditionals('MixFormat', '[acns]', 0, 0)
-" The following info was pulled from crypt_entry_fmt in crypt-gpgme.c 
-" and pgp_entry_fmt in pgpkey.c (note that crypt_entry_fmt supports 
+" The following info was pulled from crypt_entry_fmt in crypt-gpgme.c
+" and pgp_entry_fmt in pgpkey.c (note that crypt_entry_fmt supports
 " 'p', but pgp_entry_fmt does not).
 call s:escapesConditionals('PGPFormat', '[acfklnptu[]', 0, 0)
-" The following info was pulled from _mutt_fmt_pgp_command in 
+" The following info was pulled from _mutt_fmt_pgp_command in
 " pgpinvoke.c
 call s:escapesConditionals('PGPCmdFormat', '[afprs]', 0, 1)
 " The following info was pulled from status_format_str in status.c
 call s:escapesConditionals('StatusFormat', '[bdFfhLlMmnoPprSstuVu]', 1, 1)
-" This matches the documentation, but directly contradicts the code 
-" (according to the code, this should be identical to the 
+" This matches the documentation, but directly contradicts the code
+" (according to the code, this should be identical to the
 " muttrcPGPCmdFormatEscapes
 syntax match muttrcPGPGetKeysFormatEscapes contained /%\%(\%(-\?[0-9]\+\)\?\%(\.[0-9]\+\)\?\)\?[:_]\?[acfklntu[%]/
-" The following info was pulled from _mutt_fmt_smime_command in 
+" The following info was pulled from _mutt_fmt_smime_command in
 " smime.c
 call s:escapesConditionals('SmimeFormat', '[aCcdfiks]', 0, 1)
 
@@ -377,7 +375,7 @@ syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoA
 
 " List of fields in Fields in color.c
 " UPDATE
-syntax keyword muttrcColorField skipwhite contained 
+syntax keyword muttrcColorField skipwhite contained
 			\ attach_headers attachment bold error hdrdefault index_author index_collapsed
 			\ index_date index_label index_number index_size index_subject index_tags
 			\ indicator markers message normal progress prompt quoted search sidebar_divider
@@ -522,7 +520,7 @@ syntax keyword muttrcVarStr	contained skipwhite attribution index_format message
 " Deprecated format
 syntax keyword muttrcVarDeprecatedStr	contained skipwhite hdr_format msg_format nextgroup=muttrcVarEqualsIdxFmt
 syntax keyword muttrcVarStr	contained skipwhite mix_entry_format nextgroup=muttrcVarEqualsMixFmt
-syntax keyword muttrcVarStr	contained skipwhite 
+syntax keyword muttrcVarStr	contained skipwhite
 			\ pgp_decode_command pgp_verify_command pgp_decrypt_command
 			\ pgp_clearsign_command pgp_sign_command pgp_encrypt_sign_command
 			\ pgp_encrypt_only_command pgp_import_command pgp_export_command
@@ -541,7 +539,7 @@ syntax keyword muttrcVarStr	contained skipwhite ts_icon_format ts_status_format 
 " Deprecated format
 syntax keyword muttrcVarDeprecatedStr	contained skipwhite xterm_icon xterm_title nextgroup=muttrcVarEqualsStatusFmt
 syntax keyword muttrcVarStr	contained skipwhite date_format nextgroup=muttrcVarEqualsStrftimeFmt
-syntax keyword muttrcVarStr	contained skipwhite group_index_format nextgroup=muttrcVarEqualsGrpIdxFmt 
+syntax keyword muttrcVarStr	contained skipwhite group_index_format nextgroup=muttrcVarEqualsGrpIdxFmt
 syntax keyword muttrcVarStr	contained skipwhite sidebar_format nextgroup=muttrcVarEqualsSdbFmt
 syntax keyword muttrcVarStr	contained skipwhite
 			\ assumed_charset attach_charset attach_sep attribution_locale charset
