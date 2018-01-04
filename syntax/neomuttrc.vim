@@ -872,6 +872,7 @@ syntax match muttrcFunction contained "\<view-raw-message\>"
 syntax match muttrcFunction contained "\<view-text\>"
 syntax match muttrcFunction contained "\<what-key\>"
 syntax match muttrcFunction contained "\<write-fcc\>"
+syntax match muttrcFunction contained "\<noop\>"
 
 
 
