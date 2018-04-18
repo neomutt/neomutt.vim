@@ -146,7 +146,7 @@ function! s:escapesConditionals(baseName, sequence, alignment, secondary)
 	endif
 endfunction
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " Ref: index_format_str() in hdrline.c
 call s:escapesConditionals('IndexFormat', '[AaBbCcDdEeFfgHIiJKLlMmNnOPqRrSsTtuvWXxYyZz(<[{]\|G[a-zA-Z]\+', 1, 1)
 " Ref: alias_format_str() in addrbook.c
@@ -205,13 +205,13 @@ syntax match muttrcVarEqualsStrftimeFmt   contained skipwhite "=" nextgroup=mutt
 
 syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of the different screens in mutt
 syntax keyword muttrcMenu contained alias attach browser compose editor generic index key_select_pgp key_select_smime mix pager pgp postpone query smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
 syntax match muttrcMenuCommas /,/ contained
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of hooks in Commands in init.h
 syntax keyword muttrcHooks contained skipwhite
 			\ account-hook append-hook close-hook crypt-hook fcc-hook fcc-save-hook
@@ -372,7 +372,7 @@ syntax keyword muttrcMonoAttrib	contained bold none normal reverse standout unde
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of fields in Fields in color.c
 syntax keyword muttrcColorField skipwhite contained
 			\ attachment attach_headers body bold error hdrdefault header index
@@ -386,7 +386,7 @@ syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of fields in ComposeFields in color.c
 syntax keyword muttrcColorComposeField skipwhite contained
 			\ header security_both security_encrypt security_none security_sign
@@ -412,7 +412,7 @@ function! s:boolQuadGen(type, vars, deprecated)
 	exec 'syntax keyword muttrcVar' . l:type . ' skipwhite contained ' . join(l:invvars) . ' nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr'
 endfunction
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of DT_BOOL in MuttVars in init.h
 call s:boolQuadGen('Bool', [
 			\ 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'askbcc',
@@ -464,7 +464,7 @@ call s:boolQuadGen('Bool', [
 			\ 'wait_key', 'weed', 'wrap_search', 'write_bcc', 'x_comment_to'
 			\ ], 0)
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " Deprecated Bools
 " List of DT_SYNONYM synonyms of Bools in MuttVars in init.h
 call s:boolQuadGen('Bool', [
@@ -475,7 +475,7 @@ call s:boolQuadGen('Bool', [
 			\ 'xterm_set_titles'
 			\ ], 1)
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of DT_QUAD in MuttVars in init.h
 call s:boolQuadGen('Quad', [
 			\ 'abort_noattach', 'abort_nosubject', 'abort_unmodified', 'bounce',
@@ -486,14 +486,14 @@ call s:boolQuadGen('Quad', [
 			\ 'quit', 'recall', 'reply_to', 'ssl_starttls'
 			\ ], 0)
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " Deprecated Quads
 " List of DT_SYNONYM synonyms of Quads in MuttVars in init.h
 call s:boolQuadGen('Quad', [
 			\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
 			\ ], 1)
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of DT_NUMBER in MuttVars in init.h
 syntax keyword muttrcVarNum	skipwhite contained
 			\ connect_timeout debug_level history imap_keepalive imap_pipeline_depth
@@ -510,7 +510,7 @@ syntax keyword muttrcVarDeprecatedNum	contained skipwhite
 			\ wrapmargin
 			\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of DT_STRING in MuttVars in init.h
 " Special cases first, and all the rest at the end
 " Formats themselves must be updated in their respective groups
@@ -569,7 +569,7 @@ syntax keyword muttrcVarDeprecatedStr	contained skipwhite
 			\ smime_self_encrypt_as
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of DT_ADDRESS
 syntax keyword muttrcVarStr	contained skipwhite envelope_from_address from nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 " List of DT_HCACHE
@@ -579,7 +579,7 @@ syntax keyword muttrcVarStr	contained skipwhite mbox_type nextgroup=muttrcSetStr
 " List of DT_MBTABLE
 syntax keyword muttrcVarStr	contained skipwhite flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of DT_PATH
 syntax keyword muttrcVarStr	contained skipwhite
 			\ alias_file certificate_file debug_file display_filter editor entropy_file
@@ -590,22 +590,22 @@ syntax keyword muttrcVarStr	contained skipwhite
 			\ ssl_client_cert tmpdir trash visual
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of DT_REGEX
 syntax keyword muttrcVarStr	contained skipwhite
-			\ attach_keyword gecos_mask mask pgp_decryption_okay pgp_good_sign
+			\ abort_noattach_regex gecos_mask mask pgp_decryption_okay pgp_good_sign
 			\ quote_regex reply_regex smileys
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 " List of deprecated DT_PATH
 syntax keyword muttrcVarDeprecatedStr	contained skipwhite print_cmd nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 " List of deprecated DT_REGEX
-syntax keyword muttrcVarDeprecatedStr	contained skipwhite quote_regexp reply_regexp nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
+syntax keyword muttrcVarDeprecatedStr	contained skipwhite abort_noattach_regexp attach_keyword quote_regexp reply_regexp nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 " List of DT_SORT
 syntax keyword muttrcVarStr	contained skipwhite
 			\ pgp_sort_keys sidebar_sort_method sort sort_alias sort_aux sort_browser
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of commands in Commands in init.h
 " Remember to remove hooks, they have already been dealt with
 syntax keyword muttrcCommand	skipwhite charset-hook nextgroup=muttrcRXString
@@ -627,7 +627,7 @@ syntax keyword muttrcCommand	skipwhite
 			\ unmy_hdr unscore unsetenv unsidebar_whitelist unsubjectrx unsubscribe-from
 			\ unvirtual-mailboxes virtual-mailboxes
 
-" CHECKED 2018-03-25
+" CHECKED 2018-04-18
 " List of functions in functions.h
 syntax match muttrcFunction contained "\<accept\>"
 syntax match muttrcFunction contained "\<append\>"
@@ -826,7 +826,7 @@ syntax match muttrcFunction contained "\<send-message\>"
 syntax match muttrcFunction contained "\<set-flag\>"
 syntax match muttrcFunction contained "\<shell-escape\>"
 syntax match muttrcFunction contained "\<show-limit\>"
-syntax match muttrcFunction contained "\<show-messages\>"
+syntax match muttrcFunction contained "\<show-log-messages\>"
 syntax match muttrcFunction contained "\<show-version\>"
 syntax match muttrcFunction contained "\<sidebar-next-new\>"
 syntax match muttrcFunction contained "\<sidebar-next\>"
