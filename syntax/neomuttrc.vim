@@ -232,11 +232,12 @@ syntax match muttrcAttachmentsLine "^\s*\%(un\)\?attachments\s\+" skipwhite next
 syntax match muttrcUnHighlightSpace contained "\%(\s\+\|\\$\)"
 
 syntax keyword muttrcAsterisk	contained *
+
 syntax keyword muttrcListsKeyword	lists skipwhite nextgroup=muttrcGroupDef,muttrcComment
 syntax keyword muttrcListsKeyword	unlists skipwhite nextgroup=muttrcAsterisk,muttrcComment
 
-syntax keyword muttrcSubscribeKeyword	subscribe nextgroup=muttrcGroupDef,muttrcComment
-syntax keyword muttrcSubscribeKeyword	unsubscribe nextgroup=muttrcAsterisk,muttrcComment
+syntax keyword muttrcSubscribeKeyword	subscribe skipwhite nextgroup=muttrcGroupDef,muttrcComment
+syntax keyword muttrcSubscribeKeyword	unsubscribe skipwhite nextgroup=muttrcAsterisk,muttrcComment
 
 syntax keyword muttrcAlternateKeyword contained alternates unalternates
 syntax region muttrcAlternatesLine keepend start=+^\s*\%(un\)\?alternates\s+ skip=+\\$+ end=+$+ contains=muttrcAlternateKeyword,muttrcGroupDef,muttrcRXPat,muttrcUnHighlightSpace,muttrcComment
