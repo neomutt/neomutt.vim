@@ -10,5 +10,5 @@ function! s:neomutt_log()
 		return
 	endif
 
-	set filetype=neomuttlog
+	setfiletype neomuttlog
 endfunction
