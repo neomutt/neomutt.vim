@@ -578,7 +578,7 @@ syntax keyword muttrcVarStr	contained skipwhite header_cache_backend nextgroup=m
 " List of DT_MAGIC
 syntax keyword muttrcVarStr	contained skipwhite mbox_type nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 " List of DT_MBTABLE
-syntax keyword muttrcVarStr	contained skipwhite flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
+syntax keyword muttrcVarStr	contained skipwhite flag_chars from_chars status_chars to_chars crypt_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
 " CHECKED 2018-04-18
 " List of DT_PATH
