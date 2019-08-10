@@ -626,7 +626,7 @@ syntax keyword muttrcCommand	skipwhite
 			\ tag-transforms unalternative_order unattachments unauto_view uncolor
 			\ unhdr_order unignore unmailboxes unmailto_allow unmime_lookup unmono
 			\ unmy_hdr unscore unsetenv unsidebar_whitelist unsubjectrx unsubscribe-from
-			\ unvirtual-mailboxes virtual-mailboxes
+			\ unvirtual-mailboxes virtual-mailboxes named-mailboxes
 
 " CHECKED 2018-04-18
 " List of functions in functions.h
