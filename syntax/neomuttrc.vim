@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:	NeoMutt setup files
 " Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2019-09-22
+" Last Change:	2019-10-31
 " Original version based on syntax/muttrc.vim
 
 " This file covers NeoMutt 20180716-2511-7c3735
@@ -373,7 +373,7 @@ syntax keyword muttrcMonoAttrib	contained bold none normal reverse standout unde
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" CHECKED 2019-09-22
+" CHECKED 2019-10-31
 " List of fields in Fields in color.c
 syntax keyword muttrcColorField skipwhite contained
 			\ attachment attach_headers body bold error hdrdefault header index
@@ -381,7 +381,7 @@ syntax keyword muttrcColorField skipwhite contained
 			\ index_number index_size index_subject index_tag index_tags indicator
 			\ markers message normal options progress prompt quoted search sidebar_divider
 			\ sidebar_flagged sidebar_highlight sidebar_indicator sidebar_new
-			\ sidebar_ordinary sidebar_spoolfile signature status tilde tree underline
+			\ sidebar_ordinary sidebar_spoolfile signature status tilde tree underline warning
 			\ nextgroup=muttrcColor
 syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
