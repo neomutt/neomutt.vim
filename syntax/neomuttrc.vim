@@ -1,10 +1,10 @@
 " Vim syntax file
 " Language:	NeoMutt setup files
 " Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2019-10-31
+" Last Change:	2019-11-02
 " Original version based on syntax/muttrc.vim
 
-" This file covers NeoMutt 20180716-2511-7c3735
+" This file covers NeoMutt 2019-11-02
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
@@ -146,9 +146,9 @@ function! s:escapesConditionals(baseName, sequence, alignment, secondary)
 	endif
 endfunction
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " Ref: index_format_str() in hdrline.c
-call s:escapesConditionals('IndexFormat', '[AaBbCcDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|G[a-zA-Z]\+\|Fp\=\|z[cst]', 1, 1)
+call s:escapesConditionals('IndexFormat', '[AaBbCcDdEeFfgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|G[a-zA-Z]\+\|Fp\=\|z[cst]', 1, 1)
 " Ref: alias_format_str() in addrbook.c
 syntax match muttrcAliasFormatEscapes contained /%\%(\%(-\?[0-9]\+\)\?\%(\.[0-9]\+\)\?\)\?[:_]\?[afnrt%]/
 " Ref: group_index_format_str() in browser.c
@@ -205,13 +205,13 @@ syntax match muttrcVarEqualsStrftimeFmt   contained skipwhite "=" nextgroup=mutt
 
 syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of the different screens in mutt (see Menus in keymap.c)
 syntax keyword muttrcMenu contained alias attach browser compose editor generic index key_select_pgp key_select_smime mix pager pgp postpone query smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
 syntax match muttrcMenuCommas /,/ contained
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of hooks in Commands in init.h
 syntax keyword muttrcHooks contained skipwhite
 			\ account-hook append-hook close-hook crypt-hook fcc-hook fcc-save-hook
@@ -242,8 +242,7 @@ syntax keyword muttrcSubscribeKeyword	unsubscribe skipwhite nextgroup=muttrcAste
 syntax keyword muttrcAlternateKeyword contained alternates unalternates
 syntax region muttrcAlternatesLine keepend start=+^\s*\%(un\)\?alternates\s+ skip=+\\$+ end=+$+ contains=muttrcAlternateKeyword,muttrcGroupDef,muttrcRXPat,muttrcUnHighlightSpace,muttrcComment
 
-" muttrcVariable includes a prefix because partial strings are considered
-" valid.
+" muttrcVariable includes a prefix because partial strings are considered valid.
 syntax match muttrcVariable	contained "\\\@<![a-zA-Z_-]*\$[a-zA-Z_-]\+" contains=muttrcVariableInner
 syntax match muttrcVariableInner	contained "\$[a-zA-Z_-]\+"
 syntax match muttrcEscapedVariable	contained "\\\$[a-zA-Z_-]\+"
@@ -373,7 +372,7 @@ syntax keyword muttrcMonoAttrib	contained bold none normal reverse standout unde
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" CHECKED 2019-10-31
+" CHECKED 2019-11-02
 " List of fields in Fields in color.c
 syntax keyword muttrcColorField skipwhite contained
 			\ attachment attach_headers body bold error hdrdefault header index
@@ -387,7 +386,7 @@ syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of fields in ComposeFields in color.c
 syntax keyword muttrcColorComposeField skipwhite contained
 			\ header security_both security_encrypt security_none security_sign
@@ -412,7 +411,7 @@ function! s:boolQuadGen(type, vars, deprecated)
 	exec 'syntax keyword muttrcVar' . l:type . ' skipwhite contained ' . join(l:invvars) . ' nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr'
 endfunction
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of DT_BOOL in MuttVars in init.h
 call s:boolQuadGen('Bool', [
 			\ 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'askbcc',
@@ -472,7 +471,7 @@ call s:boolQuadGen('Bool', [
 			\ 'size_units_on_left', 'ssl_use_tlsv1_3'
 			\ ], 0)
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " Deprecated Bools
 " List of DT_SYNONYM synonyms of Bools in MuttVars in init.h
 call s:boolQuadGen('Bool', [
@@ -483,7 +482,7 @@ call s:boolQuadGen('Bool', [
 			\ 'xterm_set_titles'
 			\ ], 1)
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of DT_QUAD in MuttVars in init.h
 call s:boolQuadGen('Quad', [
 			\ 'abort_noattach', 'abort_nosubject', 'abort_unmodified', 'bounce',
@@ -494,14 +493,14 @@ call s:boolQuadGen('Quad', [
 			\ 'quit', 'recall', 'reply_to', 'ssl_starttls', 'forward_attachments'
 			\ ], 0)
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " Deprecated Quads
 " List of DT_SYNONYM synonyms of Quads in MuttVars in init.h
 call s:boolQuadGen('Quad', [
 			\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
 			\ ], 1)
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of DT_NUMBER or DT_LONG in MuttVars in init.h
 syntax keyword muttrcVarNum	skipwhite contained
 			\ connect_timeout debug_level history imap_keepalive imap_pipeline_depth
@@ -513,13 +512,13 @@ syntax keyword muttrcVarNum	skipwhite contained
 			\ score_threshold_read search_context sendmail_wait sidebar_component_depth
 			\ sidebar_width skip_quoted_offset sleep_time smime_timeout
 			\ ssl_min_dh_prime_bits timeout time_inc wrap wrap_headers write_inc
-			\ header_cache_pagesize imap_fetch_chunk_size
+			\ header_cache_pagesize imap_fetch_chunk_size toggle_quoted_show_levels
 			\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 syntax keyword muttrcVarDeprecatedNum	contained skipwhite
 			\ wrapmargin
 			\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of DT_STRING in MuttVars in init.h
 " Special cases first, and all the rest at the end
 " Formats themselves must be updated in their respective groups
@@ -580,7 +579,7 @@ syntax keyword muttrcVarDeprecatedStr	contained skipwhite
 			\ smime_self_encrypt_as
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of DT_ADDRESS
 syntax keyword muttrcVarStr	contained skipwhite envelope_from_address from nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 " List of DT_ENUM
@@ -588,7 +587,7 @@ syntax keyword muttrcVarStr	contained skipwhite mbox_type nextgroup=muttrcSetStr
 " List of DT_MBTABLE
 syntax keyword muttrcVarStr	contained skipwhite crypt_chars flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of DT_PATH
 syntax keyword muttrcVarStr	contained skipwhite
 			\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file
@@ -605,7 +604,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 			\ mime_type_query_command smtp_oauth_refresh_command tunnel
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of DT_REGEX
 syntax keyword muttrcVarStr	contained skipwhite
 			\ abort_noattach_regex gecos_mask mask pgp_decryption_okay pgp_good_sign
@@ -620,7 +619,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 			\ pgp_sort_keys sidebar_sort_method sort sort_alias sort_aux sort_browser
 			\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr,muttrcVarDeprecatedBool,muttrcVarDeprecatedQuad,muttrcVarDeprecatedStr
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of commands in Commands in init.h
 " Remember to remove hooks, they have already been dealt with
 syntax keyword muttrcCommand	skipwhite charset-hook nextgroup=muttrcRXString
@@ -643,7 +642,7 @@ syntax keyword muttrcCommand	skipwhite
 			\ unvirtual-mailboxes virtual-mailboxes named-mailboxes
 			\ echo unbind unmacro
 
-" CHECKED 2019-09-22
+" CHECKED 2019-11-02
 " List of functions in functions.h
 syntax match muttrcFunction contained "\<accept\>"
 syntax match muttrcFunction contained "\<append\>"
