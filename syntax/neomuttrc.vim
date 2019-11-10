@@ -380,8 +380,8 @@ syntax keyword muttrcColorField skipwhite contained
 			\ index_number index_size index_subject index_tag index_tags indicator
 			\ markers message normal options progress prompt quoted search sidebar_divider
 			\ sidebar_flagged sidebar_highlight sidebar_indicator sidebar_new
-			\ sidebar_ordinary sidebar_spoolfile signature status tilde tree underline warning
-			\ nextgroup=muttrcColor
+			\ sidebar_ordinary sidebar_spoolfile sidebar_unread signature status tilde tree
+			\ underline warning nextgroup=muttrcColor
 syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
