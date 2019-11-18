@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:	NeoMutt setup files
-" Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2019-11-02
+" Maintainer:	Richard Russon <rich@flatcap.org>
+" Last Change:	2019-11-18
 " Original version based on syntax/muttrc.vim
 
 " This file covers NeoMutt 2019-11-02
@@ -146,9 +146,9 @@ function! s:escapesConditionals(baseName, sequence, alignment, secondary)
 	endif
 endfunction
 
-" CHECKED 2019-11-02
+" CHECKED 2019-11-18
 " Ref: index_format_str() in hdrline.c
-call s:escapesConditionals('IndexFormat', '[AaBbCcDdEeFfgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|G[a-zA-Z]\+\|Fp\=\|z[cst]', 1, 1)
+call s:escapesConditionals('IndexFormat', '[AaBbCDdEeFfgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|G[a-zA-Z]\+\|Fp\=\|z[cst]\|cr\=', 1, 1)
 " Ref: alias_format_str() in addrbook.c
 syntax match muttrcAliasFormatEscapes contained /%\%(\%(-\?[0-9]\+\)\?\%(\.[0-9]\+\)\?\)\?[:_]\?[afnrt%]/
 " Ref: group_index_format_str() in browser.c
