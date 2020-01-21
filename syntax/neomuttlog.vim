@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:  NeoMutt log files
 " Maintainer:  Richard Russon <rich@flatcap.org>
-" Last Change:  2018-02-16
+" Last Change:  2020-01-21
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
@@ -22,6 +22,7 @@ syntax match neolog_debug2_key  "\v%22v\<2\> " conceal transparent
 syntax match neolog_debug3_key  "\v%22v\<3\> " conceal transparent
 syntax match neolog_debug4_key  "\v%22v\<4\> " conceal transparent
 syntax match neolog_debug5_key  "\v%22v\<5\> " conceal transparent
+syntax match neolog_notify_key  "\v%22v\<N\> " conceal transparent
 
 syntax match neolog_perror  "\v%22v\<P\> .*" contains=neolog_perror_key,neolog_function
 syntax match neolog_error   "\v%22v\<E\> .*" contains=neolog_error_key,neolog_function
@@ -32,6 +33,7 @@ syntax match neolog_debug2  "\v%22v\<2\> .*" contains=neolog_debug2_key,neolog_f
 syntax match neolog_debug3  "\v%22v\<3\> .*" contains=neolog_debug3_key,neolog_function
 syntax match neolog_debug4  "\v%22v\<4\> .*" contains=neolog_debug4_key,neolog_function
 syntax match neolog_debug5  "\v%22v\<5\> .*" contains=neolog_debug5_key,neolog_function
+syntax match neolog_notify  "\v%22v\<N\> .*" contains=neolog_notify_key,neolog_function
 
 if exists('g:neolog_default_colors')
   highlight neolog_date     ctermfg=cyan    guifg=#40ffff
@@ -48,6 +50,7 @@ if exists('g:neolog_default_colors')
   highlight neolog_debug3  ctermfg=grey   guifg=#c0c0c0
   highlight neolog_debug4  ctermfg=grey   guifg=#c0c0c0
   highlight neolog_debug5  ctermfg=grey   guifg=#c0c0c0
+  highlight neolog_notify  ctermfg=grey   guifg=#c0c0c0
 endif
 
 highlight link neolog_perror_key  neolog_perror
@@ -59,6 +62,7 @@ highlight link neolog_debug2_key  neolog_debug2
 highlight link neolog_debug3_key  neolog_debug3
 highlight link neolog_debug4_key  neolog_debug4
 highlight link neolog_debug5_key  neolog_debug5
+highlight link neolog_notify_key  neolog_notify
 
 let b:current_syntax = "neomuttlog"
 
