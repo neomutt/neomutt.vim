@@ -642,284 +642,72 @@ syntax keyword muttrcCommand	skipwhite
 			\ unvirtual-mailboxes virtual-mailboxes named-mailboxes
 			\ echo unbind unmacro
 
+function! s:genFunctions(functions)
+	for f in a:functions
+		exec 'syntax match muttrcFunction contained "\<' . l:f . '\>"'
+	endfor
+endfunction
+
 " CHECKED 2019-11-02
 " List of functions in functions.c
-syntax match muttrcFunction contained "\<accept\>"
-syntax match muttrcFunction contained "\<append\>"
-syntax match muttrcFunction contained "\<attach-file\>"
-syntax match muttrcFunction contained "\<attach-key\>"
-syntax match muttrcFunction contained "\<attach-message\>"
-syntax match muttrcFunction contained "\<attach-news-message\>"
-syntax match muttrcFunction contained "\<autocrypt-acct-menu\>"
-syntax match muttrcFunction contained "\<autocrypt-menu\>"
-syntax match muttrcFunction contained "\<backspace\>"
-syntax match muttrcFunction contained "\<backward-char\>"
-syntax match muttrcFunction contained "\<backward-word\>"
-syntax match muttrcFunction contained "\<bol\>"
-syntax match muttrcFunction contained "\<bottom-page\>"
-syntax match muttrcFunction contained "\<bottom\>"
-syntax match muttrcFunction contained "\<bounce-message\>"
-syntax match muttrcFunction contained "\<break-thread\>"
-syntax match muttrcFunction contained "\<buffy-cycle\>"
-syntax match muttrcFunction contained "\<buffy-list\>"
-syntax match muttrcFunction contained "\<capitalize-word\>"
-syntax match muttrcFunction contained "\<catchup\>"
-syntax match muttrcFunction contained "\<chain-next\>"
-syntax match muttrcFunction contained "\<chain-prev\>"
-syntax match muttrcFunction contained "\<change-dir\>"
-syntax match muttrcFunction contained "\<change-folder-readonly\>"
-syntax match muttrcFunction contained "\<change-folder\>"
-syntax match muttrcFunction contained "\<change-newsgroup-readonly\>"
-syntax match muttrcFunction contained "\<change-newsgroup\>"
-syntax match muttrcFunction contained "\<change-vfolder\>"
-syntax match muttrcFunction contained "\<check-new\>"
-syntax match muttrcFunction contained "\<check-stats\>"
-syntax match muttrcFunction contained "\<check-traditional-pgp\>"
-syntax match muttrcFunction contained "\<clear-flag\>"
-syntax match muttrcFunction contained "\<collapse-all\>"
-syntax match muttrcFunction contained "\<collapse-parts\>"
-syntax match muttrcFunction contained "\<collapse-thread\>"
-syntax match muttrcFunction contained "\<complete-query\>"
-syntax match muttrcFunction contained "\<complete\>"
-syntax match muttrcFunction contained "\<compose-to-sender\>"
-syntax match muttrcFunction contained "\<copy-file\>"
-syntax match muttrcFunction contained "\<copy-message\>"
-syntax match muttrcFunction contained "\<create-account\>"
-syntax match muttrcFunction contained "\<create-alias\>"
-syntax match muttrcFunction contained "\<create-mailbox\>"
-syntax match muttrcFunction contained "\<current-bottom\>"
-syntax match muttrcFunction contained "\<current-middle\>"
-syntax match muttrcFunction contained "\<current-top\>"
-syntax match muttrcFunction contained "\<decode-copy\>"
-syntax match muttrcFunction contained "\<decode-save\>"
-syntax match muttrcFunction contained "\<decrypt-copy\>"
-syntax match muttrcFunction contained "\<decrypt-save\>"
-syntax match muttrcFunction contained "\<delete-account\>"
-syntax match muttrcFunction contained "\<delete-char\>"
-syntax match muttrcFunction contained "\<delete-entry\>"
-syntax match muttrcFunction contained "\<delete-mailbox\>"
-syntax match muttrcFunction contained "\<delete-message\>"
-syntax match muttrcFunction contained "\<delete-pattern\>"
-syntax match muttrcFunction contained "\<delete-subthread\>"
-syntax match muttrcFunction contained "\<delete-thread\>"
-syntax match muttrcFunction contained "\<delete\>"
-syntax match muttrcFunction contained "\<descend-directory\>"
-syntax match muttrcFunction contained "\<detach-file\>"
-syntax match muttrcFunction contained "\<display-address\>"
-syntax match muttrcFunction contained "\<display-filename\>"
-syntax match muttrcFunction contained "\<display-message\>"
-syntax match muttrcFunction contained "\<display-toggle-weed\>"
-syntax match muttrcFunction contained "\<downcase-word\>"
-syntax match muttrcFunction contained "\<edit-bcc\>"
-syntax match muttrcFunction contained "\<edit-cc\>"
-syntax match muttrcFunction contained "\<edit-description\>"
-syntax match muttrcFunction contained "\<edit-encoding\>"
-syntax match muttrcFunction contained "\<edit-fcc\>"
-syntax match muttrcFunction contained "\<edit-file\>"
-syntax match muttrcFunction contained "\<edit-followup-to\>"
-syntax match muttrcFunction contained "\<edit-from\>"
-syntax match muttrcFunction contained "\<edit-headers\>"
-syntax match muttrcFunction contained "\<edit-label\>"
-syntax match muttrcFunction contained "\<edit-language\>"
-syntax match muttrcFunction contained "\<edit-message\>"
-syntax match muttrcFunction contained "\<edit-mime\>"
-syntax match muttrcFunction contained "\<edit-newsgroups\>"
-syntax match muttrcFunction contained "\<edit-or-view-raw-message\>"
-syntax match muttrcFunction contained "\<edit-raw-message\>"
-syntax match muttrcFunction contained "\<edit-reply-to\>"
-syntax match muttrcFunction contained "\<edit-subject\>"
-syntax match muttrcFunction contained "\<edit-to\>"
-syntax match muttrcFunction contained "\<edit-type\>"
-syntax match muttrcFunction contained "\<edit-x-comment-to\>"
-syntax match muttrcFunction contained "\<edit\>"
-syntax match muttrcFunction contained "\<end-cond\>"
-syntax match muttrcFunction contained "\<enter-command\>"
-syntax match muttrcFunction contained "\<enter-mask\>"
-syntax match muttrcFunction contained "\<entire-thread\>"
-syntax match muttrcFunction contained "\<eol\>"
-syntax match muttrcFunction contained "\<exit\>"
-syntax match muttrcFunction contained "\<extract-keys\>"
-syntax match muttrcFunction contained "\<fetch-mail\>"
-syntax match muttrcFunction contained "\<filter-entry\>"
-syntax match muttrcFunction contained "\<first-entry\>"
-syntax match muttrcFunction contained "\<flag-message\>"
-syntax match muttrcFunction contained "\<followup-message\>"
-syntax match muttrcFunction contained "\<forget-passphrase\>"
-syntax match muttrcFunction contained "\<forward-char\>"
-syntax match muttrcFunction contained "\<forward-message\>"
-syntax match muttrcFunction contained "\<forward-to-group\>"
-syntax match muttrcFunction contained "\<forward-word\>"
-syntax match muttrcFunction contained "\<get-attachment\>"
-syntax match muttrcFunction contained "\<get-children\>"
-syntax match muttrcFunction contained "\<get-message\>"
-syntax match muttrcFunction contained "\<get-parent\>"
-syntax match muttrcFunction contained "\<goto-folder\>"
-syntax match muttrcFunction contained "\<goto-parent\>"
-syntax match muttrcFunction contained "\<group-alternatives\>"
-syntax match muttrcFunction contained "\<group-chat-reply\>"
-syntax match muttrcFunction contained "\<group-multilingual\>"
-syntax match muttrcFunction contained "\<group-reply\>"
-syntax match muttrcFunction contained "\<half-down\>"
-syntax match muttrcFunction contained "\<half-up\>"
-syntax match muttrcFunction contained "\<help\>"
-syntax match muttrcFunction contained "\<history-down\>"
-syntax match muttrcFunction contained "\<history-search\>"
-syntax match muttrcFunction contained "\<history-up\>"
-syntax match muttrcFunction contained "\<imap-fetch-mail\>"
-syntax match muttrcFunction contained "\<imap-logout-all\>"
-syntax match muttrcFunction contained "\<insert\>"
-syntax match muttrcFunction contained "\<ispell\>"
-syntax match muttrcFunction contained "\<jump\>"
-syntax match muttrcFunction contained "\<kill-eol\>"
-syntax match muttrcFunction contained "\<kill-eow\>"
-syntax match muttrcFunction contained "\<kill-line\>"
-syntax match muttrcFunction contained "\<kill-word\>"
-syntax match muttrcFunction contained "\<last-entry\>"
-syntax match muttrcFunction contained "\<limit-current-thread\>"
-syntax match muttrcFunction contained "\<limit\>"
-syntax match muttrcFunction contained "\<link-threads\>"
-syntax match muttrcFunction contained "\<list-reply\>"
-syntax match muttrcFunction contained "\<mail-key\>"
-syntax match muttrcFunction contained "\<mailbox-cycle\>"
-syntax match muttrcFunction contained "\<mailbox-list\>"
-syntax match muttrcFunction contained "\<mail\>"
-syntax match muttrcFunction contained "\<mark-as-new\>"
-syntax match muttrcFunction contained "\<mark-message\>"
-syntax match muttrcFunction contained "\<middle-page\>"
-syntax match muttrcFunction contained "\<mix\>"
-syntax match muttrcFunction contained "\<modify-labels-then-hide\>"
-syntax match muttrcFunction contained "\<modify-labels\>"
-syntax match muttrcFunction contained "\<modify-tags-then-hide\>"
-syntax match muttrcFunction contained "\<modify-tags\>"
-syntax match muttrcFunction contained "\<move-down\>"
-syntax match muttrcFunction contained "\<move-up\>"
-syntax match muttrcFunction contained "\<new-mime\>"
-syntax match muttrcFunction contained "\<next-entry\>"
-syntax match muttrcFunction contained "\<next-line\>"
-syntax match muttrcFunction contained "\<next-new-then-unread\>"
-syntax match muttrcFunction contained "\<next-new\>"
-syntax match muttrcFunction contained "\<next-page\>"
-syntax match muttrcFunction contained "\<next-subthread\>"
-syntax match muttrcFunction contained "\<next-thread\>"
-syntax match muttrcFunction contained "\<next-undeleted\>"
-syntax match muttrcFunction contained "\<next-unread-mailbox\>"
-syntax match muttrcFunction contained "\<next-unread\>"
-syntax match muttrcFunction contained "\<noop\>"
-syntax match muttrcFunction contained "\<parent-message\>"
-syntax match muttrcFunction contained "\<pgp-menu\>"
-syntax match muttrcFunction contained "\<pipe-entry\>"
-syntax match muttrcFunction contained "\<pipe-message\>"
-syntax match muttrcFunction contained "\<post-message\>"
-syntax match muttrcFunction contained "\<postpone-message\>"
-syntax match muttrcFunction contained "\<previous-entry\>"
-syntax match muttrcFunction contained "\<previous-line\>"
-syntax match muttrcFunction contained "\<previous-new-then-unread\>"
-syntax match muttrcFunction contained "\<previous-new\>"
-syntax match muttrcFunction contained "\<previous-page\>"
-syntax match muttrcFunction contained "\<previous-subthread\>"
-syntax match muttrcFunction contained "\<previous-thread\>"
-syntax match muttrcFunction contained "\<previous-undeleted\>"
-syntax match muttrcFunction contained "\<previous-unread\>"
-syntax match muttrcFunction contained "\<print-entry\>"
-syntax match muttrcFunction contained "\<print-message\>"
-syntax match muttrcFunction contained "\<purge-message\>"
-syntax match muttrcFunction contained "\<purge-thread\>"
-syntax match muttrcFunction contained "\<quasi-delete\>"
-syntax match muttrcFunction contained "\<query-append\>"
-syntax match muttrcFunction contained "\<query\>"
-syntax match muttrcFunction contained "\<quit\>"
-syntax match muttrcFunction contained "\<quote-char\>"
-syntax match muttrcFunction contained "\<read-subthread\>"
-syntax match muttrcFunction contained "\<read-thread\>"
-syntax match muttrcFunction contained "\<recall-message\>"
-syntax match muttrcFunction contained "\<reconstruct-thread\>"
-syntax match muttrcFunction contained "\<redraw-screen\>"
-syntax match muttrcFunction contained "\<refresh\>"
-syntax match muttrcFunction contained "\<reload-active\>"
-syntax match muttrcFunction contained "\<rename-attachment\>"
-syntax match muttrcFunction contained "\<rename-file\>"
-syntax match muttrcFunction contained "\<rename-mailbox\>"
-syntax match muttrcFunction contained "\<reply\>"
-syntax match muttrcFunction contained "\<resend-message\>"
-syntax match muttrcFunction contained "\<root-message\>"
-syntax match muttrcFunction contained "\<save-entry\>"
-syntax match muttrcFunction contained "\<save-message\>"
-syntax match muttrcFunction contained "\<search-next\>"
-syntax match muttrcFunction contained "\<search-opposite\>"
-syntax match muttrcFunction contained "\<search-reverse\>"
-syntax match muttrcFunction contained "\<search-toggle\>"
-syntax match muttrcFunction contained "\<search\>"
-syntax match muttrcFunction contained "\<select-entry\>"
-syntax match muttrcFunction contained "\<select-new\>"
-syntax match muttrcFunction contained "\<send-message\>"
-syntax match muttrcFunction contained "\<set-flag\>"
-syntax match muttrcFunction contained "\<shell-escape\>"
-syntax match muttrcFunction contained "\<show-limit\>"
-syntax match muttrcFunction contained "\<show-log-messages\>"
-syntax match muttrcFunction contained "\<show-version\>"
-syntax match muttrcFunction contained "\<sidebar-next-new\>"
-syntax match muttrcFunction contained "\<sidebar-next\>"
-syntax match muttrcFunction contained "\<sidebar-open\>"
-syntax match muttrcFunction contained "\<sidebar-page-down\>"
-syntax match muttrcFunction contained "\<sidebar-page-up\>"
-syntax match muttrcFunction contained "\<sidebar-prev-new\>"
-syntax match muttrcFunction contained "\<sidebar-prev\>"
-syntax match muttrcFunction contained "\<sidebar-toggle-virtual\>"
-syntax match muttrcFunction contained "\<sidebar-toggle-visible\>"
-syntax match muttrcFunction contained "\<skip-quoted\>"
-syntax match muttrcFunction contained "\<smime-menu\>"
-syntax match muttrcFunction contained "\<sort-mailbox\>"
-syntax match muttrcFunction contained "\<sort-reverse\>"
-syntax match muttrcFunction contained "\<sort\>"
-syntax match muttrcFunction contained "\<subscribe-pattern\>"
-syntax match muttrcFunction contained "\<subscribe\>"
-syntax match muttrcFunction contained "\<sync-mailbox\>"
-syntax match muttrcFunction contained "\<tag-entry\>"
-syntax match muttrcFunction contained "\<tag-message\>"
-syntax match muttrcFunction contained "\<tag-pattern\>"
-syntax match muttrcFunction contained "\<tag-prefix-cond\>"
-syntax match muttrcFunction contained "\<tag-prefix\>"
-syntax match muttrcFunction contained "\<tag-subthread\>"
-syntax match muttrcFunction contained "\<tag-thread\>"
-syntax match muttrcFunction contained "\<toggle-active\>"
-syntax match muttrcFunction contained "\<toggle-disposition\>"
-syntax match muttrcFunction contained "\<toggle-mailboxes\>"
-syntax match muttrcFunction contained "\<toggle-new\>"
-syntax match muttrcFunction contained "\<toggle-prefer-encrypt\>"
-syntax match muttrcFunction contained "\<toggle-quoted\>"
-syntax match muttrcFunction contained "\<toggle-read\>"
-syntax match muttrcFunction contained "\<toggle-recode\>"
-syntax match muttrcFunction contained "\<toggle-subscribed\>"
-syntax match muttrcFunction contained "\<toggle-unlink\>"
-syntax match muttrcFunction contained "\<toggle-write\>"
-syntax match muttrcFunction contained "\<top-page\>"
-syntax match muttrcFunction contained "\<top\>"
-syntax match muttrcFunction contained "\<transpose-chars\>"
-syntax match muttrcFunction contained "\<uncatchup\>"
-syntax match muttrcFunction contained "\<undelete-entry\>"
-syntax match muttrcFunction contained "\<undelete-message\>"
-syntax match muttrcFunction contained "\<undelete-pattern\>"
-syntax match muttrcFunction contained "\<undelete-subthread\>"
-syntax match muttrcFunction contained "\<undelete-thread\>"
-syntax match muttrcFunction contained "\<unsubscribe-pattern\>"
-syntax match muttrcFunction contained "\<unsubscribe\>"
-syntax match muttrcFunction contained "\<untag-pattern\>"
-syntax match muttrcFunction contained "\<upcase-word\>"
-syntax match muttrcFunction contained "\<update-encoding\>"
-syntax match muttrcFunction contained "\<verify-key\>"
-syntax match muttrcFunction contained "\<vfolder-from-query-readonly\>"
-syntax match muttrcFunction contained "\<vfolder-from-query\>"
-syntax match muttrcFunction contained "\<vfolder-window-backward\>"
-syntax match muttrcFunction contained "\<vfolder-window-forward\>"
-syntax match muttrcFunction contained "\<view-attachments\>"
-syntax match muttrcFunction contained "\<view-attach\>"
-syntax match muttrcFunction contained "\<view-file\>"
-syntax match muttrcFunction contained "\<view-mailcap\>"
-syntax match muttrcFunction contained "\<view-name\>"
-syntax match muttrcFunction contained "\<view-raw-message\>"
-syntax match muttrcFunction contained "\<view-text\>"
-syntax match muttrcFunction contained "\<what-key\>"
-syntax match muttrcFunction contained "\<write-fcc\>"
+" Note: 'noop' is included but is elsewhere in the source
+call s:genFunctions(['noop',
+	\ 'accept', 'append', 'attach-file', 'attach-key', 'attach-message',
+	\ 'attach-news-message', 'autocrypt-acct-menu', 'autocrypt-menu', 'backspace',
+	\ 'backward-char', 'backward-word', 'bol', 'bottom-page', 'bottom', 'bounce-message',
+	\ 'break-thread', 'buffy-cycle', 'buffy-list', 'capitalize-word', 'catchup', 'chain-next',
+	\ 'chain-prev', 'change-dir', 'change-folder-readonly', 'change-folder',
+	\ 'change-newsgroup-readonly', 'change-newsgroup', 'change-vfolder', 'check-new',
+	\ 'check-stats', 'check-traditional-pgp', 'clear-flag', 'collapse-all', 'collapse-parts',
+	\ 'collapse-thread', 'complete-query', 'complete', 'compose-to-sender', 'copy-file',
+	\ 'copy-message', 'create-account', 'create-alias', 'create-mailbox', 'current-bottom',
+	\ 'current-middle', 'current-top', 'decode-copy', 'decode-save', 'decrypt-copy',
+	\ 'decrypt-save', 'delete-account', 'delete-char', 'delete-entry', 'delete-mailbox',
+	\ 'delete-message', 'delete-pattern', 'delete-subthread', 'delete-thread', 'delete',
+	\ 'descend-directory', 'detach-file', 'display-address', 'display-filename',
+	\ 'display-message', 'display-toggle-weed', 'downcase-word', 'edit-bcc', 'edit-cc',
+	\ 'edit-description', 'edit-encoding', 'edit-fcc', 'edit-file', 'edit-followup-to',
+	\ 'edit-from', 'edit-headers', 'edit-label', 'edit-language', 'edit-message', 'edit-mime',
+	\ 'edit-newsgroups', 'edit-or-view-raw-message', 'edit-raw-message', 'edit-reply-to',
+	\ 'edit-subject', 'edit-to', 'edit-type', 'edit-x-comment-to', 'edit', 'end-cond',
+	\ 'enter-command', 'enter-mask', 'entire-thread', 'eol', 'exit', 'extract-keys',
+	\ 'fetch-mail', 'filter-entry', 'first-entry', 'flag-message', 'followup-message',
+	\ 'forget-passphrase', 'forward-char', 'forward-message', 'forward-to-group',
+	\ 'forward-word', 'get-attachment', 'get-children', 'get-message', 'get-parent',
+	\ 'goto-folder', 'goto-parent', 'group-alternatives', 'group-chat-reply',
+	\ 'group-multilingual', 'group-reply', 'half-down', 'half-up', 'help', 'history-down',
+	\ 'history-search', 'history-up', 'imap-fetch-mail', 'imap-logout-all', 'insert', 'ispell',
+	\ 'jump', 'kill-eol', 'kill-eow', 'kill-line', 'kill-word', 'last-entry',
+	\ 'limit-current-thread', 'limit', 'link-threads', 'list-reply', 'mail-key',
+	\ 'mailbox-cycle', 'mailbox-list', 'mail', 'mark-as-new', 'mark-message', 'middle-page',
+	\ 'mix', 'modify-labels-then-hide', 'modify-labels', 'modify-tags-then-hide', 'modify-tags',
+	\ 'move-down', 'move-up', 'new-mime', 'next-entry', 'next-line', 'next-new-then-unread',
+	\ 'next-new', 'next-page', 'next-subthread', 'next-thread', 'next-undeleted',
+	\ 'next-unread-mailbox', 'next-unread', 'noop', 'parent-message', 'pgp-menu', 'pipe-entry',
+	\ 'pipe-message', 'post-message', 'postpone-message', 'previous-entry', 'previous-line',
+	\ 'previous-new-then-unread', 'previous-new', 'previous-page', 'previous-subthread',
+	\ 'previous-thread', 'previous-undeleted', 'previous-unread', 'print-entry',
+	\ 'print-message', 'purge-message', 'purge-thread', 'quasi-delete', 'query-append', 'query',
+	\ 'quit', 'quote-char', 'read-subthread', 'read-thread', 'recall-message',
+	\ 'reconstruct-thread', 'redraw-screen', 'refresh', 'reload-active', 'rename-attachment',
+	\ 'rename-file', 'rename-mailbox', 'reply', 'resend-message', 'root-message', 'save-entry',
+	\ 'save-message', 'search-next', 'search-opposite', 'search-reverse', 'search-toggle',
+	\ 'search', 'select-entry', 'select-new', 'send-message', 'set-flag', 'shell-escape',
+	\ 'show-limit', 'show-log-messages', 'show-version', 'sidebar-next-new', 'sidebar-next',
+	\ 'sidebar-open', 'sidebar-page-down', 'sidebar-page-up', 'sidebar-prev-new',
+	\ 'sidebar-prev', 'sidebar-toggle-virtual', 'sidebar-toggle-visible', 'skip-quoted',
+	\ 'smime-menu', 'sort-mailbox', 'sort-reverse', 'sort', 'subscribe-pattern', 'subscribe',
+	\ 'sync-mailbox', 'tag-entry', 'tag-message', 'tag-pattern', 'tag-prefix-cond',
+	\ 'tag-prefix', 'tag-subthread', 'tag-thread', 'toggle-active', 'toggle-disposition',
+	\ 'toggle-mailboxes', 'toggle-new', 'toggle-prefer-encrypt', 'toggle-quoted', 'toggle-read',
+	\ 'toggle-recode', 'toggle-subscribed', 'toggle-unlink', 'toggle-write', 'top-page', 'top',
+	\ 'transpose-chars', 'uncatchup', 'undelete-entry', 'undelete-message', 'undelete-pattern',
+	\ 'undelete-subthread', 'undelete-thread', 'unsubscribe-pattern', 'unsubscribe',
+	\ 'untag-pattern', 'upcase-word', 'update-encoding', 'verify-key',
+	\ 'vfolder-from-query-readonly', 'vfolder-from-query', 'vfolder-window-backward',
+	\ 'vfolder-window-forward', 'view-attachments', 'view-attach', 'view-file', 'view-mailcap',
+	\ 'view-name', 'view-raw-message', 'view-text', 'what-key', 'write-fcc'
+	\ ])
 
 " Define the default highlighting.
 " Only when an item doesn't have highlighting yet
