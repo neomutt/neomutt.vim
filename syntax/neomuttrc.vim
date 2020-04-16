@@ -739,21 +739,21 @@ highlight def link muttrcVarDeprecatedBool		Error
 highlight def link muttrcVarDeprecatedQuad		Error
 highlight def link muttrcVarDeprecatedStr		Error
 
-highlight def link muttrcMenu				Identifier
-highlight def link muttrcVarNum				Identifier
-highlight def link muttrcVarStr				Identifier
 highlight def link muttrcAliasEncEmail			Identifier
+highlight def link muttrcAliasKey	        	Identifier
 highlight def link muttrcColorCompose			Identifier
+highlight def link muttrcColorComposeField		Identifier
 highlight def link muttrcColorContextH			Identifier
 highlight def link muttrcColorContextI			Identifier
 highlight def link muttrcColorField			Identifier
+highlight def link muttrcMenu				Identifier
 highlight def link muttrcSimplePat			Identifier
 highlight def link muttrcUnAliasKey			Identifier
 highlight def link muttrcUnColorIndex			Identifier
 highlight def link muttrcVarBool			Identifier
+highlight def link muttrcVarNum				Identifier
 highlight def link muttrcVarQuad			Identifier
-highlight def link muttrcColorComposeField		Identifier
-highlight def link muttrcAliasKey	        	Identifier
+highlight def link muttrcVarStr				Identifier
 
 highlight def link muttrcCommand			Keyword
 
@@ -765,59 +765,59 @@ highlight def link muttrcSimplePatString		Macro
 
 highlight def link muttrcMonoAttrib			muttrcColor
 
-highlight def link muttrcMono				muttrcCommand
+highlight def link muttrcAlternateKeyword		muttrcCommand
+highlight def link muttrcAttachmentsLine		muttrcCommand
 highlight def link muttrcColorKeyword			muttrcCommand
 highlight def link muttrcGroupKeyword			muttrcCommand
 highlight def link muttrcListsKeyword			muttrcCommand
+highlight def link muttrcMono				muttrcCommand
 highlight def link muttrcPatHooks			muttrcCommand
 highlight def link muttrcRXHooks			muttrcCommand
-highlight def link muttrcUnColorKeyword			muttrcCommand
-highlight def link muttrcAlternateKeyword		muttrcCommand
-highlight def link muttrcAttachmentsLine		muttrcCommand
 highlight def link muttrcSubscribeKeyword		muttrcCommand
+highlight def link muttrcUnColorKeyword			muttrcCommand
 
-highlight def link muttrcPGPTimeEscapes			muttrcEscape
-highlight def link muttrcShellString			muttrcEscape
-highlight def link muttrcTimeEscapes			muttrcEscape
 highlight def link muttrcAliasFormatEscapes		muttrcEscape
 highlight def link muttrcAttachFormatEscapes		muttrcEscape
 highlight def link muttrcComposeFormatEscapes		muttrcEscape
 highlight def link muttrcFolderFormatEscapes		muttrcEscape
+highlight def link muttrcGroupIndexFormatEscapes	muttrcEscape
 highlight def link muttrcIndexFormatEscapes		muttrcEscape
 highlight def link muttrcMixFormatEscapes		muttrcEscape
 highlight def link muttrcPGPCmdFormatEscapes		muttrcEscape
 highlight def link muttrcPGPFormatEscapes		muttrcEscape
+highlight def link muttrcPGPGetKeysFormatEscapes	muttrcEscape
+highlight def link muttrcPGPTimeEscapes			muttrcEscape
 highlight def link muttrcQueryFormatEscapes		muttrcEscape
+highlight def link muttrcShellString			muttrcEscape
 highlight def link muttrcSidebarFormatEscapes		muttrcEscape
 highlight def link muttrcSmimeFormatEscapes		muttrcEscape
 highlight def link muttrcStatusFormatEscapes		muttrcEscape
-highlight def link muttrcComposeFormatConditionals	muttrcEscape
-highlight def link muttrcGroupIndexFormatEscapes	muttrcEscape
-highlight def link muttrcPGPGetKeysFormatEscapes	muttrcEscape
+highlight def link muttrcTimeEscapes			muttrcEscape
 
-highlight def link muttrcMixFormatConditionals		muttrcFormatConditionals2
-highlight def link muttrcPGPFormatConditionals		muttrcFormatConditionals2
 highlight def link muttrcAliasFormatConditionals	muttrcFormatConditionals2
 highlight def link muttrcAttachFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcComposeFormatConditionals	muttrcFormatConditionals2
 highlight def link muttrcFolderFormatConditionals	muttrcFormatConditionals2
 highlight def link muttrcIndexFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcMixFormatConditionals		muttrcFormatConditionals2
 highlight def link muttrcPGPCmdFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcPGPFormatConditionals		muttrcFormatConditionals2
 highlight def link muttrcSmimeFormatConditionals	muttrcFormatConditionals2
 highlight def link muttrcStatusFormatConditionals	muttrcFormatConditionals2
 
-highlight def link muttrcRXDef				muttrcGroupFlag
 highlight def link muttrcAddrDef			muttrcGroupFlag
+highlight def link muttrcRXDef				muttrcGroupFlag
 
 highlight def link muttrcAliasFormatStr			muttrcString
-highlight def link muttrcIndexFormatStr			muttrcString
-highlight def link muttrcMixFormatStr			muttrcString
-highlight def link muttrcPGPFormatStr			muttrcString
-highlight def link muttrcSmimeFormatStr			muttrcString
 highlight def link muttrcAttachFormatStr		muttrcString
 highlight def link muttrcComposeFormatStr		muttrcString
 highlight def link muttrcFolderFormatStr		muttrcString
+highlight def link muttrcIndexFormatStr			muttrcString
+highlight def link muttrcMixFormatStr			muttrcString
 highlight def link muttrcPGPCmdFormatStr		muttrcString
+highlight def link muttrcPGPFormatStr			muttrcString
 highlight def link muttrcPGPGetKeysFormatStr		muttrcString
+highlight def link muttrcSmimeFormatStr			muttrcString
 highlight def link muttrcStatusFormatStr		muttrcString
 highlight def link muttrcStrftimeFormatStr		muttrcString
 
@@ -856,25 +856,25 @@ highlight def link muttrcUnColorAPNL			SpecialChar
 highlight def link muttrcUnColorIndexNL			SpecialChar
 highlight def link muttrcUnColorPatNL			SpecialChar
 
-highlight def link muttrcRXPat				String
-highlight def link muttrcString				String
-highlight def link muttrcMacroDescr			String
-highlight def link muttrcRXString			String
-highlight def link muttrcRXString2			String
 highlight def link muttrcAttachmentsMimeType		String
 highlight def link muttrcEscapedVariable		String
+highlight def link muttrcMacroDescr			String
+highlight def link muttrcRXPat				String
+highlight def link muttrcRXString			String
+highlight def link muttrcRXString2			String
 highlight def link muttrcSetStrAssignment		String
+highlight def link muttrcString				String
 
+highlight def link muttrcAliasParens			Type
+highlight def link muttrcAttachmentsFlag		Type
 highlight def link muttrcColor				Type
+highlight def link muttrcFormatConditionals2		Type
+highlight def link muttrcGroupFlag			Type
 highlight def link muttrcHeader				Type
 highlight def link muttrcHooks				Type
 highlight def link muttrcKey				Type
-highlight def link muttrcAliasParens			Type
-highlight def link muttrcGroupFlag			Type
 highlight def link muttrcPatHookNot			Type
 highlight def link muttrcRXHookNot			Type
-highlight def link muttrcAttachmentsFlag		Type
-highlight def link muttrcFormatConditionals2		Type
 highlight def link muttrcStrftimeEscapes		Type
 
 let b:current_syntax = "neomuttrc"
