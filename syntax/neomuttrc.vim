@@ -2,10 +2,10 @@
 " Language:	NeoMutt setup files
 " Maintainer:	Richard Russon <rich@flatcap.org>
 " Previous Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2020-04-17
+" Last Change:	2020-06-21
 " Original version based on syntax/muttrc.vim
 
-" This file covers NeoMutt 2020-04-17
+" This file covers NeoMutt 2020-06-19
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
@@ -44,7 +44,7 @@ syntax match  muttrcRXChars	contained /\\/
 " Why does muttrcRXString2 work with one \ when muttrcRXString requires two?
 syntax region muttrcRXString	contained skipwhite start=+'+ skip=+\\'+ end=+'+ contains=muttrcRXChars
 syntax region muttrcRXString	contained skipwhite start=+"+ skip=+\\"+ end=+"+ contains=muttrcRXChars
-syntax region muttrcRXString	contained skipwhite start=+[^ 	"'^]+ skip=+\\\s+ end=+\s+re=e-1 contains=muttrcRXChars
+syntax region muttrcRXString	contained skipwhite start=+[^	 "'^]+ skip=+\\\s+ end=+\s+re=e-1 contains=muttrcRXChars
 " For some reason, skip refuses to match backslashes here...
 syntax region muttrcRXString	contained matchgroup=muttrcRXChars skipwhite start=+\^+ end=+[^\\]\s+re=e-1 contains=muttrcRXChars
 syntax region muttrcRXString	contained matchgroup=muttrcRXChars skipwhite start=+\^+ end=+$\s+ contains=muttrcRXChars
@@ -54,7 +54,7 @@ syntax region muttrcRXString2	contained skipwhite start=+"+ skip=+\"+ end=+"+ co
 " these must be kept synchronized with muttrcRXString, but are intended for muttrcRXHooks
 syntax region muttrcRXHookString	contained keepend skipwhite start=+'+ skip=+\\'+ end=+'+ contains=muttrcRXString nextgroup=muttrcString,muttrcStringNL
 syntax region muttrcRXHookString	contained keepend skipwhite start=+"+ skip=+\\"+ end=+"+ contains=muttrcRXString nextgroup=muttrcString,muttrcStringNL
-syntax region muttrcRXHookString	contained keepend skipwhite start=+[^ 	"'^]+ skip=+\\\s+ end=+\s+re=e-1 contains=muttrcRXString nextgroup=muttrcString,muttrcStringNL
+syntax region muttrcRXHookString	contained keepend skipwhite start=+[^	 "'^]+ skip=+\\\s+ end=+\s+re=e-1 contains=muttrcRXString nextgroup=muttrcString,muttrcStringNL
 syntax region muttrcRXHookString	contained keepend skipwhite start=+\^+ end=+[^\\]\s+re=e-1 contains=muttrcRXString nextgroup=muttrcString,muttrcStringNL
 syntax region muttrcRXHookString	contained keepend matchgroup=muttrcRXChars skipwhite start=+\^+ end=+$\s+ contains=muttrcRXString nextgroup=muttrcString,muttrcStringNL
 syntax match muttrcRXHookStringNL	contained skipwhite skipnl "\s*\\$" nextgroup=muttrcRXHookString,muttrcRXHookStringNL
@@ -63,7 +63,7 @@ syntax match muttrcRXHookStringNL	contained skipwhite skipnl "\s*\\$" nextgroup=
 syntax region muttrcRXPat	contained keepend skipwhite start=+'+ skip=+\\'+ end=+'\s*+ contains=muttrcRXString nextgroup=muttrcRXPat
 syntax region muttrcRXPat	contained keepend skipwhite start=+"+ skip=+\\"+ end=+"\s*+ contains=muttrcRXString nextgroup=muttrcRXPat
 syntax match muttrcRXPat	contained /[^-'"#!]\S\+/ skipwhite contains=muttrcRXChars nextgroup=muttrcRXPat
-syntax match muttrcRXDef 	contained "-rx\s\+" skipwhite nextgroup=muttrcRXPat
+syntax match muttrcRXDef	contained "-rx\s\+" skipwhite nextgroup=muttrcRXPat
 
 syntax match muttrcSpecial	+\(['"]\)!\1+
 
@@ -144,8 +144,8 @@ function! s:escapesConditionals(baseName, sequence, padding, conditional)
 	endif
 endfunction
 
-" CHECKED 2020-04-17
-" Ref: alias_format_str() in addrbook.c
+" CHECKED 2020-06-21
+" Ref: alias_format_str() in alias/dlgalias.c
 call s:escapesConditionals('AliasFormat', '[afnrt]', 1, 0)
 " Ref: attach_format_str() in recvattach.c
 call s:escapesConditionals('AttachFormat', '[CcDdeFfIMmnQsTtuX]', 1, 1)
@@ -159,17 +159,17 @@ call s:escapesConditionals('GroupIndexFormat', '[CdfMNns]', 1, 1)
 call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|@\i\+@\|G[a-zA-Z]\+\|Fp\=\|z[cst]\|cr\=', 1, 1)
 " Ref: mix_format_str() in remailer.c
 call s:escapesConditionals('MixFormat', '[acns]', 1, 0)
-" Ref: fmt_pgp_command() ncrypt/pgpinvoke.c
+" Ref: pgp_command_format_str() in ncrypt/pgpinvoke.c
 call s:escapesConditionals('PGPCmdFormat', '[afprs]', 0, 1)
 " Ref: crypt_format_str() in ncrypt/crypt_gpgme.c
-" Ref: pgp_entry_fmt() in ncrypt/pgpkey.c
+" Ref: pgp_entry_format_str() in ncrypt/pgpkey.c
 " Note: crypt_format_str() supports 'p', but pgp_entry_fmt() does not
 call s:escapesConditionals('PGPFormat', '[AaCcFfKkLlnptu[]', 0, 0)
-" Ref: query_format_str() in query.c
+" Ref: query_format_str() in alias/dlgquery.c
 call s:escapesConditionals('QueryFormat', '[acent]', 1, 1)
 " Ref: sidebar_format_str() in sidebar.c
 call s:escapesConditionals('SidebarFormat', '[!BDdFLNnorStZ]', 1, 1)
-" Ref: fmt_smime_command() in ncrypt/smime.c
+" Ref: smime_command_format_str() in ncrypt/smime.c
 call s:escapesConditionals('SmimeFormat', '[aCcdfiks]', 0, 1)
 " Ref: status_format_str() in status.c
 call s:escapesConditionals('StatusFormat', '[bDdFfhLlMmnoPpRrSstuVv]', 1, 1)
@@ -197,7 +197,7 @@ syntax match muttrcVarEqualsStrftimeFmt   contained skipwhite "=" nextgroup=mutt
 
 syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of the different screens in mutt (see Menus in keymap.c)
 syntax keyword muttrcMenu contained alias attach browser compose editor generic index key_select_pgp key_select_smime mix pager pgp postpone query smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
@@ -234,7 +234,7 @@ syntax match muttrcEscapedVariable	contained "\\\$[a-zA-Z_-]\+"
 syntax match muttrcBadAction	contained "[^<>]\+" contains=muttrcEmail
 syntax match muttrcAction		contained "<[^>]\{-}>" contains=muttrcBadAction,muttrcFunction,muttrcKeyName
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " First, functions that take regular expressions:
 syntax match  muttrcRXHookNot	contained /!\s*/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
 syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|folder\|mbox\|open\|pgp\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
@@ -259,8 +259,8 @@ syntax region muttrcMacroDescr	contained keepend skipwhite start=+'+ms=e skip=+\
 syntax region muttrcMacroDescr	contained keepend skipwhite start=+"+ms=e skip=+\\"+ end=+"+me=s
 syntax match muttrcMacroDescrNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcMacroDescr,muttrcMacroDescrNL
 syntax region muttrcMacroBody	contained skipwhite start="\S" skip='\\ \|\\$' end=' \|$' contains=muttrcEscape,muttrcSet,muttrcUnset,muttrcReset,muttrcToggle,muttrcCommand,muttrcAction nextgroup=muttrcMacroDescr,muttrcMacroDescrNL
-syntax region muttrcMacroBody matchgroup=Type contained skipwhite start=+'+ms=e skip=+\\'+ end=+'\|\%(\%(\\\\\)\@<!$\)+me=s contains=muttrcEscape,muttrcSet,muttrcUnset,muttrcReset,muttrcToggle,muttrcSpam,muttrcNoSpam,muttrcCommand,muttrcAction,muttrcVariable nextgroup=muttrcMacroDescr,muttrcMacroDescrNL
-syntax region muttrcMacroBody matchgroup=Type contained skipwhite start=+"+ms=e skip=+\\"+ end=+"\|\%(\%(\\\\\)\@<!$\)+me=s contains=muttrcEscape,muttrcSet,muttrcUnset,muttrcReset,muttrcToggle,muttrcSpam,muttrcNoSpam,muttrcCommand,muttrcAction,muttrcVariable nextgroup=muttrcMacroDescr,muttrcMacroDescrNL
+syntax region muttrcMacroBody	matchgroup=Type contained skipwhite start=+'+ms=e skip=+\\'+ end=+'\|\%(\%(\\\\\)\@<!$\)+me=s contains=muttrcEscape,muttrcSet,muttrcUnset,muttrcReset,muttrcToggle,muttrcSpam,muttrcNoSpam,muttrcCommand,muttrcAction,muttrcVariable nextgroup=muttrcMacroDescr,muttrcMacroDescrNL
+syntax region muttrcMacroBody	matchgroup=Type contained skipwhite start=+"+ms=e skip=+\\"+ end=+"\|\%(\%(\\\\\)\@<!$\)+me=s contains=muttrcEscape,muttrcSet,muttrcUnset,muttrcReset,muttrcToggle,muttrcSpam,muttrcNoSpam,muttrcCommand,muttrcAction,muttrcVariable nextgroup=muttrcMacroDescr,muttrcMacroDescrNL
 syntax match muttrcMacroBodyNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcMacroBody,muttrcMacroBodyNL
 syntax match muttrcMacroKey	contained /\S\+/ skipwhite contains=muttrcKey nextgroup=muttrcMacroBody,muttrcMacroBodyNL
 syntax match muttrcMacroKeyNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcMacroKey,muttrcMacroKeyNL
@@ -270,7 +270,7 @@ syntax match muttrcMacroMenuListNL	contained /\s*\\$/ skipwhite skipnl nextgroup
 syntax match muttrcAddrContent	contained "[a-zA-Z0-9._-]\+@[a-zA-Z0-9./-]\+\s*" skipwhite contains=muttrcEmail nextgroup=muttrcAddrContent
 syntax region muttrcAddrContent	contained start=+'+ end=+'\s*+ skip=+\\'+ skipwhite contains=muttrcEmail nextgroup=muttrcAddrContent
 syntax region muttrcAddrContent	contained start=+"+ end=+"\s*+ skip=+\\"+ skipwhite contains=muttrcEmail nextgroup=muttrcAddrContent
-syntax match muttrcAddrDef 	contained "-addr\s\+" skipwhite nextgroup=muttrcAddrContent
+syntax match muttrcAddrDef	contained "-addr\s\+" skipwhite nextgroup=muttrcAddrContent
 
 syntax match muttrcGroupFlag	contained "-group"
 syntax region muttrcGroupDef	contained start="-group\s\+" skip="\\$" end="\s" skipwhite keepend contains=muttrcGroupFlag,muttrcUnHighlightSpace
@@ -295,7 +295,7 @@ syntax match muttrcAliasNL		contained /\s*\\$/ skipwhite skipnl nextgroup=muttrc
 syntax match muttrcUnAliasKey	contained "\s*\w\+\s*" skipwhite nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 syntax match muttrcUnAliasNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of letters in Flags in pattern.c
 " Parameter: none
 syntax match muttrcSimplePat contained "!\?\^\?[~][ADEFGgklNOPpQRSTuUvV#$=]"
@@ -304,7 +304,7 @@ syntax match muttrcSimplePat contained "!\?\^\?[~][mnXz]\s*\%([<>-][0-9]\+[kM]\?
 " Parameter: date
 syntax match muttrcSimplePat contained "!\?\^\?[~][dr]\s*\%(\%(-\?[0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)*\)\|\%(\%([0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)*\)-\%([0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)\?\)\?\)\|\%([<>=][0-9]\+[ymwd]\)\|\%(`[^`]\+`\)\|\%(\$[a-zA-Z0-9_-]\+\)\)" contains=muttrcShellString,muttrcVariable
 " Parameter: regex
-syntax match muttrcSimplePat contained "!\?\^\?[~][BbCcefHhiLMstxYy]\s*" nextgroup=muttrcSimplePatRXContainer
+syntax match muttrcSimplePat contained "!\?\^\?[~][BbCcefHhIiLMstwxYy]\s*" nextgroup=muttrcSimplePatRXContainer
 " Parameter: pattern
 syntax match muttrcSimplePat contained "!\?\^\?[%][bBcCefhHiLstxy]\s*" nextgroup=muttrcSimplePatString
 " Parameter: pattern
@@ -314,10 +314,10 @@ syntax region muttrcSimplePat contained keepend start=+!\?\^\?[~](+ end=+)+ cont
 "syn match muttrcSimplePat contained /'[^~=%][^']*/ contains=muttrcRXString
 syntax region muttrcSimplePatString contained keepend start=+"+ end=+"+ skip=+\\"+
 syntax region muttrcSimplePatString contained keepend start=+'+ end=+'+ skip=+\\'+
-syntax region muttrcSimplePatString contained keepend start=+[^ 	"']+ skip=+\\ + end=+\s+re=e-1
+syntax region muttrcSimplePatString contained keepend start=+[^	 "']+ skip=+\\ + end=+\s+re=e-1
 syntax region muttrcSimplePatRXContainer contained keepend start=+"+ end=+"+ skip=+\\"+ contains=muttrcRXString
 syntax region muttrcSimplePatRXContainer contained keepend start=+'+ end=+'+ skip=+\\'+ contains=muttrcRXString
-syntax region muttrcSimplePatRXContainer contained keepend start=+[^ 	"']+ skip=+\\ + end=+\s+re=e-1 contains=muttrcRXString
+syntax region muttrcSimplePatRXContainer contained keepend start=+[^	 "']+ skip=+\\ + end=+\s+re=e-1 contains=muttrcRXString
 syntax match muttrcSimplePatMetas contained /[(|)]/
 
 syntax match muttrcOptSimplePat contained skipwhite /[~=%!(^].*/ contains=muttrcSimplePat,muttrcSimplePatMetas
@@ -346,12 +346,12 @@ syntax keyword muttrcColor	contained brightblack brightblue brightcyan brightdef
 syntax match   muttrcColor	contained "\<\%(bright\)\=color\d\{1,3}\>"
 " Now for the structure of the color line
 syntax match muttrcColorRXNL	contained skipnl "\s*\\$" nextgroup=muttrcColorRXPat,muttrcColorRXNL
-syntax match muttrcColorBG 	contained /\s*[$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorRXPat,muttrcColorRXNL
+syntax match muttrcColorBG	contained /\s*[$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorRXPat,muttrcColorRXNL
 syntax match muttrcColorBGNL	contained skipnl "\s*\\$" nextgroup=muttrcColorBG,muttrcColorBGNL
-syntax match muttrcColorFG 	contained /\s*[$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorBG,muttrcColorBGNL
+syntax match muttrcColorFG	contained /\s*[$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorBG,muttrcColorBGNL
 syntax match muttrcColorFGNL	contained skipnl "\s*\\$" nextgroup=muttrcColorFG,muttrcColorFGNL
-syntax match muttrcColorContext 	contained /\s*[$]\?\w\+/ contains=muttrcColorField,muttrcVariable,muttrcUnHighlightSpace,muttrcColorCompose nextgroup=muttrcColorFG,muttrcColorFGNL
-syntax match muttrcColorNL 	contained skipnl "\s*\\$" nextgroup=muttrcColorContext,muttrcColorNL,muttrcColorCompose
+syntax match muttrcColorContext	contained /\s*[$]\?\w\+/ contains=muttrcColorField,muttrcVariable,muttrcUnHighlightSpace,muttrcColorCompose nextgroup=muttrcColorFG,muttrcColorFGNL
+syntax match muttrcColorNL	contained skipnl "\s*\\$" nextgroup=muttrcColorContext,muttrcColorNL,muttrcColorCompose
 syntax match muttrcColorKeyword	contained /^\s*color\s\+/ nextgroup=muttrcColorContext,muttrcColorNL,muttrcColorCompose
 " And now color's brother:
 syntax region muttrcUnColorPatterns contained skipwhite start=+\s*'+ end=+'+ skip=+\\'+ contains=muttrcPattern nextgroup=muttrcUnColorPatterns,muttrcUnColorPatNL
@@ -369,7 +369,7 @@ syntax keyword muttrcMonoAttrib	contained bold none normal reverse standout unde
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of fields in Fields in color.c
 syntax keyword muttrcColorField skipwhite contained
 	\ attachment attach_headers body bold error hdrdefault header index index_author
@@ -383,7 +383,7 @@ syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of fields in ComposeFields in color.c
 syntax keyword muttrcColorComposeField skipwhite contained
 	\ header security_both security_encrypt security_none security_sign
@@ -411,7 +411,7 @@ function! s:boolQuadGen(type, vars, deprecated)
 
 endfunction
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of DT_BOOL in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
 	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'askbcc',
@@ -461,7 +461,7 @@ call s:boolQuadGen('Bool', [
 	\ 'wait_key', 'weed', 'wrap_search', 'write_bcc', 'x_comment_to'
 	\ ], 0)
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " Deprecated Bools
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
@@ -471,7 +471,7 @@ call s:boolQuadGen('Bool', [
 	\ 'pgp_replysignencrypted', 'xterm_set_titles'
 	\ ], 1)
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of DT_QUAD in MuttVars in mutt_config.c
 call s:boolQuadGen('Quad', [
 	\ 'abort_noattach', 'abort_nosubject', 'abort_unmodified', 'bounce', 'catchup_newsgroup',
@@ -481,17 +481,17 @@ call s:boolQuadGen('Quad', [
 	\ 'post_moderated', 'print', 'quit', 'recall', 'reply_to', 'ssl_starttls', 
 	\ ], 0)
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " Deprecated Quads
 " List of DT_SYNONYM or DT_DEPRECATED Quads in MuttVars in mutt_config.c
 call s:boolQuadGen('Quad', [
 	\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
 	\ ], 1)
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of DT_NUMBER or DT_LONG in MuttVars in mutt_config.c
 syntax keyword muttrcVarNum	skipwhite contained
-	\ connect_timeout debug_level header_cache_compress_level header_cache_pagesize history
+	\ connect_timeout debug_level header_cache_compress_level history
 	\ imap_fetch_chunk_size imap_keepalive imap_pipeline_depth imap_poll_timeout mail_check
 	\ mail_check_stats_interval menu_context net_inc nm_db_limit nm_open_timeout
 	\ nm_query_window_current_position nm_query_window_duration nntp_context nntp_poll
@@ -502,10 +502,10 @@ syntax keyword muttrcVarNum	skipwhite contained
 	\ wrap wrap_headers write_inc
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 syntax keyword muttrcVarDeprecatedNum	contained skipwhite
-	\ wrapmargin
+	\ header_cache_pagesize wrapmargin
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of DT_STRING in MuttVars in mutt_config.c
 " Special cases first, and all the rest at the end
 " Formats themselves must be updated in their respective groups
@@ -558,7 +558,7 @@ syntax keyword muttrcVarDeprecatedStr
 	\ nm_default_uri pgp_self_encrypt_as post_indent_str print_cmd quote_regexp reply_regexp
 	\ smime_self_encrypt_as xterm_icon xterm_title
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of DT_ADDRESS
 syntax keyword muttrcVarStr	contained skipwhite envelope_from_address from nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 " List of DT_ENUM
@@ -566,7 +566,7 @@ syntax keyword muttrcVarStr	contained skipwhite mbox_type nextgroup=muttrcSetStr
 " List of DT_MBTABLE
 syntax keyword muttrcVarStr	contained skipwhite crypt_chars flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of DT_PATH
 syntax keyword muttrcVarStr	contained skipwhite
 	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file
@@ -583,7 +583,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 	\ mime_type_query_command smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of DT_REGEX
 syntax keyword muttrcVarStr	contained skipwhite
 	\ abort_noattach_regex gecos_mask mask pgp_decryption_okay pgp_good_sign
@@ -594,14 +594,13 @@ syntax keyword muttrcVarStr	contained skipwhite
 	\ pgp_sort_keys sidebar_sort_method sort sort_alias sort_aux sort_browser
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of commands in Commands in mutt_config.c
 " Remember to remove hooks, they have already been dealt with
 syntax keyword muttrcCommand	skipwhite alias nextgroup=muttrcAliasGroupDef,muttrcAliasKey,muttrcAliasNL
 syntax keyword muttrcCommand	skipwhite bind nextgroup=muttrcBindMenuList,muttrcBindMenuListNL
-syntax keyword muttrcCommand	skipwhite charset-hook nextgroup=muttrcRXString
 syntax keyword muttrcCommand	skipwhite exec nextgroup=muttrcFunction
-syntax keyword muttrcCommand	skipwhite macro	nextgroup=muttrcMacroMenuList,muttrcMacroMenuListNL
+syntax keyword muttrcCommand	skipwhite macro nextgroup=muttrcMacroMenuList,muttrcMacroMenuListNL
 syntax keyword muttrcCommand	skipwhite nospam nextgroup=muttrcNoSpamPattern
 syntax keyword muttrcCommand	skipwhite set unset reset toggle nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 syntax keyword muttrcCommand	skipwhite spam nextgroup=muttrcSpamPattern
@@ -623,7 +622,7 @@ function! s:genFunctions(functions)
 	endfor
 endfunction
 
-" CHECKED 2020-04-17
+" CHECKED 2020-06-21
 " List of functions in functions.c
 " Note: 'noop' is included but is elsewhere in the source
 call s:genFunctions(['noop',
@@ -672,14 +671,14 @@ call s:genFunctions(['noop',
 	\ 'show-version', 'sidebar-next-new', 'sidebar-first', 'sidebar-last', 'sidebar-next',
 	\ 'sidebar-open', 'sidebar-page-down', 'sidebar-page-up', 'sidebar-prev-new',
 	\ 'sidebar-prev', 'sidebar-toggle-virtual', 'sidebar-toggle-visible', 'skip-quoted',
-	\ 'smime-menu', 'sort-mailbox', 'sort-reverse', 'sort', 'subscribe-pattern', 'subscribe',
+	\ 'smime-menu', 'sort-mailbox', 'sort-reverse', 'sort', 'subscribe-pattern',
 	\ 'sync-mailbox', 'tag-entry', 'tag-message', 'tag-pattern', 'tag-prefix-cond',
 	\ 'tag-prefix', 'tag-subthread', 'tag-thread', 'toggle-active', 'toggle-disposition',
 	\ 'toggle-mailboxes', 'toggle-new', 'toggle-prefer-encrypt', 'toggle-quoted',
 	\ 'toggle-read', 'toggle-recode', 'toggle-subscribed', 'toggle-unlink', 'toggle-write',
 	\ 'top-page', 'top', 'transpose-chars', 'uncatchup', 'undelete-entry', 'undelete-message',
 	\ 'undelete-pattern', 'undelete-subthread', 'undelete-thread', 'unsubscribe-pattern',
-	\ 'unsubscribe', 'untag-pattern', 'upcase-word', 'update-encoding', 'verify-key',
+	\ 'untag-pattern', 'upcase-word', 'update-encoding', 'verify-key',
 	\ 'vfolder-from-query-readonly', 'vfolder-from-query', 'vfolder-window-backward',
 	\ 'vfolder-window-forward', 'view-attachments', 'view-attach', 'view-file', 'view-mailcap',
 	\ 'view-name', 'view-raw-message', 'view-text', 'what-key', 'write-fcc'
@@ -716,7 +715,7 @@ highlight def link muttrcVarDeprecatedQuad		Error
 highlight def link muttrcVarDeprecatedStr		Error
 
 highlight def link muttrcAliasEncEmail			Identifier
-highlight def link muttrcAliasKey	        	Identifier
+highlight def link muttrcAliasKey			Identifier
 highlight def link muttrcColorCompose			Identifier
 highlight def link muttrcColorComposeField		Identifier
 highlight def link muttrcColorContextH			Identifier
