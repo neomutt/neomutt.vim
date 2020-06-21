@@ -146,7 +146,7 @@ endfunction
 
 " CHECKED 2020-06-21
 " Ref: alias_format_str() in alias/dlgalias.c
-call s:escapesConditionals('AliasFormat', '[afnrt]', 1, 0)
+call s:escapesConditionals('AliasFormat', '[acfnrt]', 1, 0)
 " Ref: attach_format_str() in recvattach.c
 call s:escapesConditionals('AttachFormat', '[CcDdeFfIMmnQsTtuX]', 1, 1)
 " Ref: compose_format_str() in compose.c
