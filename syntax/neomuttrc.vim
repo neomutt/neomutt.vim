@@ -465,10 +465,16 @@ call s:boolQuadGen('Bool', [
 " Deprecated Bools
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
-	\ 'edit_hdrs', 'envelope_from', 'forw_decode', 'forw_decrypt', 'forw_quote',
-	\ 'header_cache_compress', 'ignore_linear_white_space', 'pgp_autoencrypt', 'pgp_autosign',
-	\ 'pgp_auto_traditional', 'pgp_create_traditional', 'pgp_replyencrypt', 'pgp_replysign',
-	\ 'pgp_replysignencrypted', 'xterm_set_titles'
+	\ 'askbcc', 'askcc', 'autoedit', 'confirmappend', 'confirmcreate', 
+	\ 'crypt_autoencrypt' 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime',
+	\ 'crypt_confirmhook', 'crypt_replyencrypt', 'crypt_replysign', 
+	\ 'crypt_replysignencrypted', 'edit_hdrs', 'envelope_from', 'forw_decode',
+	\ 'forw_decrypt', 'forw_quote', 'header_cache_compress',
+	\ 'ignore_linear_white_space', 'imap_servernoise', 'include_onlyfirst',
+	\ 'pgp_autoencrypt', 'pgp_autoinline', 'pgp_autosign', 'pgp_auto_traditional',
+	\ 'pgp_create_traditional', 'pgp_replyencrypt', 'pgp_replyinline', 
+	\ 'pgp_replysign', 'pgp_replysignencrypted', 'ssl_usesystemcerts', 
+	\ 'use_8bitmime', 'virtual_spoolfile', 'xterm_set_titles'
 	\ ], 1)
 
 " CHECKED 2020-06-21
@@ -502,7 +508,8 @@ syntax keyword muttrcVarNum	skipwhite contained
 	\ wrap wrap_headers write_inc
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 syntax keyword muttrcVarDeprecatedNum	contained skipwhite
-	\ header_cache_pagesize wrapmargin
+	\ header_cache_pagesize wrapmargin pgp_clearsign_command pgp_getkeys_command
+	\ realname spoolfile
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 
 " CHECKED 2020-06-21
@@ -555,7 +562,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedStr
 	\ abort_noattach_regexp attach_keyword forw_format hdr_format indent_str msg_format
-	\ nm_default_uri pgp_self_encrypt_as post_indent_str print_cmd quote_regexp reply_regexp
+	\ nm_default_uri pop_checkinterval pgp_self_encrypt_as post_indent_str print_cmd quote_regexp reply_regexp
 	\ smime_self_encrypt_as xterm_icon xterm_title
 
 " CHECKED 2020-06-21
