@@ -414,17 +414,17 @@ endfunction
 " CHECKED 2020-06-21
 " List of DT_BOOL in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
-	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'askbcc',
-	\ 'askcc', 'ask_follow_up', 'ask_x_comment_to', 'attach_save_without_prompting',
-	\ 'attach_split', 'autocrypt', 'autocrypt_reply', 'autoedit', 'auto_subscribe', 'auto_tag',
+	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'ask_bcc', 'askbcc',
+	\ 'ask_cc', 'askcc', 'ask_follow_up', 'ask_x_comment_to', 'attach_save_without_prompting',
+	\ 'attach_split', 'autocrypt', 'autocrypt_reply', 'auto_edit', 'autoedit', 'auto_subscribe', 'auto_tag',
 	\ 'beep', 'beep_new', 'bounce_delivered', 'braille_friendly',
 	\ 'browser_abbreviate_mailboxes', 'change_folder_next', 'check_mbox_size', 'check_new',
-	\ 'collapse_all', 'collapse_flagged', 'collapse_unread', 'confirmappend', 'confirmcreate',
-	\ 'crypt_autoencrypt', 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime',
-	\ 'crypt_confirmhook', 'crypt_opportunistic_encrypt',
+	\ 'collapse_all', 'collapse_flagged', 'collapse_unread', 'confirm_append', 'confirmappend', 'confirm_create', 'confirmcreate',
+	\ 'crypt_auto_encrypt', 'crypt_autoencrypt', 'crypt_auto_pgp', 'crypt_autopgp', 'crypt_auto_sign', 'crypt_autosign', 'crypt_auto_smime', 'crypt_autosmime',
+	\ 'crypt_confirm_hook', 'crypt_confirmhook', 'crypt_opportunistic_encrypt',
 	\ 'crypt_opportunistic_encrypt_strong_keys', 'crypt_protected_headers_read',
-	\ 'crypt_protected_headers_save', 'crypt_protected_headers_write', 'crypt_replyencrypt',
-	\ 'crypt_replysign', 'crypt_replysignencrypted', 'crypt_timestamp', 'crypt_use_gpgme',
+	\ 'crypt_protected_headers_save', 'crypt_protected_headers_write', 'crypt_reply_encrypt', 'crypt_replyencrypt',
+	\ 'crypt_reply_sign', 'crypt_replysign', 'crypt_reply_sign_encrypted', 'crypt_replysignencrypted', 'crypt_timestamp', 'crypt_use_gpgme',
 	\ 'crypt_use_pka', 'delete_untag', 'digest_collapse', 'duplicate_threads', 'edit_headers',
 	\ 'encode_from', 'fast_reply', 'fcc_before_send', 'fcc_clear', 'flag_safe', 'followup_to',
 	\ 'force_name', 'forward_decode', 'forward_decrypt', 'forward_quote', 'forward_references',
@@ -433,14 +433,14 @@ call s:boolQuadGen('Bool', [
 	\ 'history_remove_dups', 'honor_disposition', 'idn_decode', 'idn_encode',
 	\ 'ignore_list_reply_to', 'imap_check_subscribed', 'imap_condstore', 'imap_deflate',
 	\ 'imap_idle', 'imap_list_subscribed', 'imap_passive', 'imap_peek', 'imap_qresync',
-	\ 'imap_rfc5161', 'imap_servernoise', 'implicit_autoview', 'include_encrypted',
-	\ 'include_onlyfirst', 'keep_flagged', 'mailcap_sanitize', 'maildir_check_cur',
+	\ 'imap_rfc5161', 'imap_server_noise', 'imap_servernoise', 'implicit_autoview', 'include_encrypted',
+	\ 'include_only_first', 'include_onlyfirst', 'keep_flagged', 'mailcap_sanitize', 'maildir_check_cur',
 	\ 'maildir_header_cache_verify', 'maildir_trash', 'mail_check_recent', 'mail_check_stats',
 	\ 'markers', 'mark_old', 'menu_move_off', 'menu_scroll', 'message_cache_clean', 'meta_key',
-	\ 'metoo', 'mh_purge', 'mime_forward_decode', 'mime_subject', 'mime_type_query_first',
+	\ 'me_too', 'metoo', 'mh_purge', 'mime_forward_decode', 'mime_subject', 'mime_type_query_first',
 	\ 'narrow_tree', 'nm_record', 'nntp_listgroup', 'nntp_load_description', 'pager_stop',
-	\ 'pgp_autoinline', 'pgp_auto_decode', 'pgp_check_exit', 'pgp_check_gpg_decrypt_status_fd',
-	\ 'pgp_ignore_subkeys', 'pgp_long_ids', 'pgp_replyinline', 'pgp_retainable_sigs',
+	\ 'pgp_auto_inline', 'pgp_autoinline', 'pgp_auto_decode', 'pgp_check_exit', 'pgp_check_gpg_decrypt_status_fd',
+	\ 'pgp_ignore_subkeys', 'pgp_long_ids', 'pgp_reply_inline', 'pgp_replyinline', 'pgp_retainable_sigs',
 	\ 'pgp_self_encrypt', 'pgp_show_unusable', 'pgp_strict_enc', 'pgp_use_gpg_agent',
 	\ 'pipe_decode', 'pipe_split', 'pop_auth_try_all', 'pop_last', 'postpone_encrypt',
 	\ 'print_decode', 'print_split', 'prompt_after', 'read_only', 'reflow_space_quotes',
@@ -452,12 +452,12 @@ call s:boolQuadGen('Bool', [
 	\ 'sidebar_on_right', 'sidebar_short_path', 'sidebar_visible', 'sig_dashes', 'sig_on_top',
 	\ 'size_show_bytes', 'size_show_fractions', 'size_show_mb', 'size_units_on_left',
 	\ 'smart_wrap', 'smime_ask_cert_label', 'smime_decrypt_use_default_key', 'smime_is_default',
-	\ 'smime_self_encrypt', 'sort_re', 'ssl_force_tls', 'ssl_usesystemcerts', 'ssl_use_sslv2',
+	\ 'smime_self_encrypt', 'sort_re', 'ssl_force_tls', 'ssl_use_system_certs', 'ssl_usesystemcerts', 'ssl_use_sslv2',
 	\ 'ssl_use_sslv3', 'ssl_use_tlsv1', 'ssl_use_tlsv1_1', 'ssl_use_tlsv1_2', 'ssl_use_tlsv1_3',
 	\ 'ssl_verify_dates', 'ssl_verify_host', 'ssl_verify_partial_chains', 'status_on_top',
 	\ 'strict_threads', 'suspend', 'text_flowed', 'thorough_search', 'thread_received', 'tilde',
-	\ 'ts_enabled', 'uncollapse_jump', 'uncollapse_new', 'user_agent', 'use_8bitmime',
-	\ 'use_domain', 'use_envelope_from', 'use_from', 'use_ipv6', 'virtual_spoolfile',
+	\ 'ts_enabled', 'uncollapse_jump', 'uncollapse_new', 'user_agent', 'use_8bit_mime', 'use_8bitmime',
+	\ 'use_domain', 'use_envelope_from', 'use_from', 'use_ipv6', 'virtual_spool_file', 'virtual_spoolfile',
 	\ 'wait_key', 'weed', 'wrap_search', 'write_bcc', 'x_comment_to'
 	\ ], 0)
 
@@ -495,7 +495,7 @@ syntax keyword muttrcVarNum	skipwhite contained
 	\ imap_fetch_chunk_size imap_keepalive imap_pipeline_depth imap_poll_timeout mail_check
 	\ mail_check_stats_interval menu_context net_inc nm_db_limit nm_open_timeout
 	\ nm_query_window_current_position nm_query_window_duration nntp_context nntp_poll
-	\ pager_context pager_index_lines pgp_timeout pop_checkinterval read_inc reflow_wrap
+	\ pager_context pager_index_lines pgp_timeout pop_check_interval pop_checkinterval read_inc reflow_wrap
 	\ save_history score_threshold_delete score_threshold_flag score_threshold_read
 	\ search_context sendmail_wait sidebar_component_depth sidebar_width skip_quoted_offset
 	\ sleep_time smime_timeout ssl_min_dh_prime_bits timeout time_inc toggle_quoted_show_levels
@@ -518,8 +518,8 @@ syntax keyword muttrcVarStr	contained skipwhite folder_format vfolder_format nex
 syntax keyword muttrcVarStr	contained skipwhite attribution forward_format index_format message_format pager_format nextgroup=muttrcVarEqualsIdxFmt
 syntax keyword muttrcVarStr	contained skipwhite mix_entry_format nextgroup=muttrcVarEqualsMixFmt
 syntax keyword muttrcVarStr	contained skipwhite
-	\ pgp_clearsign_command pgp_decode_command pgp_decrypt_command
-	\ pgp_encrypt_only_command pgp_encrypt_sign_command pgp_export_command pgp_getkeys_command
+	\ pgp_clear_sign_command pgp_clearsign_command pgp_decode_command pgp_decrypt_command
+	\ pgp_encrypt_only_command pgp_encrypt_sign_command pgp_export_command pgp_get_keys_command pgp_getkeys_command
 	\ pgp_import_command pgp_list_pubring_command pgp_list_secring_command
 	\ pgp_sign_command pgp_verify_command pgp_verify_key_command
 	\ nextgroup=muttrcVarEqualsPGPCmdFmt
@@ -546,7 +546,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 	\ nm_query_window_current_search nm_query_window_timebase nm_record_tags nm_replied_tag
 	\ nm_unread_tag nntp_authenticators nntp_pass nntp_user pgp_default_key pgp_sign_as pipe_sep
 	\ pop_authenticators pop_host pop_pass pop_user postpone_encrypt_as post_indent_string
-	\ preconnect preferred_languages realname send_charset show_multipart_alternative
+	\ preconnect preferred_languages real_name realname send_charset show_multipart_alternative
 	\ sidebar_delim_chars sidebar_divider_char sidebar_indent_string simple_search
 	\ smime_default_key smime_encrypt_with smime_sign_as smime_sign_digest_alg
 	\ smtp_authenticators smtp_pass smtp_url smtp_user spam_separator ssl_ciphers
@@ -572,7 +572,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file
 	\ entropy_file folder header_cache history_file mbox message_cachedir newsrc
 	\ news_cache_dir postponed record signature smime_ca_location
-	\ smime_certificates smime_keys spoolfile ssl_ca_certificates_file
+	\ smime_certificates smime_keys spool_file spoolfile ssl_ca_certificates_file
 	\ ssl_client_cert tmpdir trash
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 " List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
