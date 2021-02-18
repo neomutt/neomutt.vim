@@ -466,7 +466,7 @@ call s:boolQuadGen('Bool', [
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
 	\ 'askbcc', 'askcc', 'autoedit', 'confirmappend', 'confirmcreate', 
-	\ 'crypt_autoencrypt' 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime',
+	\ 'crypt_autoencrypt', 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime',
 	\ 'crypt_confirmhook', 'crypt_replyencrypt', 'crypt_replysign', 
 	\ 'crypt_replysignencrypted', 'edit_hdrs', 'envelope_from', 'forw_decode',
 	\ 'forw_decrypt', 'forw_quote', 'header_cache_compress',
