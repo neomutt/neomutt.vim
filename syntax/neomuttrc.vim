@@ -2,10 +2,10 @@
 " Language:	NeoMutt setup files
 " Maintainer:	Richard Russon <rich@flatcap.org>
 " Previous Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2020-06-21
+" Last Change:	2022-03-26
 " Original version based on syntax/muttrc.vim
 
-" This file covers NeoMutt 2020-06-19
+" This file covers NeoMutt 2022-03-26
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
@@ -588,8 +588,8 @@ syntax keyword muttrcVarStr	contained skipwhite
 	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file
 	\ entropy_file folder header_cache history_file mbox message_cachedir newsrc
 	\ news_cache_dir postponed record signature smime_ca_location
-	\ smime_certificates smime_keys spool_file spoolfile ssl_ca_certificates_file
-	\ ssl_client_cert tmpdir trash
+	\ smime_certificates smime_keys spool_file ssl_ca_certificates_file ssl_client_cert
+	\ tmpdir trash
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
 " List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
 syntax keyword muttrcVarStr	contained skipwhite
