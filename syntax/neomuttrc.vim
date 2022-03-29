@@ -594,7 +594,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 " List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
 syntax keyword muttrcVarStr	contained skipwhite
 	\ display_filter editor inews ispell mixmaster new_mail_command pager
-	\ print_command query_command sendmail shell visual external_search_command
+	\ print_command query_command sendmail shell external_search_command
 	\ imap_oauth_refresh_command pop_oauth_refresh_command
 	\ mime_type_query_command smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarStr
