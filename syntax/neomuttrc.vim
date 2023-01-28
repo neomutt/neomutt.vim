@@ -420,7 +420,7 @@ endfunction
 " List of DT_BOOL in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
 	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'ask_bcc',
-	\ 'ask_cc', 'ask_follow_up', 'ask_x_comment_to', 'attach_save_without_prompting',
+	\ 'ask_cc', 'ask_followup_to', 'ask_x_comment_to', 'attach_save_without_prompting',
 	\ 'attach_split', 'autocrypt', 'autocrypt_reply', 'auto_edit', 'auto_subscribe', 'auto_tag',
 	\ 'beep', 'beep_new', 'bounce_delivered', 'braille_friendly',
 	\ 'browser_abbreviate_mailboxes', 'change_folder_next', 'check_mbox_size', 'check_new',
@@ -473,7 +473,7 @@ call s:boolQuadGen('Bool', [
 " Deprecated Bools
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
-	\ 'askbcc', 'askcc', 'autoedit', 'confirmappend', 'confirmcreate', 'crypt_autoencrypt',
+	\ 'askbcc', 'askcc', 'ask_follow_up', 'autoedit', 'confirmappend', 'confirmcreate', 'crypt_autoencrypt',
 	\ 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime', 'crypt_confirmhook',
 	\ 'crypt_replyencrypt', 'crypt_replysign', 'crypt_replysignencrypted', 'edit_hdrs',
 	\ 'envelope_from', 'forw_decode', 'forw_decrypt', 'forw_quote', 'header_cache_compress',
