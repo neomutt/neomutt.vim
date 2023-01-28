@@ -473,15 +473,16 @@ call s:boolQuadGen('Bool', [
 " Deprecated Bools
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
-	\ 'askbcc', 'askcc', 'ask_follow_up', 'autoedit', 'confirmappend', 'confirmcreate', 'crypt_autoencrypt',
-	\ 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime', 'crypt_confirmhook',
-	\ 'crypt_replyencrypt', 'crypt_replysign', 'crypt_replysignencrypted', 'edit_hdrs',
-	\ 'envelope_from', 'forw_decode', 'forw_decrypt', 'forw_quote', 'header_cache_compress',
-	\ 'ignore_linear_white_space', 'imap_servernoise', 'implicit_autoview', 'include_onlyfirst', 'metoo',
-	\ 'mime_subject', 'pgp_autoencrypt', 'pgp_autoinline', 'pgp_autosign',
-	\ 'pgp_auto_traditional', 'pgp_create_traditional', 'pgp_replyencrypt', 'pgp_replyinline',
-	\ 'pgp_replysign', 'pgp_replysignencrypted', 'reverse_realname', 'ssl_usesystemcerts',
-	\ 'use_8bitmime', 'virtual_spoolfile', 'xterm_set_titles'
+	\ 'askbcc', 'askcc', 'ask_follow_up', 'autoedit', 'confirmappend', 'confirmcreate',
+	\ 'crypt_autoencrypt', 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime',
+	\ 'crypt_confirmhook', 'crypt_replyencrypt', 'crypt_replysign', 'crypt_replysignencrypted',
+	\ 'edit_hdrs', 'envelope_from', 'forw_decode', 'forw_decrypt', 'forw_quote',
+	\ 'header_cache_compress', 'ignore_linear_white_space', 'imap_servernoise',
+	\ 'implicit_autoview', 'include_onlyfirst', 'metoo', 'mime_subject', 'pgp_autoencrypt',
+	\ 'pgp_autoinline', 'pgp_autosign', 'pgp_auto_traditional', 'pgp_create_traditional',
+	\ 'pgp_replyencrypt', 'pgp_replyinline', 'pgp_replysign', 'pgp_replysignencrypted',
+	\ 'reverse_realname', 'ssl_usesystemcerts', 'use_8bitmime', 'virtual_spoolfile',
+	\ 'xterm_set_titles'
 	\ ], 1)
 
 " CHECKED 2022-04-08
@@ -569,8 +570,8 @@ syntax keyword muttrcVarStr	contained skipwhite
 
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedStr
-	\ abort_noattach_regexp attach_keyword escape forw_format hdr_format indent_str message_cachedir msg_format
-	\ nm_default_uri pgp_clearsign_command pgp_getkeys_command pgp_self_encrypt_as
+	\ abort_noattach_regexp attach_keyword escape forw_format hdr_format indent_str message_cachedir
+	\ msg_format nm_default_uri pgp_clearsign_command pgp_getkeys_command pgp_self_encrypt_as
 	\ post_indent_str print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
 	\ spoolfile visual xterm_icon xterm_title
 
