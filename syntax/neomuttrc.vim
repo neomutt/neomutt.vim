@@ -569,7 +569,7 @@ syntax keyword muttrcVarStr	contained skipwhite
 
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedStr
-	\ abort_noattach_regexp attach_keyword escape forw_format hdr_format indent_str msg_format
+	\ abort_noattach_regexp attach_keyword escape forw_format hdr_format indent_str message_cachedir msg_format
 	\ nm_default_uri pgp_clearsign_command pgp_getkeys_command pgp_self_encrypt_as
 	\ post_indent_str print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
 	\ spoolfile visual xterm_icon xterm_title
@@ -586,7 +586,7 @@ syntax keyword muttrcVarStr	contained skipwhite crypt_chars flag_chars from_char
 " List of DT_PATH or DT_MAILBOX
 syntax keyword muttrcVarStr	contained skipwhite
 	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file
-	\ entropy_file folder header_cache history_file mbox message_cachedir newsrc
+	\ entropy_file folder header_cache history_file mbox message_cache_dir newsrc
 	\ news_cache_dir postponed record signature smime_ca_location
 	\ smime_certificates smime_keys spool_file ssl_ca_certificates_file ssl_client_cert
 	\ tmpdir trash
