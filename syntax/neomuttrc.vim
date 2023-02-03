@@ -626,14 +626,15 @@ syntax keyword muttrcCommand	skipwhite unhook nextgroup=muttrcHooks
 syntax keyword muttrcCommand	skipwhite
 	\ alternative_order attachments auto_view cd echo finish hdr_order ifdef ifndef ignore lua
 	\ lua-source mailboxes mailto_allow mime_lookup my_hdr named-mailboxes push score setenv
-	\ sidebar_whitelist source subjectrx subscribe-to tag-formats tag-transforms
+	\ sidebar_pin sidebar_unpin source subjectrx subscribe-to tag-formats tag-transforms
 	\ unalternative_order unattachments unauto_view unbind uncolor unhdr_order unignore unmacro
 	\ unmailboxes unmailto_allow unmime_lookup unmono unmy_hdr unscore unsetenv
-	\ unsidebar_whitelist unsubjectrx unsubscribe-from unvirtual-mailboxes virtual-mailboxes
+	\ unsubjectrx unsubscribe-from unvirtual-mailboxes virtual-mailboxes
 
 " CHECKED 2023-02-03
 " Deprecated commands
-" None at the moment
+syntax keyword muttrcCommand	skipwhite
+	\ sidebar_whitelist unsidebar_whitelist
 
 function! s:genFunctions(functions)
 	for f in a:functions
