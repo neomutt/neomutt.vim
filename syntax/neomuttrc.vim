@@ -631,6 +631,10 @@ syntax keyword muttrcCommand	skipwhite
 	\ unmailboxes unmailto_allow unmime_lookup unmono unmy_hdr unscore unsetenv
 	\ unsidebar_whitelist unsubjectrx unsubscribe-from unvirtual-mailboxes virtual-mailboxes
 
+" CHECKED 2023-02-03
+" Deprecated commands
+" None at the moment
+
 function! s:genFunctions(functions)
 	for f in a:functions
 		exec 'syntax match muttrcFunction contained "\<' . l:f . '\>"'
@@ -748,6 +752,7 @@ highlight def link muttrcVarQuad			Identifier
 highlight def link muttrcVarStr				Identifier
 
 highlight def link muttrcCommand			Keyword
+highlight def link muttrcDeprecatedCommand		Keyword
 
 highlight def link muttrcAction				Macro
 highlight def link muttrcAliasGroupName			Macro
