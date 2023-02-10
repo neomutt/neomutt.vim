@@ -22,7 +22,7 @@ setlocal isk=@,48-57,_,-
 syntax match muttrcComment	"^# .*$" contains=@Spell
 syntax match muttrcComment	"^#[^ ].*$"
 syntax match muttrcComment	"^#$"
-syntax match muttrcComment	"[^\\]#.*$"lc=1
+syntax match muttrcComment	"[^\\]#.*$"lc=1 contains=@Spell
 
 " Escape sequences (back-tick and pipe goes here too)
 syntax match muttrcEscape	+\\[#tnr"'Cc ]+
