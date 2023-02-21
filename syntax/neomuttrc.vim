@@ -633,7 +633,7 @@ syntax keyword muttrcCommand	skipwhite
 
 " CHECKED 2023-02-03
 " Deprecated commands
-syntax keyword muttrcCommand	skipwhite
+syntax keyword muttrcDeprecatedCommand skipwhite
 	\ sidebar_whitelist unsidebar_whitelist
 
 function! s:genFunctions(functions)
@@ -719,18 +719,13 @@ highlight def link muttrcBadAction			Error
 highlight def link muttrcBindFunction			Error
 highlight def link muttrcBindMenuList			Error
 highlight def link muttrcColorBG			Error
-highlight def link muttrcColorBGH			Error
-highlight def link muttrcColorBGI			Error
 highlight def link muttrcColorContext			Error
 highlight def link muttrcColorFG			Error
-highlight def link muttrcColorFGH			Error
-highlight def link muttrcColorFGI			Error
 highlight def link muttrcColorLine			Error
+highlight def link muttrcDeprecatedCommand		Error
 highlight def link muttrcFormatErrors			Error
 highlight def link muttrcGroupLine			Error
-highlight def link muttrcListsLine			Error
 highlight def link muttrcPattern			Error
-highlight def link muttrcSubscribeLine			Error
 highlight def link muttrcUnColorLine			Error
 highlight def link muttrcVarDeprecatedBool		Error
 highlight def link muttrcVarDeprecatedQuad		Error
@@ -740,8 +735,6 @@ highlight def link muttrcAliasEncEmail			Identifier
 highlight def link muttrcAliasKey			Identifier
 highlight def link muttrcColorCompose			Identifier
 highlight def link muttrcColorComposeField		Identifier
-highlight def link muttrcColorContextH			Identifier
-highlight def link muttrcColorContextI			Identifier
 highlight def link muttrcColorField			Identifier
 highlight def link muttrcMenu				Identifier
 highlight def link muttrcSimplePat			Identifier
@@ -753,7 +746,6 @@ highlight def link muttrcVarQuad			Identifier
 highlight def link muttrcVarStr				Identifier
 
 highlight def link muttrcCommand			Keyword
-highlight def link muttrcDeprecatedCommand		Keyword
 
 highlight def link muttrcAction				Macro
 highlight def link muttrcAliasGroupName			Macro
@@ -850,7 +842,6 @@ highlight def link muttrcMacroBodyNL			SpecialChar
 highlight def link muttrcMacroDescrNL			SpecialChar
 highlight def link muttrcMacroKeyNL			SpecialChar
 highlight def link muttrcMacroMenuListNL		SpecialChar
-highlight def link muttrcPatternNL			SpecialChar
 highlight def link muttrcRXChars			SpecialChar
 highlight def link muttrcStringNL			SpecialChar
 highlight def link muttrcUnAliasNL			SpecialChar
@@ -867,7 +858,6 @@ highlight def link muttrcRXString2			String
 highlight def link muttrcSetStrAssignment		String
 highlight def link muttrcString				String
 
-highlight def link muttrcAliasParens			Type
 highlight def link muttrcAttachmentsFlag		Type
 highlight def link muttrcColor				Type
 highlight def link muttrcFormatConditionals2		Type
