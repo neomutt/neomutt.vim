@@ -427,7 +427,7 @@ function! s:boolQuadGen(type, vars, deprecated)
 
 endfunction
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of DT_BOOL in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
 	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'ask_bcc',
@@ -435,10 +435,10 @@ call s:boolQuadGen('Bool', [
 	\ 'attach_split', 'autocrypt', 'autocrypt_reply', 'auto_edit', 'auto_subscribe', 'auto_tag',
 	\ 'beep', 'beep_new', 'bounce_delivered', 'braille_friendly',
 	\ 'browser_abbreviate_mailboxes', 'change_folder_next', 'check_mbox_size', 'check_new',
-	\ 'collapse_all', 'collapse_flagged', 'collapse_unread', 'compose_show_user_headers',
-	\ 'confirm_append', 'confirm_create', 'copy_decode_weed', 'count_alternatives',
-	\ 'crypt_auto_encrypt', 'crypt_auto_pgp', 'crypt_auto_sign', 'crypt_auto_smime',
-	\ 'crypt_confirm_hook', 'crypt_opportunistic_encrypt',
+	\ 'collapse_all', 'collapse_flagged', 'collapse_unread', 'color_directcolor',
+	\ 'compose_show_user_headers', 'confirm_append', 'confirm_create', 'copy_decode_weed',
+	\ 'count_alternatives', 'crypt_auto_encrypt', 'crypt_auto_pgp', 'crypt_auto_sign',
+	\ 'crypt_auto_smime', 'crypt_confirm_hook', 'crypt_opportunistic_encrypt',
 	\ 'crypt_opportunistic_encrypt_strong_keys', 'crypt_protected_headers_read',
 	\ 'crypt_protected_headers_save', 'crypt_protected_headers_write', 'crypt_reply_encrypt',
 	\ 'crypt_reply_sign', 'crypt_reply_sign_encrypted', 'crypt_timestamp', 'crypt_use_gpgme',
@@ -450,13 +450,13 @@ call s:boolQuadGen('Bool', [
 	\ 'history_remove_dups', 'honor_disposition', 'idn_decode', 'idn_encode',
 	\ 'ignore_list_reply_to', 'imap_check_subscribed', 'imap_condstore', 'imap_deflate',
 	\ 'imap_idle', 'imap_list_subscribed', 'imap_passive', 'imap_peek', 'imap_qresync',
-	\ 'imap_rfc5161', 'imap_server_noise', 'implicit_auto_view', 'include_encrypted',
-	\ 'include_only_first', 'keep_flagged', 'local_date_header', 'mailcap_sanitize',
-	\ 'maildir_check_cur', 'maildir_header_cache_verify', 'maildir_trash', 'mail_check_recent',
-	\ 'mail_check_stats', 'markers', 'mark_old', 'menu_move_off', 'menu_scroll',
-	\ 'message_cache_clean', 'meta_key', 'me_too', 'mh_purge', 'mime_forward_decode',
-	\ 'mime_type_query_first', 'narrow_tree', 'nm_query_window_enable', 'nm_record',
-	\ 'nntp_listgroup', 'nntp_load_description', 'pager_stop', 'pgp_auto_decode',
+	\ 'imap_rfc5161', 'imap_send_id', 'imap_server_noise', 'implicit_auto_view',
+	\ 'include_encrypted', 'include_only_first', 'keep_flagged', 'local_date_header',
+	\ 'mailcap_sanitize', 'maildir_check_cur', 'maildir_header_cache_verify', 'maildir_trash',
+	\ 'mail_check_recent', 'mail_check_stats', 'markers', 'mark_old', 'menu_move_off',
+	\ 'menu_scroll', 'message_cache_clean', 'meta_key', 'me_too', 'mh_purge',
+	\ 'mime_forward_decode', 'mime_type_query_first', 'narrow_tree', 'nm_query_window_enable',
+	\ 'nm_record', 'nntp_listgroup', 'nntp_load_description', 'pager_stop', 'pgp_auto_decode',
 	\ 'pgp_auto_inline', 'pgp_check_exit', 'pgp_check_gpg_decrypt_status_fd',
 	\ 'pgp_ignore_subkeys', 'pgp_long_ids', 'pgp_reply_inline', 'pgp_retainable_sigs',
 	\ 'pgp_self_encrypt', 'pgp_show_unusable', 'pgp_strict_enc', 'pgp_use_gpg_agent',
@@ -480,7 +480,7 @@ call s:boolQuadGen('Bool', [
 	\ 'virtual_spool_file', 'wait_key', 'weed', 'wrap_search', 'write_bcc', 'x_comment_to'
 	\ ], 0)
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " Deprecated Bools
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
@@ -496,7 +496,7 @@ call s:boolQuadGen('Bool', [
 	\ 'xterm_set_titles'
 	\ ], 1)
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of DT_QUAD in MuttVars in mutt_config.c
 call s:boolQuadGen('Quad', [
 	\ 'abort_noattach', 'abort_nosubject', 'abort_unmodified', 'bounce', 'catchup_newsgroup',
@@ -506,32 +506,32 @@ call s:boolQuadGen('Quad', [
 	\ 'post_moderated', 'print', 'quit', 'recall', 'reply_to', 'ssl_starttls'
 	\ ], 0)
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " Deprecated Quads
 " List of DT_SYNONYM or DT_DEPRECATED Quads in MuttVars in mutt_config.c
 call s:boolQuadGen('Quad', [
 	\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
 	\ ], 1)
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of DT_NUMBER or DT_LONG in MuttVars in mutt_config.c
 syntax keyword muttrcVarNum	skipwhite contained
-	\ connect_timeout debug_level header_cache_compress_level history imap_fetch_chunk_size
-	\ imap_keepalive imap_pipeline_depth imap_poll_timeout mail_check mail_check_stats_interval
-	\ menu_context net_inc nm_db_limit nm_open_timeout nm_query_window_current_position
+	\ debug_level header_cache_compress_level history imap_fetch_chunk_size imap_keep_alive
+	\ imap_pipeline_depth imap_poll_timeout mail_check mail_check_stats_interval menu_context
+	\ net_inc nm_db_limit nm_open_timeout nm_query_window_current_position
 	\ nm_query_window_duration nntp_context nntp_poll pager_context pager_index_lines
 	\ pager_read_delay pager_skip_quoted_context pgp_timeout pop_check_interval read_inc
 	\ reflow_wrap save_history score_threshold_delete score_threshold_flag score_threshold_read
 	\ search_context sendmail_wait sidebar_component_depth sidebar_width sleep_time
-	\ smime_timeout ssl_min_dh_prime_bits timeout time_inc toggle_quoted_show_levels wrap
-	\ wrap_headers write_inc
+	\ smime_timeout socket_timeout ssl_min_dh_prime_bits timeout time_inc
+	\ toggle_quoted_show_levels wrap wrap_headers write_inc
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " Deprecated Numbers
 syntax keyword muttrcVarDeprecatedNum	contained skipwhite
-	\ header_cache_pagesize pop_checkinterval skip_quoted_offset
+	\ connect_timeout header_cache_pagesize imap_keepalive pop_checkinterval skip_quoted_offset
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of DT_STRING in MuttVars in mutt_config.c
 " Special cases first, and all the rest at the end
 " Formats themselves must be updated in their respective groups
@@ -576,7 +576,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ nm_flagged_tag nm_query_type nm_query_window_current_search nm_query_window_or_terms
 	\ nm_query_window_timebase nm_record_tags nm_replied_tag nm_unread_tag nntp_authenticators
 	\ nntp_pass nntp_user pgp_default_key pgp_sign_as pipe_sep pop_authenticators pop_host
-	\ pop_pass pop_user postpone_encrypt_as post_indent_string preconnect preferred_languages
+	\ pop_pass pop_user postpone_encrypt_as preconnect preferred_languages
 	\ real_name send_charset show_multipart_alternative sidebar_delim_chars sidebar_divider_char
 	\ sidebar_indent_string simple_search smime_default_key smime_encrypt_with smime_sign_as
 	\ smime_sign_digest_alg smtp_authenticators smtp_pass smtp_url smtp_user spam_separator
@@ -585,12 +585,13 @@ syntax keyword muttrcVarString	contained skipwhite
 
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedString
-	\ abort_noattach_regexp attach_keyword escape forw_format hdr_format indent_str message_cachedir
-	\ msg_format nm_default_uri pgp_clearsign_command pgp_getkeys_command pgp_self_encrypt_as
-	\ post_indent_str print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
-	\ spoolfile visual xterm_icon xterm_title
+	\ abort_noattach_regexp attach_keyword attribution escape forw_format hdr_format
+	\ indent_str message_cachedir msg_format nm_default_uri pgp_clearsign_command
+	\ pgp_getkeys_command pgp_self_encrypt_as post_indent_str post_indent_string
+	\ print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as spoolfile
+	\ tmpdir vfolder_format visual xterm_icon xterm_title
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of DT_ADDRESS
 syntax keyword muttrcVarString	contained skipwhite envelope_from_address from nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " List of DT_ENUM
@@ -598,21 +599,20 @@ syntax keyword muttrcVarString	contained skipwhite mbox_type use_threads nextgro
 " List of DT_MBTABLE
 syntax keyword muttrcVarString	contained skipwhite crypt_chars flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of DT_PATH or DT_MAILBOX
 syntax keyword muttrcVarString	contained skipwhite
-	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file
-	\ entropy_file folder header_cache history_file mbox message_cache_dir newsrc
-	\ news_cache_dir postponed record signature smime_ca_location
-	\ smime_certificates smime_keys spool_file ssl_ca_certificates_file ssl_client_cert
-	\ tmpdir trash
+	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file entropy_file folder
+	\ header_cache history_file mbox message_cache_dir newsrc news_cache_dir nm_config_file
+	\ postponed record signature smime_ca_location smime_certificates smime_keys spool_file
+	\ ssl_ca_certificates_file ssl_client_cert tmp_dir trash
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
 syntax keyword muttrcVarString	contained skipwhite
-	\ display_filter editor inews ispell mixmaster new_mail_command pager
-	\ print_command query_command sendmail shell external_search_command
-	\ imap_oauth_refresh_command pop_oauth_refresh_command
-	\ mime_type_query_command smtp_oauth_refresh_command tunnel
+	\ account_command display_filter editor external_search_command
+	\ imap_oauth_refresh_command inews ispell mime_type_query_command mixmaster
+	\ new_mail_command pager pop_oauth_refresh_command print_command query_command
+	\ sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
 " CHECKED 2022-04-08
