@@ -101,37 +101,6 @@ syntax match muttrcStrftimeEscapes contained /%[AaBbCcDdeFGgHhIjklMmnpRrSsTtUuVv
 syntax match muttrcStrftimeEscapes contained /%E[cCxXyY]/
 syntax match muttrcStrftimeEscapes contained /%O[BdeHImMSuUVwWy]/
 
-syntax region muttrcAliasFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAliasFormatEscapes,muttrcAliasFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcAliasFormatString        contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAliasFormatEscapes,muttrcAliasFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcAttachFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAttachFormatEscapes,muttrcAttachFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcAttachFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAttachFormatEscapes,muttrcAttachFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcComposeFormatString      contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcComposeFormatEscapes,muttrcComposeFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcComposeFormatString      contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcComposeFormatEscapes,muttrcComposeFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcFolderFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcFolderFormatEscapes,muttrcFolderFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcFolderFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcFolderFormatEscapes,muttrcFolderFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcGroupIndexFormatString   contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcGroupIndexFormatEscapes,muttrcGroupIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes  nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcGroupIndexFormatString   contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcGroupIndexFormatEscapes,muttrcGroupIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes  nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcIndexFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcIndexFormatString        contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcMixEntryFormatString     contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcMixEntryFormatEscapes,muttrcMixEntryFormatConditionals,muttrcFormatErrors                        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcMixEntryFormatString     contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcMixEntryFormatEscapes,muttrcMixEntryFormatConditionals,muttrcFormatErrors                        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcPatternFormatString      contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcPatternFormatString      contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcPgpCommandFormatString   contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPgpCommandFormatEscapes,muttrcPgpCommandFormatConditionals,muttrcVariable,muttrcFormatErrors     nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcPgpCommandFormatString   contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPgpCommandFormatEscapes,muttrcPgpCommandFormatConditionals,muttrcVariable,muttrcFormatErrors     nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcPgpEntryFormatString     contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPgpEntryFormatEscapes,muttrcPgpEntryFormatConditionals,muttrcFormatErrors,muttrcPgpTimeEscapes   nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcPgpEntryFormatString     contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPgpEntryFormatEscapes,muttrcPgpEntryFormatConditionals,muttrcFormatErrors,muttrcPgpTimeEscapes   nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcQueryFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcQueryFormatEscapes,muttrcQueryFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcQueryFormatString        contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcQueryFormatEscapes,muttrcQueryFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcSidebarFormatString      contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcSidebarFormatEscapes,muttrcSidebarFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcSidebarFormatString      contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcSidebarFormatEscapes,muttrcSidebarFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcSmimeCommandFormatString contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcSmimeCommandFormatEscapes,muttrcSmimeCommandFormatConditionals,muttrcVariable,muttrcFormatErrors nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcSmimeCommandFormatString contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcSmimeCommandFormatEscapes,muttrcSmimeCommandFormatConditionals,muttrcVariable,muttrcFormatErrors nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcStatusFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcStatusFormatEscapes,muttrcStatusFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcStatusFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcStatusFormatEscapes,muttrcStatusFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcStrftimeFormatString     contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcStrftimeEscapes,muttrcFormatErrors                                                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcStrftimeFormatString     contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcStrftimeEscapes,muttrcFormatErrors                                                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-
 " Format escapes and conditionals
 syntax match muttrcFormatConditionals2 contained /[^?]*?/
 function! s:escapesConditionals(baseName, sequence, padding, conditional)
@@ -177,6 +146,40 @@ call s:escapesConditionals('SidebarFormat', '[!BDdFLNnorStZ]', 1, 1)
 call s:escapesConditionals('SmimeCommandFormat', '[aCcdfiks]', 0, 1)
 " Ref: status_format_str() in status.c
 call s:escapesConditionals('StatusFormat', '[bDdFfhLlMmnoPpRrSsTtuVv]', 1, 1)
+
+syntax region muttrcAliasFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAliasFormatEscapes,muttrcAliasFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcAliasFormatString        contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAliasFormatEscapes,muttrcAliasFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcAttachFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAttachFormatEscapes,muttrcAttachFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcAttachFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAttachFormatEscapes,muttrcAttachFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcComposeFormatString      contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcComposeFormatEscapes,muttrcComposeFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcComposeFormatString      contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcComposeFormatEscapes,muttrcComposeFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcFolderFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcFolderFormatEscapes,muttrcFolderFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcFolderFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcFolderFormatEscapes,muttrcFolderFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcGroupIndexFormatString   contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcGroupIndexFormatEscapes,muttrcGroupIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes  nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcGroupIndexFormatString   contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcGroupIndexFormatEscapes,muttrcGroupIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes  nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcIndexFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcIndexFormatString        contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcMixEntryFormatString     contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcMixEntryFormatEscapes,muttrcMixEntryFormatConditionals,muttrcFormatErrors                        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcMixEntryFormatString     contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcMixEntryFormatEscapes,muttrcMixEntryFormatConditionals,muttrcFormatErrors                        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcPatternFormatString      contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcPatternFormatString      contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcPgpCommandFormatString   contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPgpCommandFormatEscapes,muttrcPgpCommandFormatConditionals,muttrcVariable,muttrcFormatErrors     nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcPgpCommandFormatString   contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPgpCommandFormatEscapes,muttrcPgpCommandFormatConditionals,muttrcVariable,muttrcFormatErrors     nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcPgpEntryFormatString     contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPgpEntryFormatEscapes,muttrcPgpEntryFormatConditionals,muttrcFormatErrors,muttrcPgpTimeEscapes   nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcPgpEntryFormatString     contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPgpEntryFormatEscapes,muttrcPgpEntryFormatConditionals,muttrcFormatErrors,muttrcPgpTimeEscapes   nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcQueryFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcQueryFormatEscapes,muttrcQueryFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcQueryFormatString        contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcQueryFormatEscapes,muttrcQueryFormatConditionals,muttrcFormatErrors                              nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcSidebarFormatString      contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcSidebarFormatEscapes,muttrcSidebarFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcSidebarFormatString      contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcSidebarFormatEscapes,muttrcSidebarFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes        nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcSmimeCommandFormatString contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcSmimeCommandFormatEscapes,muttrcSmimeCommandFormatConditionals,muttrcVariable,muttrcFormatErrors nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcSmimeCommandFormatString contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcSmimeCommandFormatEscapes,muttrcSmimeCommandFormatConditionals,muttrcVariable,muttrcFormatErrors nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcStatusFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcStatusFormatEscapes,muttrcStatusFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcStatusFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcStatusFormatEscapes,muttrcStatusFormatConditionals,muttrcFormatErrors                            nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcStrftimeFormatString     contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcStrftimeEscapes,muttrcFormatErrors                                                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcStrftimeFormatString     contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcStrftimeEscapes,muttrcFormatErrors                                                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+
+" Format escapes and conditionals
+syntax match muttrcFormatConditionals2 contained /[^?]*?/
 
 syntax region muttrcPgpTimeEscapes contained start=+%\[+ end=+\]+ contains=muttrcStrftimeEscapes
 syntax region muttrcTimeEscapes    contained start=+%(+  end=+)+  contains=muttrcStrftimeEscapes
@@ -767,6 +770,18 @@ highlight def link muttrcRXHooks			muttrcCommand
 highlight def link muttrcSubscribeKeyword		muttrcCommand
 highlight def link muttrcUnColorKeyword			muttrcCommand
 
+highlight def link muttrcAliasFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcAttachFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcComposeFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcFolderFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcIndexFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcMixEntryFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcPatternFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcPgpCommandFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcPgpEntryFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcSmimeCommandFormatConditionals	muttrcFormatConditionals2
+highlight def link muttrcStatusFormatConditionals	muttrcFormatConditionals2
+
 highlight def link muttrcAliasFormatEscapes		muttrcEscape
 highlight def link muttrcAttachFormatEscapes		muttrcEscape
 highlight def link muttrcComposeFormatEscapes		muttrcEscape
@@ -784,18 +799,6 @@ highlight def link muttrcSidebarFormatEscapes		muttrcEscape
 highlight def link muttrcSmimeCommandFormatEscapes	muttrcEscape
 highlight def link muttrcStatusFormatEscapes		muttrcEscape
 highlight def link muttrcTimeEscapes			muttrcEscape
-
-highlight def link muttrcAliasFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcAttachFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcComposeFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcFolderFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcIndexFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcMixEntryFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcPatternFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcPgpCommandFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcPgpEntryFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcSmimeCommandFormatConditionals	muttrcFormatConditionals2
-highlight def link muttrcStatusFormatConditionals	muttrcFormatConditionals2
 
 highlight def link muttrcAddrDef			muttrcGroupFlag
 highlight def link muttrcRXDef				muttrcGroupFlag
