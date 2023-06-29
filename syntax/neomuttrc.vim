@@ -251,8 +251,10 @@ syntax match muttrcAction		contained "<[^>]\{-}>" contains=muttrcBadAction,muttr
 
 " CHECKED 2023-06-29
 " First, hooks that take regular expressions:
-syntax match  muttrcRXHookNot	contained /!\s*/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
-syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|folder\|mbox\|open\|pgp\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
+syntax match  muttrcRXHookNot		contained /!\s*/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
+syntax match  muttrcRXHookNoRegex	contained /-noregex/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
+syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|open\|pgp\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
+syntax match  muttrcRXHooks	/\<\%(folder\|mbox\)-hook\>/ skipwhite nextgroup=muttrcRXHookNoRegex,muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
 
 " Now, hooks that take patterns
 syntax match muttrcPatHookNot	contained /!\s*/ skipwhite nextgroup=muttrcPattern
