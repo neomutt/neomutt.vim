@@ -2,10 +2,10 @@
 " Language:	NeoMutt setup files
 " Maintainer:	Richard Russon <rich@flatcap.org>
 " Previous Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2022-04-08
+" Last Change:	2023-06-29
 " Original version based on syntax/muttrc.vim
 
-" This file covers NeoMutt 2022-04-08
+" This file covers NeoMutt 2023-05-17
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
@@ -117,7 +117,7 @@ function! s:escapesConditionals(baseName, sequence, padding, conditional)
 	endif
 endfunction
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " Ref: alias_format_str() in alias/dlg_alias.c
 call s:escapesConditionals('AliasFormat', '[acfnrt]', 1, 0)
 " Ref: attach_format_str() in attach/dlg_attach.c
@@ -212,7 +212,7 @@ syntax match muttrcVarEqualsStrftimeFormat      contained skipwhite "=" nextgrou
 
 syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of the different screens in NeoMutt (see MenuNames in menu/type.c)
 syntax keyword muttrcMenu contained alias attach autocrypt browser compose editor generic index key_select_pgp key_select_smime mix pager pgp postpone query smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
@@ -249,7 +249,7 @@ syntax match muttrcEscapedVariable	contained "\\\$[a-zA-Z_-]\+"
 syntax match muttrcBadAction	contained "[^<>]\+" contains=muttrcEmail
 syntax match muttrcAction		contained "<[^>]\{-}>" contains=muttrcBadAction,muttrcFunction,muttrcKeyName
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " First, hooks that take regular expressions:
 syntax match  muttrcRXHookNot	contained /!\s*/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
 syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|folder\|mbox\|open\|pgp\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
@@ -262,11 +262,11 @@ syntax match muttrcPatHooks	/\<\%(message\|reply\|send\|send2\|save\|fcc\|fcc-sa
 " Global hooks that take a command
 syntax keyword muttrcHooks skipwhite shutdown-hook startup-hook timeout-hook nextgroup=muttrcCommand
 
-syntax match muttrcBindFunction	contained /\S\+\>/ skipwhite contains=muttrcFunction
+syntax match muttrcBindFunction		contained /\S\+\>/ skipwhite contains=muttrcFunction
 syntax match muttrcBindFunctionNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcBindFunction,muttrcBindFunctionNL
-syntax match muttrcBindKey		contained /\S\+/ skipwhite contains=muttrcKey nextgroup=muttrcBindFunction,muttrcBindFunctionNL
-syntax match muttrcBindKeyNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcBindKey,muttrcBindKeyNL
-syntax match muttrcBindMenuList	contained /\S\+/ skipwhite contains=muttrcMenu,muttrcMenuCommas nextgroup=muttrcBindKey,muttrcBindKeyNL
+syntax match muttrcBindKey		contained /\S\+/   skipwhite contains=muttrcKey nextgroup=muttrcBindFunction,muttrcBindFunctionNL
+syntax match muttrcBindKeyNL		contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcBindKey,muttrcBindKeyNL
+syntax match muttrcBindMenuList		contained /\S\+/   skipwhite contains=muttrcMenu,muttrcMenuCommas nextgroup=muttrcBindKey,muttrcBindKeyNL
 syntax match muttrcBindMenuListNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcBindMenuList,muttrcBindMenuListNL
 
 syntax region muttrcMacroDescr	contained keepend skipwhite start=+\s*\S+ms=e skip=+\\ + end=+ \|$+me=s
@@ -310,7 +310,7 @@ syntax match muttrcAliasNL		contained /\s*\\$/ skipwhite skipnl nextgroup=muttrc
 syntax match muttrcUnAliasKey	contained "\s*\w\+\s*" skipwhite nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 syntax match muttrcUnAliasNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of letters in Flags in pattern/flags.c
 " Parameter: none
 syntax match muttrcSimplePat contained "!\?\^\?[~][ADEFGgklNOPpQRSTUuVv#$=]"
@@ -319,7 +319,7 @@ syntax match muttrcSimplePat contained "!\?\^\?[~][mnXz]\s*\%([<>-][0-9]\+[kM]\?
 " Parameter: date
 syntax match muttrcSimplePat contained "!\?\^\?[~][dr]\s*\%(\%(-\?[0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)*\)\|\%(\%([0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)*\)-\%([0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)\?\)\?\)\|\%([<>=][0-9]\+[ymwd]\)\|\%(`[^`]\+`\)\|\%(\$[a-zA-Z0-9_-]\+\)\)" contains=muttrcShellString,muttrcVariable
 " Parameter: regex
-syntax match muttrcSimplePat contained "!\?\^\?[~][BbCcefHhIiLMstwxYy]\s*" nextgroup=muttrcSimplePatRXContainer
+syntax match muttrcSimplePat contained "!\?\^\?[~][BbCcefHhIiKLMstwxYy]\s*" nextgroup=muttrcSimplePatRXContainer
 " Parameter: pattern
 syntax match muttrcSimplePat contained "!\?\^\?[%][BbCcefHhiLstxy]\s*" nextgroup=muttrcSimplePatString
 " Parameter: pattern
@@ -351,7 +351,7 @@ syntax match muttrcPattern contained skipwhite /[.]/
 syntax region muttrcPatternInner contained keepend start=+"[~=%!(^]+ms=s+1 skip=+\\"+ end=+"+me=e-1 contains=muttrcSimplePat,muttrcUnHighlightSpace,muttrcSimplePatMetas
 syntax region muttrcPatternInner contained keepend start=+'[~=%!(^]+ms=s+1 skip=+\\'+ end=+'+me=e-1 contains=muttrcSimplePat,muttrcUnHighlightSpace,muttrcSimplePatMetas
 
-" Colour definitions takes object, foreground and background arguments (regexps excluded).
+" Colour definitions takes object, foreground and background arguments (regexes excluded).
 syntax match muttrcColorMatchCount	contained "[0-9]\+"
 syntax match muttrcColorMatchCountNL contained skipwhite skipnl "\s*\\$" nextgroup=muttrcColorMatchCount,muttrcColorMatchCountNL
 syntax region muttrcColorRXPat	contained start=+\s*'+ skip=+\\'+ end=+'\s*+ keepend skipwhite contains=muttrcRXString2 nextgroup=muttrcColorMatchCount,muttrcColorMatchCountNL
@@ -385,21 +385,22 @@ syntax keyword muttrcMonoAttrib	contained bold none normal reverse standout unde
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of fields in ColorFields in color/commmand.c
 syntax keyword muttrcColorField skipwhite contained
 	\ attachment attach_headers body bold error hdrdefault header index index_author
 	\ index_collapsed index_date index_flags index_label index_number index_size index_subject
-	\ index_tag index_tags indicator markers message normal options progress prompt quoted
-	\ search sidebar_divider sidebar_flagged sidebar_highlight sidebar_indicator sidebar_new
-	\ sidebar_ordinary sidebar_spoolfile sidebar_unread signature status tilde tree underline
-	\ warning nextgroup=muttrcColor
+	\ index_tag index_tags indicator italic markers message normal options progress prompt
+	\ quoted search sidebar_background sidebar_divider sidebar_flagged sidebar_highlight
+	\ sidebar_indicator sidebar_new sidebar_ordinary sidebar_spool_file sidebar_unread signature
+	\ status tilde tree underline warning
+	\ nextgroup=muttrcColor
 
 syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of fields in ComposeColorFields in color/command.c
 syntax keyword muttrcColorComposeField skipwhite contained
 	\ header security_both security_encrypt security_none security_sign
@@ -615,7 +616,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of DT_REGEX
 syntax keyword muttrcVarString	contained skipwhite
 	\ abort_noattach_regex gecos_mask mask pgp_decryption_okay pgp_good_sign quote_regex
@@ -626,7 +627,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ pgp_sort_keys sidebar_sort_method sort sort_alias sort_aux sort_browser
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2022-04-08
+" CHECKED 2023-06-29
 " List of commands in mutt_commands in mutt_commands.c
 " Remember to remove hooks, they have already been dealt with
 syntax keyword muttrcCommand	skipwhite alias nextgroup=muttrcAliasGroupDef,muttrcAliasKey,muttrcAliasNL
@@ -643,10 +644,10 @@ syntax keyword muttrcCommand	skipwhite
 	\ lua-source mailboxes mailto_allow mime_lookup my_hdr named-mailboxes push score setenv
 	\ sidebar_pin sidebar_unpin source subjectrx subscribe-to tag-formats tag-transforms
 	\ unalternative_order unattachments unauto_view unbind uncolor unhdr_order unignore unmacro
-	\ unmailboxes unmailto_allow unmime_lookup unmono unmy_hdr unscore unsetenv
-	\ unsubjectrx unsubscribe-from unvirtual-mailboxes virtual-mailboxes
+	\ unmailboxes unmailto_allow unmime_lookup unmono unmy_hdr unscore unsetenv unsubjectrx
+	\ unsubscribe-from unvirtual-mailboxes version virtual-mailboxes
 
-" CHECKED 2023-02-03
+" CHECKED 2023-06-29
 " Deprecated commands
 syntax keyword muttrcDeprecatedCommand skipwhite
 	\ sidebar_whitelist unsidebar_whitelist
