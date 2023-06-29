@@ -528,7 +528,7 @@ syntax keyword muttrcVarNum	skipwhite contained
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " CHECKED 2023-06-29
 " Deprecated Numbers
-syntax keyword muttrcVarDeprecatedNum	contained skipwhite
+syntax keyword muttrcVarDeprecatedNum
 	\ connect_timeout header_cache_pagesize imap_keepalive pop_checkinterval skip_quoted_offset
 
 " CHECKED 2023-06-29
@@ -742,8 +742,7 @@ highlight def link muttrcFormatErrors			Error
 highlight def link muttrcGroupLine			Error
 highlight def link muttrcPattern			Error
 highlight def link muttrcUnColorLine			Error
-highlight def link muttrcVarDeprecatedBool		Error
-highlight def link muttrcVarDeprecatedQuad		Error
+highlight def link muttrcVarDeprecatedNum		Error
 highlight def link muttrcVarDeprecatedString		Error
 
 highlight def link muttrcAliasEncEmail			Identifier
