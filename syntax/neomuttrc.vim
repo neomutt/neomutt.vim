@@ -132,8 +132,6 @@ call s:escapesConditionals('FolderFormat', '[CDdFfgilmNnstu]', 1, 1)
 call s:escapesConditionals('GroupIndexFormat', '[CdfMNns]', 1, 0)
 " Ref: index_format_str() in hdrline.c
 call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|@\i\+@\|G[a-zA-Z]\+\|Fp\=\|z[cst]\|cr\=', 1, 1)
-" Ref: mix_format_str() in mixmaster/win_hosts.c
-call s:escapesConditionals('MixEntryFormat', '[acns]', 1, 1)
 " Ref: pattern_format_str() in pattern/dlg_pattern.c
 call s:escapesConditionals('PatternFormat', '[den]', 1, 0)
 " Ref: pgp_command_format_str() in ncrypt/pgpinvoke.c
@@ -165,8 +163,6 @@ syntax region muttrcGroupIndexFormatString    contained skipwhite keepend start=
 syntax region muttrcGroupIndexFormatString    contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcGroupIndexFormatEscapes,muttrcGroupIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes       nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcIndexFormatString         contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcIndexFormatString         contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcMixEntryFormatString      contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcMixEntryFormatEscapes,muttrcMixEntryFormatConditionals,muttrcFormatErrors                             nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcMixEntryFormatString      contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcMixEntryFormatEscapes,muttrcMixEntryFormatConditionals,muttrcFormatErrors                             nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPatternFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPatternFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPgpCommandFormatString    contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPgpCommandFormatEscapes,muttrcPgpCommandFormatConditionals,muttrcVariable,muttrcFormatErrors          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
@@ -200,7 +196,6 @@ syntax match muttrcVarEqualsComposeFormat       contained skipwhite "=" nextgrou
 syntax match muttrcVarEqualsFolderFormat        contained skipwhite "=" nextgroup=muttrcFolderFormatString
 syntax match muttrcVarEqualsGroupIndexFormat    contained skipwhite "=" nextgroup=muttrcGroupIndexFormatString
 syntax match muttrcVarEqualsIndexFormat         contained skipwhite "=" nextgroup=muttrcIndexFormatString
-syntax match muttrcVarEqualsMixEntryFormat      contained skipwhite "=" nextgroup=muttrcMixEntryFormatString
 syntax match muttrcVarEqualsPatternFormat       contained skipwhite "=" nextgroup=muttrcPatternFormatString
 syntax match muttrcVarEqualsPgpCommandFormat    contained skipwhite "=" nextgroup=muttrcPgpCommandFormatString
 syntax match muttrcVarEqualsPgpEntryFormat      contained skipwhite "=" nextgroup=muttrcPgpEntryFormatString
@@ -214,7 +209,7 @@ syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQua
 
 " CHECKED 2023-06-29
 " List of the different screens in NeoMutt (see MenuNames in menu/type.c)
-syntax keyword muttrcMenu contained alias attach autocrypt browser compose editor generic index key_select_pgp key_select_smime mix pager pgp postpone query smime
+syntax keyword muttrcMenu contained alias attach autocrypt browser compose editor generic index key_select_pgp key_select_smime pager pgp postpone query smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
 syntax match muttrcMenuCommas /,/ contained
 
@@ -549,7 +544,6 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ attribution_intro attribution_trailer forward_attribution_intro forward_attribution_trailer
 	\ forward_format indent_string index_format message_format pager_format
 	\ nextgroup=muttrcVarEqualsIndexFormat
-syntax keyword muttrcVarString	contained skipwhite mix_entry_format nextgroup=muttrcVarEqualsMixEntryFormat
 syntax keyword muttrcVarString	contained skipwhite pattern_format nextgroup=muttrcVarEqualsPatternFormat
 syntax keyword muttrcVarString	contained skipwhite
 	\ pgp_clear_sign_command pgp_decode_command pgp_decrypt_command pgp_encrypt_only_command
@@ -613,7 +607,7 @@ syntax keyword muttrcVarString	contained skipwhite
 " List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
 syntax keyword muttrcVarString	contained skipwhite
 	\ account_command display_filter editor external_search_command
-	\ imap_oauth_refresh_command inews ispell mime_type_query_command mixmaster
+	\ imap_oauth_refresh_command inews ispell mime_type_query_command
 	\ new_mail_command pager pop_oauth_refresh_command print_command query_command
 	\ sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
@@ -692,7 +686,7 @@ call s:genFunctions(['noop',
 	\ 'imap-logout-all', 'insert', 'ispell', 'jump', 'kill-eol', 'kill-eow', 'kill-line',
 	\ 'kill-whole-line', 'kill-word', 'last-entry', 'limit', 'limit-current-thread',
 	\ 'link-threads', 'list-reply', 'list-subscribe', 'list-unsubscribe', 'mail', 'mail-key',
-	\ 'mailbox-cycle', 'mailbox-list', 'mark-as-new', 'mark-message', 'middle-page', 'mix',
+	\ 'mailbox-cycle', 'mailbox-list', 'mark-as-new', 'mark-message', 'middle-page',
 	\ 'modify-labels', 'modify-labels-then-hide', 'modify-tags', 'modify-tags-then-hide',
 	\ 'move-down', 'move-up', 'new-mime', 'next-entry', 'next-line', 'next-new',
 	\ 'next-new-then-unread', 'next-page', 'next-subthread', 'next-thread', 'next-undeleted',
@@ -790,7 +784,6 @@ highlight def link muttrcComposeFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcFolderFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcGroupIndexFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcIndexFormatConditionals	 muttrcFormatConditionals2
-highlight def link muttrcMixEntryFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcPatternFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcPgpCommandFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcPgpEntryFormatConditionals	 muttrcFormatConditionals2
@@ -806,7 +799,6 @@ highlight def link muttrcComposeFormatEscapes		muttrcEscape
 highlight def link muttrcFolderFormatEscapes		muttrcEscape
 highlight def link muttrcGroupIndexFormatEscapes	muttrcEscape
 highlight def link muttrcIndexFormatEscapes		muttrcEscape
-highlight def link muttrcMixEntryFormatEscapes		muttrcEscape
 highlight def link muttrcPatternFormatEscapes		muttrcEscape
 highlight def link muttrcPgpCommandFormatEscapes	muttrcEscape
 highlight def link muttrcPgpEntryFormatEscapes		muttrcEscape
@@ -828,7 +820,6 @@ highlight def link muttrcComposeFormatString		muttrcString
 highlight def link muttrcFolderFormatString		muttrcString
 highlight def link muttrcGroupIndexFormatString		muttrcString
 highlight def link muttrcIndexFormatString		muttrcString
-highlight def link muttrcMixEntryFormatString		muttrcString
 highlight def link muttrcPatternFormatString		muttrcString
 highlight def link muttrcPgpCommandFormatString		muttrcString
 highlight def link muttrcPgpEntryFormatString		muttrcString
