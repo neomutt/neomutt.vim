@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:  NeoMutt log files
 " Maintainer:  Richard Russon <rich@flatcap.org>
-" Last Change:  2020-01-21
+" Last Change:  2024 Oct 07
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
