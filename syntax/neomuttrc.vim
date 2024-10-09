@@ -128,8 +128,12 @@ call s:escapesConditionals('AutocryptFormat', '[aknps]', 1, 0)
 call s:escapesConditionals('ComposeFormat', '[ahlv]', 1, 1)
 " Ref: FolderFormatDef in browser/config.c
 call s:escapesConditionals('FolderFormat', '[aCDdFfgilmNnpstu[]', 1, 1)
+" Ref: GreetingFormatDef in send/config.c
+call s:escapesConditionals('GreetingFormat', '[nuv]', 0, 0)
 " Ref: GroupIndexFormatDef in browser/config.c
 call s:escapesConditionals('GroupIndexFormat', '[aCdfMNnps]', 1, 0)
+" Ref: HistoryFormatDef in history/config.c
+call s:escapesConditionals('HistoryFormat', '[Cs]', 1, 0)
 " Ref: IndexFormatDef in mutt_config.c
 call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|@\i\+@\|G[a-zA-Z]\+\|Fp\=\|z[cst]\|cr\=', 1, 1)
 " Ref: PatternFormatDef in pattern/config.c
@@ -151,8 +155,8 @@ syntax region muttrcAliasFormatString         contained skipwhite keepend start=
 syntax region muttrcAliasFormatString         contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAliasFormatEscapes,muttrcAliasFormatConditionals,muttrcFormatErrors                                   nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcAttachFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAttachFormatEscapes,muttrcAttachFormatConditionals,muttrcFormatErrors                                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcAttachFormatString        contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAttachFormatEscapes,muttrcAttachFormatConditionals,muttrcFormatErrors                                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcAutocryptAcctFormatString contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAutocryptAcctFormatEscapes,muttrcAutocryptAcctFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-syntax region muttrcAutocryptAcctFormatString contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAutocryptAcctFormatEscapes,muttrcAutocryptAcctFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcAutocryptFormatString     contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAutocryptFormatEscapes,muttrcAutocryptFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcAutocryptFormatString     contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcAutocryptFormatEscapes,muttrcAutocryptFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcComposeFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcComposeFormatEscapes,muttrcComposeFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcComposeFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcComposeFormatEscapes,muttrcComposeFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcFolderFormatString        contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcFolderFormatEscapes,muttrcFolderFormatConditionals,muttrcFormatErrors                                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
@@ -193,7 +197,7 @@ syntax region muttrcTimeEscapes    contained start=+%{+  end=+}+  contains=muttr
 
 syntax match muttrcVarEqualsAliasFormat         contained skipwhite "=" nextgroup=muttrcAliasFormatString
 syntax match muttrcVarEqualsAttachFormat        contained skipwhite "=" nextgroup=muttrcAttachFormatString
-syntax match muttrcVarEqualsAutocryptAcctFormat contained skipwhite "=" nextgroup=muttrcAutocryptAcctFormatString
+syntax match muttrcVarEqualsAutocryptFormat     contained skipwhite "=" nextgroup=muttrcAutocryptFormatString
 syntax match muttrcVarEqualsComposeFormat       contained skipwhite "=" nextgroup=muttrcComposeFormatString
 syntax match muttrcVarEqualsFolderFormat        contained skipwhite "=" nextgroup=muttrcFolderFormatString
 syntax match muttrcVarEqualsGreetingFormat      contained skipwhite "=" nextgroup=muttrcGreetingFormatString
@@ -544,7 +548,7 @@ syntax keyword muttrcVarDeprecatedNum
 syntax match   muttrcVarString	contained skipwhite 'my_[a-zA-Z0-9_]\+' nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax keyword muttrcVarString	contained skipwhite alias_format nextgroup=muttrcVarEqualsAliasFormat
 syntax keyword muttrcVarString	contained skipwhite attach_format nextgroup=muttrcVarEqualsAttachFormat
-syntax keyword muttrcVarString	contained skipwhite autocrypt_acct_format nextgroup=muttrcVarEqualsAutocryptAcctFormat
+syntax keyword muttrcVarString	contained skipwhite autocrypt_acct_format nextgroup=muttrcVarEqualsAutocryptFormat
 syntax keyword muttrcVarString	contained skipwhite compose_format nextgroup=muttrcVarEqualsComposeFormat
 syntax keyword muttrcVarString	contained skipwhite folder_format mailbox_folder_format nextgroup=muttrcVarEqualsFolderFormat
 syntax keyword muttrcVarString	contained skipwhite greeting nextgroup=muttrcVarEqualsGreetingFormat
@@ -590,11 +594,11 @@ syntax keyword muttrcVarString	contained skipwhite
 
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedString
-	\ abort_noattach_regexp attach_keyword attribution escape forw_format hdr_format
-	\ indent_str message_cachedir msg_format nm_default_uri pgp_clearsign_command
-	\ pgp_getkeys_command pgp_self_encrypt_as post_indent_str post_indent_string
-	\ print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as spoolfile
-	\ tmpdir vfolder_format visual xterm_icon xterm_title
+	\ abort_noattach_regexp attach_keyword attribution escape forw_format hdr_format indent_str
+	\ message_cachedir mixmaster mix_entry_format msg_format nm_default_uri
+	\ pgp_clearsign_command pgp_getkeys_command pgp_self_encrypt_as post_indent_str
+	\ post_indent_string print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
+	\ spoolfile tmpdir vfolder_format visual xterm_icon xterm_title
 
 " CHECKED 2024 Oct 07
 " List of DT_ADDRESS
@@ -745,7 +749,9 @@ highlight def link muttrcFormatErrors			Error
 highlight def link muttrcGroupLine			Error
 highlight def link muttrcPattern			Error
 highlight def link muttrcUnColorLine			Error
+highlight def link muttrcVarDeprecatedBool		Error
 highlight def link muttrcVarDeprecatedNum		Error
+highlight def link muttrcVarDeprecatedQuad		Error
 highlight def link muttrcVarDeprecatedString		Error
 
 highlight def link muttrcAliasEncEmail			Identifier
@@ -785,7 +791,7 @@ highlight def link muttrcUnColorKeyword			muttrcCommand
 
 highlight def link muttrcAliasFormatEscapes		muttrcEscape
 highlight def link muttrcAttachFormatEscapes		muttrcEscape
-highlight def link muttrcAutocryptAcctFormatEscapes	muttrcEscape
+highlight def link muttrcAutocryptFormatEscapes		muttrcEscape
 highlight def link muttrcComposeFormatEscapes		muttrcEscape
 highlight def link muttrcFolderFormatEscapes		muttrcEscape
 highlight def link muttrcGreetingFormatEscapes		muttrcEscape
@@ -805,7 +811,7 @@ highlight def link muttrcTimeEscapes			muttrcEscape
 
 highlight def link muttrcAliasFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcAttachFormatConditionals	 muttrcFormatConditionals2
-highlight def link muttrcAutocryptAcctFormatConditionals muttrcFormatConditionals2
+highlight def link muttrcAutocryptFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcComposeFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcFolderFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcGreetingFormatConditionals	 muttrcFormatConditionals2
@@ -825,7 +831,7 @@ highlight def link muttrcRXDef				muttrcGroupFlag
 
 highlight def link muttrcAliasFormatString		muttrcString
 highlight def link muttrcAttachFormatString		muttrcString
-highlight def link muttrcAutocryptAcctFormatString	muttrcString
+highlight def link muttrcAutocryptFormatString		muttrcString
 highlight def link muttrcComposeFormatString		muttrcString
 highlight def link muttrcFolderFormatString		muttrcString
 highlight def link muttrcGreetingFormatString		muttrcString
