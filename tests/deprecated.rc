@@ -1,0 +1,18 @@
+set mime_subject              = yes     # DT_BOOL
+set cursor_overlay            = yes     # DT_BOOL
+set header_cache_compress     = yes     # DT_BOOL
+set ignore_linear_white_space = yes     # DT_BOOL
+
+set mix_entry_format          = "xyz"   # DT_EXPANDO
+
+set header_cache_pagesize     = 1234    # DT_LONG
+
+set pgp_encrypt_self          = ask-yes # DT_QUAD
+set smime_encrypt_self        = ask-yes # DT_QUAD
+
+set escape                    = "xyz"   # DT_STRING
+set visual                    = "xyz"   # DT_STRING
+set mixmaster                 = "xyz"   # DT_STRING
+set vfolder_format            = "xyz"   # DT_STRING
+
+# vim: syn=neomuttrc
