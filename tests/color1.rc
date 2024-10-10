@@ -1,0 +1,53 @@
+color attachment         cyan    white
+color attach_headers     white   cyan
+color body               cyan    yellow
+color bold               yellow  magenta
+color error              yellow  white
+color hdrdefault         green   yellow
+color header             blue    red
+color index              magenta black
+color index_author       blue    cyan
+color index_collapsed    red     black
+color index_date         red     green
+color index_flags        magenta black
+color index_label        red     green
+color index_number       green   white
+color index_size         green   red
+color index_subject      black   blue
+color index_tag          green   red
+color index_tags         cyan    black
+color indicator          black   red
+color italic             cyan    green
+color markers            magenta white
+color message            cyan    yellow
+color normal             yellow  white
+color options            black   green
+color progress           magenta blue
+color prompt             white   blue
+color quoted             white   red
+color search             magenta black
+color sidebar_background red     green
+color sidebar_divider    white   magenta
+color sidebar_flagged    white   blue
+color sidebar_highlight  blue    cyan
+color sidebar_indicator  cyan    red
+color sidebar_new        red     magenta
+color sidebar_ordinary   cyan    white
+color sidebar_spool_file magenta yellow
+color sidebar_unread     yellow  white
+color signature          white   blue
+color status             magenta blue
+color stripe_even        green   red
+color stripe_odd         green   cyan
+color tilde              green   magenta
+color tree               white   yellow
+color underline          black   red
+color warning            red     yellow
+
+color compose header           white  green
+color compose security_encrypt red    black
+color compose security_sign    yellow red
+color compose security_both    cyan   magenta
+color compose security_none    blue   white
+
+# vim: syn=neomuttrc

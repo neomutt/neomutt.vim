@@ -1,0 +1,32 @@
+color normal red blue
+
+color normal none      red blue
+color normal normal    red blue
+
+color normal bold      red blue
+color normal italic    red blue
+color normal reverse   red blue
+color normal standout  red blue
+color normal underline red blue
+
+color normal reverse   underline red blue
+color normal underline standout  red blue
+color normal reverse   italic    red blue
+color normal underline bold      red blue
+color normal reverse   underline red blue
+color normal standout  bold      red blue
+color normal reverse   standout  red blue
+color normal italic    bold      red blue
+color normal reverse   underline red blue
+color normal underline reverse   red blue
+color normal underline standout  red blue
+color normal standout  underline red blue
+color normal standout  italic    red blue
+color normal italic    standout  red blue
+color normal bold      reverse   red blue
+color normal standout  italic    red blue
+color normal italic    reverse   red blue
+
+color normal bold italic reverse standout underline red blue
+
+# vim: syn=neomuttrc

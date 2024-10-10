@@ -363,6 +363,8 @@ syntax region muttrcColorRXPat	contained start=+\s*'+ skip=+\\'+ end=+'\s*+ keep
 syntax region muttrcColorRXPat	contained start=+\s*"+ skip=+\\"+ end=+"\s*+ keepend skipwhite contains=muttrcRXString2 nextgroup=muttrcColorMatchCount,muttrcColorMatchCountNL
 syntax keyword muttrcColor	contained black blue cyan default green magenta red white yellow
 syntax keyword muttrcColor	contained brightblack brightblue brightcyan brightdefault brightgreen brightmagenta brightred brightwhite brightyellow
+syntax keyword muttrcColor	contained lightblack lightblue lightcyan lightdefault lightgreen lightmagenta lightred lightwhite lightyellow
+syntax keyword muttrcColor	contained alertblack alertblue alertcyan alertdefault alertgreen alertmagenta alertred alertwhite alertyellow
 syntax match   muttrcColor	contained "\<\%(bright\)\=color\d\{1,3}\>"
 syntax match   muttrcColor	contained "#[0-9a-fA-F]\{6}\>"
 
@@ -387,7 +389,7 @@ syntax match muttrcUnColorIndexNL	contained skipwhite skipnl /\s*\\$/ nextgroup=
 syntax match muttrcUnColorKeyword	contained skipwhite /^\s*uncolor\s\+/ nextgroup=muttrcUnColorIndex,muttrcUnColorIndexNL
 syntax region muttrcUnColorLine keepend start=+^\s*uncolor\s+ skip=+\\$+ end=+$+ contains=muttrcUnColorKeyword,muttrcComment,muttrcUnHighlightSpace
 
-syntax keyword muttrcMonoAttrib	contained bold none normal reverse standout underline
+syntax keyword muttrcMonoAttrib	contained bold italic none normal reverse standout underline
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
