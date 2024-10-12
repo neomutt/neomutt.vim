@@ -2,7 +2,7 @@
 " Language:	NeoMutt setup files
 " Maintainer:	Richard Russon <rich@flatcap.org>
 " Previous Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2024 Oct 07
+" Last Change:	2024 Oct 12
 " Original version based on syntax/muttrc.vim
 
 " This file covers NeoMutt 2024-10-02
@@ -117,7 +117,7 @@ function! s:escapesConditionals(baseName, sequence, padding, conditional)
 	endif
 endfunction
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " Ref: AliasFormatDef in alias/config.c
 call s:escapesConditionals('AliasFormat', '[acfnrtY]', 1, 0)
 " Ref: AttachFormatDef in mutt_config.c
@@ -215,7 +215,7 @@ syntax match muttrcVarEqualsStrftimeFormat      contained skipwhite "=" nextgrou
 
 syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of the different screens in NeoMutt (see MenuNames in menu/type.c)
 syntax keyword muttrcMenu contained alias attach autocrypt browser compose dialog editor generic index key_select_pgp key_select_smime pager pgp postpone query smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
@@ -252,7 +252,7 @@ syntax match muttrcEscapedVariable	contained "\\\$[a-zA-Z_-]\+"
 syntax match muttrcBadAction	contained "[^<>]\+" contains=muttrcEmail
 syntax match muttrcAction		contained "<[^>]\{-}>" contains=muttrcBadAction,muttrcFunction,muttrcKeyName
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " First, hooks that take regular expressions:
 syntax match  muttrcRXHookNot		contained /!\s*/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
 syntax match  muttrcRXHookNoRegex	contained /-noregex/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
@@ -315,7 +315,7 @@ syntax match muttrcAliasNL		contained /\s*\\$/ skipwhite skipnl nextgroup=muttrc
 syntax match muttrcUnAliasKey	contained "\s*\w\+\s*" skipwhite nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 syntax match muttrcUnAliasNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of letters in Flags in pattern/flags.c
 " Parameter: none
 syntax match muttrcSimplePat contained "!\?\^\?[~][ADEFGgklNOPpQRSTUuVv#$=]"
@@ -393,7 +393,7 @@ syntax keyword muttrcMonoAttrib	contained bold italic none normal reverse stando
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of fields in ColorFields in color/command.c
 syntax keyword muttrcColorField skipwhite contained
 	\ attachment attach_headers body bold error hdrdefault header index index_author
@@ -408,7 +408,7 @@ syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of fields in ComposeColorFields in color/command.c
 syntax keyword muttrcColorComposeField skipwhite contained
 	\ header security_both security_encrypt security_none security_sign
@@ -436,7 +436,7 @@ function! s:boolQuadGen(type, vars, deprecated)
 
 endfunction
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of DT_BOOL in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
 	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'ask_bcc',
@@ -491,7 +491,7 @@ call s:boolQuadGen('Bool', [
 	\ 'virtual_spool_file', 'wait_key', 'weed', 'wrap_search', 'write_bcc', 'x_comment_to'
 	\ ], 0)
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " Deprecated Bools
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
@@ -507,7 +507,7 @@ call s:boolQuadGen('Bool', [
 	\ 'use_8bitmime', 'virtual_spoolfile', 'xterm_set_titles'
 	\ ], 1)
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of DT_QUAD in MuttVars in mutt_config.c
 call s:boolQuadGen('Quad', [
 	\ 'abort_noattach', 'abort_nosubject', 'abort_unmodified', 'bounce', 'catchup_newsgroup',
@@ -517,14 +517,14 @@ call s:boolQuadGen('Quad', [
 	\ 'post_moderated', 'print', 'quit', 'recall', 'reply_to', 'ssl_starttls'
 	\ ], 0)
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " Deprecated Quads
 " List of DT_SYNONYM or DT_DEPRECATED Quads in MuttVars in mutt_config.c
 call s:boolQuadGen('Quad', [
 	\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
 	\ ], 1)
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of DT_NUMBER or DT_LONG in MuttVars in mutt_config.c
 syntax keyword muttrcVarNum	skipwhite contained
 	\ debug_level header_cache_compress_level history imap_fetch_chunk_size imap_keep_alive
@@ -537,12 +537,12 @@ syntax keyword muttrcVarNum	skipwhite contained
 	\ smime_timeout socket_timeout ssl_min_dh_prime_bits timeout time_inc
 	\ toggle_quoted_show_levels wrap wrap_headers write_inc
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " Deprecated Numbers
 syntax keyword muttrcVarDeprecatedNum
 	\ connect_timeout header_cache_pagesize imap_keepalive pop_checkinterval skip_quoted_offset
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of DT_STRING in MuttVars in mutt_config.c
 " Special cases first, and all the rest at the end
 " Formats themselves must be updated in their respective groups
@@ -602,7 +602,7 @@ syntax keyword muttrcVarDeprecatedString
 	\ post_indent_string print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
 	\ spoolfile tmpdir vfolder_format visual xterm_icon xterm_title
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of DT_ADDRESS
 syntax keyword muttrcVarString	contained skipwhite envelope_from_address from nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " List of DT_ENUM
@@ -610,7 +610,7 @@ syntax keyword muttrcVarString	contained skipwhite mbox_type use_threads nextgro
 " List of DT_MBTABLE
 syntax keyword muttrcVarString	contained skipwhite crypt_chars flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of DT_PATH or D_STRING_MAILBOX
 syntax keyword muttrcVarString	contained skipwhite
 	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file entropy_file folder
@@ -625,7 +625,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ print_command query_command sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of DT_REGEX
 syntax keyword muttrcVarString	contained skipwhite
 	\ abort_noattach_regex gecos_mask mask pgp_decryption_okay pgp_good_sign quote_regex
@@ -636,7 +636,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ pgp_sort_keys sidebar_sort_method sort sort_alias sort_aux sort_browser
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of commands in mutt_commands in commands.c
 " Remember to remove hooks, they have already been dealt with
 syntax keyword muttrcCommand	skipwhite alias nextgroup=muttrcAliasGroupDef,muttrcAliasKey,muttrcAliasNL
@@ -656,7 +656,7 @@ syntax keyword muttrcCommand	skipwhite
 	\ unmailboxes unmailto_allow unmime_lookup unmono unmy_hdr unscore unsetenv unsubjectrx
 	\ unsubscribe-from unvirtual-mailboxes version virtual-mailboxes
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " Deprecated commands
 syntax keyword muttrcDeprecatedCommand skipwhite
 	\ sidebar_whitelist unsidebar_whitelist
@@ -667,7 +667,7 @@ function! s:genFunctions(functions)
 	endfor
 endfunction
 
-" CHECKED 2024 Oct 07
+" CHECKED 2024 Oct 12
 " List of functions in functions.c
 " Note: 'noop' is included but is elsewhere in the source
 call s:genFunctions(['noop',
