@@ -372,9 +372,9 @@ syntax match   muttrcColor	contained "#[0-9a-fA-F]\{6}\>"
 syntax match muttrcColorRXNL	contained skipnl "\s*\\$" nextgroup=muttrcColorRXPat,muttrcColorRXNL
 syntax match muttrcColorBG	contained /\s*[#$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorRXPat,muttrcColorRXNL
 syntax match muttrcColorBGNL	contained skipnl "\s*\\$" nextgroup=muttrcColorBG,muttrcColorBGNL
-syntax match muttrcColorFG	contained /\s*[#$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorBG,muttrcColorBGNL
+syntax match muttrcColorFG	contained /\s*\%(\%(bold\|italic\|none\|normal\|reverse\|standout\|underline\)\>\)\@![#$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorBG,muttrcColorBGNL
 syntax match muttrcColorFGNL	contained skipnl "\s*\\$" nextgroup=muttrcColorFG,muttrcColorFGNL
-syntax match muttrcColorContext	contained /\s*[#$]\?\w\+/ contains=muttrcColorField,muttrcVariable,muttrcUnHighlightSpace,muttrcColorCompose nextgroup=muttrcColorFG,muttrcColorFGNL
+syntax match muttrcColorContext	contained /\s*[#$]\?\w\+/ contains=muttrcColorField,muttrcVariable,muttrcUnHighlightSpace,muttrcColorCompose nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
 syntax match muttrcColorNL	contained skipnl "\s*\\$" nextgroup=muttrcColorContext,muttrcColorNL,muttrcColorCompose
 syntax match muttrcColorKeyword	contained /^\s*color\s\+/ nextgroup=muttrcColorContext,muttrcColorNL,muttrcColorCompose
 " And now color's brother:
@@ -390,6 +390,8 @@ syntax match muttrcUnColorKeyword	contained skipwhite /^\s*uncolor\s\+/ nextgrou
 syntax region muttrcUnColorLine keepend start=+^\s*uncolor\s+ skip=+\\$+ end=+$+ contains=muttrcUnColorKeyword,muttrcComment,muttrcUnHighlightSpace
 
 syntax keyword muttrcMonoAttrib	contained bold italic none normal reverse standout underline
+syntax match muttrcColorAttrib	contained /\s*\<\%(bold\|italic\|none\|normal\|reverse\|standout\|underline\)\>/ nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
+syntax match muttrcColorAttribNL	contained skipnl "\s*\\$" nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
@@ -412,8 +414,8 @@ syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=mu
 " List of fields in ComposeColorFields in color/command.c
 syntax keyword muttrcColorComposeField skipwhite contained
 	\ header security_both security_encrypt security_none security_sign
-	\ nextgroup=muttrcColorFG,muttrcColorFGNL
-syntax region muttrcColorLine keepend start=/^\s*color\s\+/ skip=+\\$+ end=+$+ contains=muttrcColorKeyword,muttrcComment,muttrcUnHighlightSpace
+	\ nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
+syntax region muttrcColorLine keepend start=/^\s*color\s\+/ skip=+\\$+ end=+$+ contains=muttrcColorKeyword,muttrcColorAttrib,muttrcComment,muttrcUnHighlightSpace
 
 function! s:boolQuadGen(type, vars, deprecated)
 	let l:novars = copy(a:vars)
@@ -778,6 +780,7 @@ highlight def link muttrcFunction			Macro
 highlight def link muttrcGroupDef			Macro
 highlight def link muttrcSimplePatString		Macro
 
+highlight def link muttrcColorAttrib			muttrcColor
 highlight def link muttrcMonoAttrib			muttrcColor
 
 highlight def link muttrcAlternateKeyword		muttrcCommand
