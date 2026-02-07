@@ -117,9 +117,9 @@ function! s:escapesConditionals(baseName, sequence, padding, conditional)
 	endif
 endfunction
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 07
 " Ref: AliasFormatDef in alias/config.c
-call s:escapesConditionals('AliasFormat', '[acfnrtY]', 1, 0)
+call s:escapesConditionals('AliasFormat', '[AaCEfiNtY]', 1, 0)
 " Ref: AttachFormatDef in mutt_config.c
 call s:escapesConditionals('AttachFormat', '[CcDdeFfIMmnQsTtuX]', 1, 1)
 " Ref: AutocryptFormatDef in autocrypt/config.c
@@ -135,7 +135,11 @@ call s:escapesConditionals('GroupIndexFormat', '[aCdfMNnps]', 1, 0)
 " Ref: HistoryFormatDef in history/config.c
 call s:escapesConditionals('HistoryFormat', '[Cs]', 1, 0)
 " Ref: IndexFormatDef in mutt_config.c
-call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|@\i\+@\|G[a-zA-Z]\+\|Fp\=\|z[cst]\|cr\=', 1, 1)
+call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ([{]\|@\i\+@\|G[a-zA-Z0-9]\|Fp\=\|z[cst]\|cr\=', 1, 1)
+" Ref: MsgIdFormatDef in send/config.c
+call s:escapesConditionals('MsgIdFormatDef', '[cdfHMmprSxYz]', 0, 0)
+" Ref: NntpFormatDef in nntp/config.c
+call s:escapesConditionals('NntpFormat', '[aPpSsu]', 0, 0)
 " Ref: PatternFormatDef in pattern/config.c
 call s:escapesConditionals('PatternFormat', '[den]', 1, 0)
 " Ref: PgpCommandFormatDef in ncrypt/config.c
@@ -143,12 +147,12 @@ call s:escapesConditionals('PgpCommandFormat', '[afprs]', 0, 1)
 " Ref: PgpEntryFormatDef in ncrypt/config.c
 call s:escapesConditionals('PgpEntryFormat', '[AaCcFfIiKkLlnptu[]', 1, 1)
 " Ref: QueryFormatDef in alias/config.c
-call s:escapesConditionals('QueryFormat', '[acentY]', 1, 1)
+call s:escapesConditionals('QueryFormat', '[ACEiNtY]', 1, 1)
 " Ref: SidebarFormatDef in sidebar/config.c
 call s:escapesConditionals('SidebarFormat', '[!aBDdFLNnoprStZ]', 1, 1)
 " Ref: SmimeCommandFormatDef in ncrypt/config.c
 call s:escapesConditionals('SmimeCommandFormat', '[aCcdfiks]', 0, 1)
-" Ref: StatusFormatDef in mutt_config.c
+" Ref: StatusFormatDef in index/config.c
 call s:escapesConditionals('StatusFormat', '[bDdFfhLlMmnoPpRrSsTtuVv]', 1, 1)
 
 syntax region muttrcAliasFormatString         contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAliasFormatEscapes,muttrcAliasFormatConditionals,muttrcFormatErrors                                   nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
