@@ -621,7 +621,7 @@ syntax keyword muttrcVarString	contained skipwhite mbox_type use_threads nextgro
 " List of DT_MBTABLE
 syntax keyword muttrcVarString	contained skipwhite crypt_chars flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of DT_PATH or D_STRING_MAILBOX
 syntax keyword muttrcVarString	contained skipwhite
 	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file entropy_file folder
@@ -629,11 +629,11 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ record signature smime_ca_location smime_certificates smime_keys spool_file
 	\ ssl_ca_certificates_file ssl_client_cert tmp_dir trash
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-" List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
+" List of DT_COMMAND (excluding DT_EXPANDO)
 syntax keyword muttrcVarString	contained skipwhite
 	\ account_command display_filter editor external_search_command imap_oauth_refresh_command
-	\ ispell mime_type_query_command new_mail_command pager pop_oauth_refresh_command
-	\ print_command query_command sendmail shell smtp_oauth_refresh_command tunnel
+	\ ispell mime_type_query_command pager pop_oauth_refresh_command print_command query_command
+	\ sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
 " __CHECKED 2024 Oct 12
