@@ -613,7 +613,7 @@ syntax keyword muttrcVarDeprecatedString
 	\ post_indent_string print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
 	\ spoolfile tmpdir vfolder_format visual xterm_icon xterm_title
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of DT_ADDRESS
 syntax keyword muttrcVarString	contained skipwhite envelope_from_address from nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " List of DT_ENUM
