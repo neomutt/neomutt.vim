@@ -400,7 +400,7 @@ syntax match muttrcColorAttribNL	contained skipnl "\s*\\$" nextgroup=muttrcColor
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of fields in ColorFields in color/command.c
 syntax keyword muttrcColorField skipwhite contained
 	\ attachment attach_headers body bold error hdrdefault header index index_author
