@@ -520,23 +520,24 @@ call s:boolQuadGen('Quad', [
 
 " CHECKED 2026 Feb 08
 " Deprecated Quads
-" List of DT_SYNONYM or DT_DEPRECATED Quads in MuttVars in mutt_config.c
+" List of DT_SYNONYM or DT_DEPRECATED Quads in mutt_config.c, */config.c
 call s:boolQuadGen('Quad', [
 	\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
 	\ ], 1)
 
-" __CHECKED 2024 Oct 12
-" List of DT_NUMBER or DT_LONG in MuttVars in mutt_config.c
+" CHECKED 2026 Feb 08
+" List of DT_NUMBER or DT_LONG in mutt_config.c, */config.c
 syntax keyword muttrcVarNum	skipwhite contained
-	\ debug_level header_cache_compress_level history imap_fetch_chunk_size imap_keep_alive
-	\ imap_pipeline_depth imap_poll_timeout mail_check mail_check_stats_interval menu_context
-	\ net_inc nm_db_limit nm_open_timeout nm_query_window_current_position
-	\ nm_query_window_duration nntp_context nntp_poll pager_context pager_index_lines
-	\ pager_read_delay pager_skip_quoted_context pgp_timeout pop_check_interval read_inc
-	\ reflow_wrap save_history score_threshold_delete score_threshold_flag score_threshold_read
-	\ search_context sendmail_wait sidebar_component_depth sidebar_width sleep_time
-	\ smime_timeout socket_timeout ssl_min_dh_prime_bits timeout time_inc
-	\ toggle_quoted_show_levels wrap wrap_headers write_inc
+	\ compose_preview_min_rows debug_level header_cache_compress_level history
+	\ imap_fetch_chunk_size imap_keep_alive imap_pipeline_depth imap_poll_timeout mail_check
+	\ mail_check_stats_interval menu_context net_inc nm_db_limit nm_open_timeout
+	\ nm_query_window_current_position nm_query_window_duration nntp_context nntp_poll
+	\ pager_context pager_index_lines pager_read_delay pager_skip_quoted_context pgp_timeout
+	\ pop_check_interval read_inc reflow_wrap save_history score_threshold_delete
+	\ score_threshold_flag score_threshold_read search_context sendmail_wait
+	\ sidebar_component_depth sidebar_width sleep_time smime_timeout socket_timeout
+	\ ssl_min_dh_prime_bits timeout time_inc toggle_quoted_show_levels wrap wrap_headers
+	\ write_inc
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " __CHECKED 2024 Oct 12
 " Deprecated Numbers
