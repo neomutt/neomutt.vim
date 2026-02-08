@@ -647,7 +647,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ alias_sort browser_sort pgp_key_sort sidebar_sort sort sort_aux
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of commands in mutt_commands in commands.c
 " Remember to remove hooks, they have already been dealt with
 syntax keyword muttrcCommand	skipwhite alias nextgroup=muttrcAliasGroupDef,muttrcAliasKey,muttrcAliasNL
@@ -660,17 +660,20 @@ syntax keyword muttrcCommand	skipwhite spam nextgroup=muttrcSpamPattern
 syntax keyword muttrcCommand	skipwhite unalias nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 syntax keyword muttrcCommand	skipwhite unhook nextgroup=muttrcHooks
 syntax keyword muttrcCommand	skipwhite
-	\ alternative_order attachments auto_view cd echo finish hdr_order ifdef ifndef ignore lua
-	\ lua-source mailboxes mailto_allow mime_lookup my_hdr named-mailboxes push score setenv
-	\ sidebar_pin sidebar_unpin source subjectrx subscribe-to tag-formats tag-transforms
-	\ unalternative_order unattachments unauto_view unbind uncolor unhdr_order unignore unmacro
-	\ unmailboxes unmailto_allow unmime_lookup unmono unmy_hdr unscore unsetenv unsubjectrx
-	\ unsubscribe-from unvirtual-mailboxes version virtual-mailboxes
+	\ alternative-order attachments auto-view cd echo finish header-order hooks ifdef ifndef
+	\ ignore lua lua-source mailboxes mailto-allow mime-lookup my-header named-mailboxes push
+	\ score setenv sidebar-pin sidebar-unpin source subject-regex subscribe-to tag-formats
+	\ tag-transforms unalternative-order unattachments unauto-view unbind uncolor unheader-order
+	\ unignore unmacro unmailboxes unmailto-allow unmime-lookup unmono unmy-header unscore
+	\ unsetenv unsubject-regex unsubscribe-from version
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated commands
 syntax keyword muttrcDeprecatedCommand skipwhite
-	\ sidebar_whitelist unsidebar_whitelist
+	\ alternative_order auto_view hdr_order mailto_allow mime_lookup my_hdr pgp-hook sidebar_pin
+	\ sidebar_unpin sidebar_whitelist subjectrx unalternative_order unauto_view unhdr_order
+	\ unmailto_allow unmime_lookup unmy_hdr unsidebar_whitelist unsubjectrx unvirtual-mailboxes
+	\ virtual-mailboxes
 
 function! s:genFunctions(functions)
 	for f in a:functions
