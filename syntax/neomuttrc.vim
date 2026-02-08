@@ -518,7 +518,7 @@ call s:boolQuadGen('Quad', [
 	\ 'post_moderated', 'print', 'quit', 'recall', 'reply_to', 'ssl_starttls'
 	\ ], 0)
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated Quads
 " List of DT_SYNONYM or DT_DEPRECATED Quads in MuttVars in mutt_config.c
 call s:boolQuadGen('Quad', [
