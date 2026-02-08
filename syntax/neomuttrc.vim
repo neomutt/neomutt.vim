@@ -256,11 +256,12 @@ syntax match muttrcEscapedVariable	contained "\\\$[a-zA-Z_-]\+"
 syntax match muttrcBadAction	contained "[^<>]\+" contains=muttrcEmail
 syntax match muttrcAction		contained "<[^>]\{-}>" contains=muttrcBadAction,muttrcFunction,muttrcKeyName
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
+" See HooksCommands in hooks/commands.c
 " First, hooks that take regular expressions:
 syntax match  muttrcRXHookNot		contained /!\s*/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
 syntax match  muttrcRXHookNoRegex	contained /-noregex/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
-syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|open\|pgp\|shutdown\|startup\|timeout\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
+syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|open\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
 syntax match  muttrcRXHooks	/\<\%(folder\|mbox\)-hook\>/ skipwhite nextgroup=muttrcRXHookNoRegex,muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
 
 " Now, hooks that take patterns
