@@ -219,9 +219,9 @@ syntax match muttrcVarEqualsStrftimeFormat      contained skipwhite "=" nextgrou
 
 syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 12
-" List of the different screens in NeoMutt (see MenuNames in menu/type.c)
-syntax keyword muttrcMenu contained alias attach autocrypt browser compose dialog editor generic index key_select_pgp key_select_smime pager pgp postpone query smime
+" CHECKED 2026 Feb 08
+" List of the different screens in NeoMutt (search for km_register_menu())
+syntax keyword muttrcMenu contained alias attach autocrypt browser compose dialog editor generic index pager pgp postpone query sidebar smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
 syntax match muttrcMenuCommas /,/ contained
 
