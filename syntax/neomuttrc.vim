@@ -415,13 +415,6 @@ syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
 
-" __CHECKED 2024 Oct 12
-" List of fields in ComposeColorFields in color/command.c
-syntax keyword muttrcColorComposeField skipwhite contained
-	\ header security_both security_encrypt security_none security_sign
-	\ nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
-syntax region muttrcColorLine keepend start=/^\s*color\s\+/ skip=+\\$+ end=+$+ contains=muttrcColorKeyword,muttrcColorAttrib,muttrcComment,muttrcUnHighlightSpace
-
 function! s:boolQuadGen(type, vars, deprecated)
 	let l:novars = copy(a:vars)
 	call map(l:novars, '"no" . v:val')
