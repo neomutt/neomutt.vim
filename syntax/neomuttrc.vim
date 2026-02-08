@@ -550,7 +550,7 @@ syntax keyword muttrcVarNum	skipwhite contained
 syntax keyword muttrcVarDeprecatedNum
 	\ connect_timeout header_cache_pagesize imap_keepalive pop_checkinterval skip_quoted_offset
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of DT_EXPANDO in mutt_config.c, */config.c
 " See s:escapesConditionals
 syntax match   muttrcVarString	contained skipwhite 'my_[a-zA-Z0-9_]\+' nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
@@ -586,15 +586,15 @@ syntax keyword muttrcVarString	contained skipwhite
 syntax keyword muttrcVarString	contained skipwhite new_mail_command status_format ts_icon_format ts_status_format nextgroup=muttrcVarEqualsStatusFormat
 syntax keyword muttrcVarString	contained skipwhite date_format nextgroup=muttrcVarEqualsStrftimeFormat
 
-" __CHECKED 2024 Oct 12
-" List of DT_STRING in mutt_config.c, */config.c
+" CHECKED 2026 Feb 08
+" List of DT_STRING, DT_SLIST in mutt_config.c, */config.c
 syntax keyword muttrcVarString	contained skipwhite
 	\ abort_key arrow_string assumed_charset attach_charset attach_sep attribution_locale
 	\ charset config_charset content_type crypt_protected_headers_subject default_hook
 	\ dsn_notify dsn_return empty_subject header_cache_backend header_cache_compress_method
 	\ hidden_tags hostname imap_authenticators imap_delim_chars imap_headers imap_login
 	\ imap_pass imap_user mailcap_path maildir_field_delimiter mark_macro_prefix mh_seq_flagged
-	\ mh_seq_replied mh_seq_unseen newsgroups_charset newsrc news_server nm_config_profile
+	\ mh_seq_replied mh_seq_unseen newsgroups_charset news_server nm_config_profile
 	\ nm_default_url nm_exclude_tags nm_flagged_tag nm_query_type nm_query_window_current_search
 	\ nm_query_window_or_terms nm_query_window_timebase nm_record_tags nm_replied_tag
 	\ nm_unread_tag nntp_authenticators nntp_pass nntp_user pgp_default_key pgp_sign_as pipe_sep
@@ -608,7 +608,7 @@ syntax keyword muttrcVarString	contained skipwhite
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedString
 	\ abort_noattach_regexp attach_keyword attribution escape forw_format hdr_format indent_str
-	\ message_cachedir mixmaster mix_entry_format msg_format nm_default_uri
+	\ inews message_cachedir mixmaster mix_entry_format msg_format nm_default_uri
 	\ pgp_clearsign_command pgp_getkeys_command pgp_self_encrypt_as post_indent_str
 	\ post_indent_string print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
 	\ spoolfile tmpdir vfolder_format visual xterm_icon xterm_title
@@ -632,7 +632,7 @@ syntax keyword muttrcVarString	contained skipwhite
 " List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
 syntax keyword muttrcVarString	contained skipwhite
 	\ account_command display_filter editor external_search_command imap_oauth_refresh_command
-	\ inews ispell mime_type_query_command new_mail_command pager pop_oauth_refresh_command
+	\ ispell mime_type_query_command new_mail_command pager pop_oauth_refresh_command
 	\ print_command query_command sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
