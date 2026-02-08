@@ -137,7 +137,7 @@ call s:escapesConditionals('HistoryFormat', '[Cs]', 1, 0)
 " Ref: IndexFormatDef in mutt_config.c
 call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ([{]\|@\i\+@\|G[a-zA-Z0-9]\|Fp\=\|z[cst]\|cr\=', 1, 1)
 " Ref: MsgIdFormatDef in send/config.c
-call s:escapesConditionals('MsgIdFormatDef', '[cdfHMmprSxYz]', 0, 0)
+call s:escapesConditionals('MsgIdFormat', '[cdfHMmprSxYz]', 0, 0)
 " Ref: NntpFormatDef in nntp/config.c
 call s:escapesConditionals('NntpFormat', '[aPpSsu]', 0, 0)
 " Ref: PatternFormatDef in pattern/config.c
@@ -173,6 +173,10 @@ syntax region muttrcHistoryFormatString       contained skipwhite keepend start=
 syntax region muttrcHistoryFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcHistoryFormatEscapes,muttrcHistoryFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcIndexFormatString         contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcIndexFormatString         contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcMsgIdFormatString         contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcMsgIdFormatEscapes,muttrcMsgIdFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcMsgIdFormatString         contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcMsgIdFormatEscapes,muttrcMsgIdFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcNntpFormatString          contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcNntpFormatEscapes,muttrcNntpFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcNntpFormatString          contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcNntpFormatEscapes,muttrcNntpFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPatternFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPatternFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPgpCommandFormatString    contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPgpCommandFormatEscapes,muttrcPgpCommandFormatConditionals,muttrcVariable,muttrcFormatErrors          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
@@ -208,6 +212,8 @@ syntax match muttrcVarEqualsGreetingFormat      contained skipwhite "=" nextgrou
 syntax match muttrcVarEqualsGroupIndexFormat    contained skipwhite "=" nextgroup=muttrcGroupIndexFormatString
 syntax match muttrcVarEqualsHistoryFormat       contained skipwhite "=" nextgroup=muttrcHistoryFormatString
 syntax match muttrcVarEqualsIndexFormat         contained skipwhite "=" nextgroup=muttrcIndexFormatString
+syntax match muttrcVarEqualsMsgIdFormat       contained skipwhite "=" nextgroup=muttrcMsgIdFormatString
+syntax match muttrcVarEqualsNntpFormat       contained skipwhite "=" nextgroup=muttrcNntpFormatString
 syntax match muttrcVarEqualsPatternFormat       contained skipwhite "=" nextgroup=muttrcPatternFormatString
 syntax match muttrcVarEqualsPgpCommandFormat    contained skipwhite "=" nextgroup=muttrcPgpCommandFormatString
 syntax match muttrcVarEqualsPgpEntryFormat      contained skipwhite "=" nextgroup=muttrcPgpEntryFormatString
@@ -545,9 +551,7 @@ syntax keyword muttrcVarDeprecatedNum
 	\ connect_timeout header_cache_pagesize imap_keepalive pop_checkinterval skip_quoted_offset
 
 " __CHECKED 2024 Oct 12
-" List of DT_STRING in MuttVars in mutt_config.c
-" Special cases first, and all the rest at the end
-" Formats themselves must be updated in their respective groups
+" List of DT_EXPANDO in mutt_config.c, */config.c
 " See s:escapesConditionals
 syntax match   muttrcVarString	contained skipwhite 'my_[a-zA-Z0-9_]\+' nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax keyword muttrcVarString	contained skipwhite alias_format nextgroup=muttrcVarEqualsAliasFormat
@@ -556,11 +560,14 @@ syntax keyword muttrcVarString	contained skipwhite autocrypt_acct_format nextgro
 syntax keyword muttrcVarString	contained skipwhite compose_format nextgroup=muttrcVarEqualsComposeFormat
 syntax keyword muttrcVarString	contained skipwhite folder_format mailbox_folder_format nextgroup=muttrcVarEqualsFolderFormat
 syntax keyword muttrcVarString	contained skipwhite greeting nextgroup=muttrcVarEqualsGreetingFormat
+syntax keyword muttrcVarString	contained skipwhite group_index_format nextgroup=muttrcVarEqualsGroupIndexFormat
 syntax keyword muttrcVarString	contained skipwhite history_format nextgroup=muttrcVarEqualsHistoryFormat
 syntax keyword muttrcVarString	contained skipwhite
 	\ attribution_intro attribution_trailer forward_attribution_intro forward_attribution_trailer
 	\ forward_format indent_string index_format message_format pager_format
 	\ nextgroup=muttrcVarEqualsIndexFormat
+syntax keyword muttrcVarString	contained skipwhite message_id_format nextgroup=muttrcVarEqualsMsgIdFormat
+syntax keyword muttrcVarString	contained skipwhite inews_command newsrc nextgroup=muttrcVarEqualsNntpFormat
 syntax keyword muttrcVarString	contained skipwhite pattern_format nextgroup=muttrcVarEqualsPatternFormat
 syntax keyword muttrcVarString	contained skipwhite
 	\ pgp_clear_sign_command pgp_decode_command pgp_decrypt_command pgp_encrypt_only_command
@@ -570,15 +577,17 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ nextgroup=muttrcVarEqualsPgpCommandFormat
 syntax keyword muttrcVarString	contained skipwhite pgp_entry_format nextgroup=muttrcVarEqualsPgpEntryFormat
 syntax keyword muttrcVarString	contained skipwhite query_format nextgroup=muttrcVarEqualsQueryFormat
+syntax keyword muttrcVarString	contained skipwhite sidebar_format nextgroup=muttrcVarEqualsSidebarFormat
 syntax keyword muttrcVarString	contained skipwhite
 	\ smime_decrypt_command smime_encrypt_command smime_get_cert_command
 	\ smime_get_cert_email_command smime_get_signer_cert_command smime_import_cert_command
 	\ smime_pk7out_command smime_sign_command smime_verify_command smime_verify_opaque_command
 	\ nextgroup=muttrcVarEqualsSmimeCommandFormat
-syntax keyword muttrcVarString	contained skipwhite status_format ts_icon_format ts_status_format nextgroup=muttrcVarEqualsStatusFormat
+syntax keyword muttrcVarString	contained skipwhite new_mail_command status_format ts_icon_format ts_status_format nextgroup=muttrcVarEqualsStatusFormat
 syntax keyword muttrcVarString	contained skipwhite date_format nextgroup=muttrcVarEqualsStrftimeFormat
-syntax keyword muttrcVarString	contained skipwhite group_index_format nextgroup=muttrcVarEqualsGroupIndexFormat
-syntax keyword muttrcVarString	contained skipwhite sidebar_format nextgroup=muttrcVarEqualsSidebarFormat
+
+" __CHECKED 2024 Oct 12
+" List of DT_STRING in mutt_config.c, */config.c
 syntax keyword muttrcVarString	contained skipwhite
 	\ abort_key arrow_string assumed_charset attach_charset attach_sep attribution_locale
 	\ charset config_charset content_type crypt_protected_headers_subject default_hook
@@ -803,6 +812,8 @@ highlight def link muttrcGreetingFormatEscapes		muttrcEscape
 highlight def link muttrcGroupIndexFormatEscapes	muttrcEscape
 highlight def link muttrcHistoryFormatEscapes		muttrcEscape
 highlight def link muttrcIndexFormatEscapes		muttrcEscape
+highlight def link muttrcMsgIdFormatEscapes		muttrcEscape
+highlight def link muttrcNntpFormatEscapes		muttrcEscape
 highlight def link muttrcPatternFormatEscapes		muttrcEscape
 highlight def link muttrcPgpCommandFormatEscapes	muttrcEscape
 highlight def link muttrcPgpEntryFormatEscapes		muttrcEscape
@@ -823,6 +834,8 @@ highlight def link muttrcGreetingFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcGroupIndexFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcHistoryFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcIndexFormatConditionals	 muttrcFormatConditionals2
+highlight def link muttrcMsgIdFormatConditionals	 muttrcFormatConditionals2
+highlight def link muttrcNntpFormatConditionals		 muttrcFormatConditionals2
 highlight def link muttrcPatternFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcPgpCommandFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcPgpEntryFormatConditionals	 muttrcFormatConditionals2
@@ -843,6 +856,8 @@ highlight def link muttrcGreetingFormatString		muttrcString
 highlight def link muttrcGroupIndexFormatString		muttrcString
 highlight def link muttrcHistoryFormatString		muttrcString
 highlight def link muttrcIndexFormatString		muttrcString
+highlight def link muttrcMsgIdFormatString		muttrcString
+highlight def link muttrcNntpFormatString		muttrcString
 highlight def link muttrcPatternFormatString		muttrcString
 highlight def link muttrcPgpCommandFormatString		muttrcString
 highlight def link muttrcPgpEntryFormatString		muttrcString
