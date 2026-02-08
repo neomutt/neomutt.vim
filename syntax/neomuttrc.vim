@@ -491,7 +491,7 @@ call s:boolQuadGen('Bool', [
 	\ 'virtual_spool_file', 'wait_key', 'weed', 'wrap_search', 'write_bcc', 'x_comment_to'
 	\ ], 0)
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated Bools
 " List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
 call s:boolQuadGen('Bool', [
@@ -503,8 +503,9 @@ call s:boolQuadGen('Bool', [
 	\ 'implicit_autoview', 'include_onlyfirst', 'metoo', 'mime_subject', 'pgp_autoencrypt',
 	\ 'pgp_autoinline', 'pgp_autosign', 'pgp_auto_traditional', 'pgp_create_traditional',
 	\ 'pgp_replyencrypt', 'pgp_replyinline', 'pgp_replysign', 'pgp_replysignencrypted',
-	\ 'pgp_self_encrypt_as', 'reverse_realname', 'smime_self_encrypt_as', 'ssl_usesystemcerts',
-	\ 'use_8bitmime', 'virtual_spoolfile', 'xterm_set_titles'
+	\ 'reverse_realname', 'ssl_usesystemcerts', 'ssl_use_sslv2', 'ssl_use_sslv3',
+	\ 'ssl_use_tlsv1', 'ssl_use_tlsv1_1', 'use_8bitmime', 'virtual_spoolfile',
+	\ 'xterm_set_titles'
 	\ ], 1)
 
 " __CHECKED 2024 Oct 12
