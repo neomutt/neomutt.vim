@@ -636,7 +636,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of DT_REGEX
 syntax keyword muttrcVarString	contained skipwhite
 	\ abort_noattach_regex gecos_mask mask pgp_decryption_okay pgp_good_sign quote_regex
@@ -644,7 +644,7 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " List of DT_SORT
 syntax keyword muttrcVarString	contained skipwhite
-	\ pgp_sort_keys sidebar_sort_method sort sort_alias sort_aux sort_browser
+	\ alias_sort browser_sort pgp_key_sort sidebar_sort sort sort_aux
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
 " __CHECKED 2024 Oct 12
