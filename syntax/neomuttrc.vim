@@ -117,9 +117,9 @@ function! s:escapesConditionals(baseName, sequence, padding, conditional)
 	endif
 endfunction
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 07
 " Ref: AliasFormatDef in alias/config.c
-call s:escapesConditionals('AliasFormat', '[acfnrtY]', 1, 0)
+call s:escapesConditionals('AliasFormat', '[AaCEfiNtY]', 1, 0)
 " Ref: AttachFormatDef in mutt_config.c
 call s:escapesConditionals('AttachFormat', '[CcDdeFfIMmnQsTtuX]', 1, 1)
 " Ref: AutocryptFormatDef in autocrypt/config.c
@@ -135,7 +135,11 @@ call s:escapesConditionals('GroupIndexFormat', '[aCdfMNnps]', 1, 0)
 " Ref: HistoryFormatDef in history/config.c
 call s:escapesConditionals('HistoryFormat', '[Cs]', 1, 0)
 " Ref: IndexFormatDef in mutt_config.c
-call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ(<[{]\|@\i\+@\|G[a-zA-Z]\+\|Fp\=\|z[cst]\|cr\=', 1, 1)
+call s:escapesConditionals('IndexFormat', '[AaBbCDdEefgHIiJKLlMmNnOPqRrSsTtuvWXxYyZ([{]\|@\i\+@\|G[a-zA-Z0-9]\|Fp\=\|z[cst]\|cr\=', 1, 1)
+" Ref: MsgIdFormatDef in send/config.c
+call s:escapesConditionals('MsgIdFormat', '[cdfHMmprSxYz]', 0, 0)
+" Ref: NntpFormatDef in nntp/config.c
+call s:escapesConditionals('NntpFormat', '[aPpSsu]', 0, 0)
 " Ref: PatternFormatDef in pattern/config.c
 call s:escapesConditionals('PatternFormat', '[den]', 1, 0)
 " Ref: PgpCommandFormatDef in ncrypt/config.c
@@ -143,12 +147,12 @@ call s:escapesConditionals('PgpCommandFormat', '[afprs]', 0, 1)
 " Ref: PgpEntryFormatDef in ncrypt/config.c
 call s:escapesConditionals('PgpEntryFormat', '[AaCcFfIiKkLlnptu[]', 1, 1)
 " Ref: QueryFormatDef in alias/config.c
-call s:escapesConditionals('QueryFormat', '[acentY]', 1, 1)
+call s:escapesConditionals('QueryFormat', '[ACEiNtY]', 1, 1)
 " Ref: SidebarFormatDef in sidebar/config.c
 call s:escapesConditionals('SidebarFormat', '[!aBDdFLNnoprStZ]', 1, 1)
 " Ref: SmimeCommandFormatDef in ncrypt/config.c
 call s:escapesConditionals('SmimeCommandFormat', '[aCcdfiks]', 0, 1)
-" Ref: StatusFormatDef in mutt_config.c
+" Ref: StatusFormatDef in index/config.c
 call s:escapesConditionals('StatusFormat', '[bDdFfhLlMmnoPpRrSsTtuVv]', 1, 1)
 
 syntax region muttrcAliasFormatString         contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcAliasFormatEscapes,muttrcAliasFormatConditionals,muttrcFormatErrors                                   nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
@@ -169,6 +173,10 @@ syntax region muttrcHistoryFormatString       contained skipwhite keepend start=
 syntax region muttrcHistoryFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcHistoryFormatEscapes,muttrcHistoryFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcIndexFormatString         contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcIndexFormatString         contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcIndexFormatEscapes,muttrcIndexFormatConditionals,muttrcFormatErrors,muttrcTimeEscapes                 nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcMsgIdFormatString         contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcMsgIdFormatEscapes,muttrcMsgIdFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcMsgIdFormatString         contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcMsgIdFormatEscapes,muttrcMsgIdFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcNntpFormatString          contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcNntpFormatEscapes,muttrcNntpFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
+syntax region muttrcNntpFormatString          contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcNntpFormatEscapes,muttrcNntpFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPatternFormatString       contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPatternFormatString       contained skipwhite keepend start=+'+ skip=+\\'+ end=+'+ contains=muttrcPatternFormatEscapes,muttrcPatternFormatConditionals,muttrcFormatErrors                               nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax region muttrcPgpCommandFormatString    contained skipwhite keepend start=+"+ skip=+\\"+ end=+"+ contains=muttrcPgpCommandFormatEscapes,muttrcPgpCommandFormatConditionals,muttrcVariable,muttrcFormatErrors          nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
@@ -204,6 +212,8 @@ syntax match muttrcVarEqualsGreetingFormat      contained skipwhite "=" nextgrou
 syntax match muttrcVarEqualsGroupIndexFormat    contained skipwhite "=" nextgroup=muttrcGroupIndexFormatString
 syntax match muttrcVarEqualsHistoryFormat       contained skipwhite "=" nextgroup=muttrcHistoryFormatString
 syntax match muttrcVarEqualsIndexFormat         contained skipwhite "=" nextgroup=muttrcIndexFormatString
+syntax match muttrcVarEqualsMsgIdFormat       contained skipwhite "=" nextgroup=muttrcMsgIdFormatString
+syntax match muttrcVarEqualsNntpFormat       contained skipwhite "=" nextgroup=muttrcNntpFormatString
 syntax match muttrcVarEqualsPatternFormat       contained skipwhite "=" nextgroup=muttrcPatternFormatString
 syntax match muttrcVarEqualsPgpCommandFormat    contained skipwhite "=" nextgroup=muttrcPgpCommandFormatString
 syntax match muttrcVarEqualsPgpEntryFormat      contained skipwhite "=" nextgroup=muttrcPgpEntryFormatString
@@ -215,9 +225,9 @@ syntax match muttrcVarEqualsStrftimeFormat      contained skipwhite "=" nextgrou
 
 syntax match muttrcVPrefix contained /[?&]/ nextgroup=muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 12
-" List of the different screens in NeoMutt (see MenuNames in menu/type.c)
-syntax keyword muttrcMenu contained alias attach autocrypt browser compose dialog editor generic index key_select_pgp key_select_smime pager pgp postpone query smime
+" CHECKED 2026 Feb 08
+" List of the different screens in NeoMutt (search for km_register_menu())
+syntax keyword muttrcMenu contained alias attach autocrypt browser compose dialog editor generic index pager pgp postpone query sidebar smime
 syntax match muttrcMenuList "\S\+" contained contains=muttrcMenu
 syntax match muttrcMenuCommas /,/ contained
 
@@ -252,11 +262,12 @@ syntax match muttrcEscapedVariable	contained "\\\$[a-zA-Z_-]\+"
 syntax match muttrcBadAction	contained "[^<>]\+" contains=muttrcEmail
 syntax match muttrcAction		contained "<[^>]\{-}>" contains=muttrcBadAction,muttrcFunction,muttrcKeyName
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
+" See HooksCommands in hooks/commands.c
 " First, hooks that take regular expressions:
 syntax match  muttrcRXHookNot		contained /!\s*/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
 syntax match  muttrcRXHookNoRegex	contained /-noregex/ skipwhite nextgroup=muttrcRXHookString,muttrcRXHookStringNL
-syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|open\|pgp\|shutdown\|startup\|timeout\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
+syntax match  muttrcRXHooks	/\<\%(account\|append\|close\|crypt\|open\)-hook\>/ skipwhite nextgroup=muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
 syntax match  muttrcRXHooks	/\<\%(folder\|mbox\)-hook\>/ skipwhite nextgroup=muttrcRXHookNoRegex,muttrcRXHookNot,muttrcRXHookString,muttrcRXHookStringNL
 
 " Now, hooks that take patterns
@@ -315,20 +326,20 @@ syntax match muttrcAliasNL		contained /\s*\\$/ skipwhite skipnl nextgroup=muttrc
 syntax match muttrcUnAliasKey	contained "\s*\w\+\s*" skipwhite nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 syntax match muttrcUnAliasNL	contained /\s*\\$/ skipwhite skipnl nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of letters in Flags in pattern/flags.c
-" Parameter: none
+" Parameter: none - EAT_NONE
 syntax match muttrcSimplePat contained "!\?\^\?[~][ADEFGgklNOPpQRSTUuVv#$=]"
-" Parameter: range
+" Parameter: range - EAT_MESSAGE_RANGE, EAT_RANGE
 syntax match muttrcSimplePat contained "!\?\^\?[~][mnXz]\s*\%([<>-][0-9]\+[kM]\?\|[0-9]\+[kM]\?[-]\%([0-9]\+[kM]\?\)\?\)"
-" Parameter: date
+" Parameter: date - EAT_DATE
 syntax match muttrcSimplePat contained "!\?\^\?[~][dr]\s*\%(\%(-\?[0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)*\)\|\%(\%([0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)*\)-\%([0-9]\{1,2}\%(/[0-9]\{1,2}\%(/[0-9]\{2}\%([0-9]\{2}\)\?\)\?\)\?\%([+*-][0-9]\+[ymwd]\)\?\)\?\)\|\%([<>=][0-9]\+[ymwd]\)\|\%(`[^`]\+`\)\|\%(\$[a-zA-Z0-9_-]\+\)\)" contains=muttrcShellString,muttrcVariable
-" Parameter: regex
+" Parameter: regex - EAT_QUERY, EAT_REGEX
 syntax match muttrcSimplePat contained "!\?\^\?[~][BbCcefHhIiKLMstwxYy]\s*" nextgroup=muttrcSimplePatRXContainer
-" Parameter: pattern
+" Parameter: pattern - EAT_GROUP, EAT_REGEX
 syntax match muttrcSimplePat contained "!\?\^\?[%][BbCcefHhiLstxy]\s*" nextgroup=muttrcSimplePatString
-" Parameter: pattern
-syntax match muttrcSimplePat contained "!\?\^\?[=][bcCefhHiLstxy]\s*" nextgroup=muttrcSimplePatString
+" Parameter: pattern - EAT_STRING, EAT_REGEX
+syntax match muttrcSimplePat contained "!\?\^\?[=][bcCefhHiLstxy\/]\s*" nextgroup=muttrcSimplePatString
 syntax region muttrcSimplePat contained keepend start=+!\?\^\?[~](+ end=+)+ contains=muttrcSimplePat
 
 "syn match muttrcSimplePat contained /'[^~=%][^']*/ contains=muttrcRXString
@@ -372,9 +383,9 @@ syntax match   muttrcColor	contained "#[0-9a-fA-F]\{6}\>"
 syntax match muttrcColorRXNL	contained skipnl "\s*\\$" nextgroup=muttrcColorRXPat,muttrcColorRXNL
 syntax match muttrcColorBG	contained /\s*[#$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorRXPat,muttrcColorRXNL
 syntax match muttrcColorBGNL	contained skipnl "\s*\\$" nextgroup=muttrcColorBG,muttrcColorBGNL
-syntax match muttrcColorFG	contained /\s*[#$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorBG,muttrcColorBGNL
+syntax match muttrcColorFG	contained /\s*\%(\%(bold\|italic\|none\|normal\|reverse\|standout\|underline\)\>\)\@![#$]\?\w\+/ contains=muttrcColor,muttrcVariable,muttrcUnHighlightSpace nextgroup=muttrcColorBG,muttrcColorBGNL
 syntax match muttrcColorFGNL	contained skipnl "\s*\\$" nextgroup=muttrcColorFG,muttrcColorFGNL
-syntax match muttrcColorContext	contained /\s*[#$]\?\w\+/ contains=muttrcColorField,muttrcVariable,muttrcUnHighlightSpace,muttrcColorCompose nextgroup=muttrcColorFG,muttrcColorFGNL
+syntax match muttrcColorContext	contained /\s*[#$]\?\w\+/ contains=muttrcColorField,muttrcVariable,muttrcUnHighlightSpace,muttrcColorCompose nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
 syntax match muttrcColorNL	contained skipnl "\s*\\$" nextgroup=muttrcColorContext,muttrcColorNL,muttrcColorCompose
 syntax match muttrcColorKeyword	contained /^\s*color\s\+/ nextgroup=muttrcColorContext,muttrcColorNL,muttrcColorCompose
 " And now color's brother:
@@ -390,10 +401,12 @@ syntax match muttrcUnColorKeyword	contained skipwhite /^\s*uncolor\s\+/ nextgrou
 syntax region muttrcUnColorLine keepend start=+^\s*uncolor\s+ skip=+\\$+ end=+$+ contains=muttrcUnColorKeyword,muttrcComment,muttrcUnHighlightSpace
 
 syntax keyword muttrcMonoAttrib	contained bold italic none normal reverse standout underline
+syntax match muttrcColorAttrib	contained /\s*\<\%(bold\|italic\|none\|normal\|reverse\|standout\|underline\)\>/ nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
+syntax match muttrcColorAttribNL	contained skipnl "\s*\\$" nextgroup=muttrcColorAttrib,muttrcColorAttribNL,muttrcColorFG,muttrcColorFGNL
 syntax keyword muttrcMono	contained mono		skipwhite nextgroup=muttrcColorField,muttrcColorCompose
 syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoAttrib contains=muttrcMono
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of fields in ColorFields in color/command.c
 syntax keyword muttrcColorField skipwhite contained
 	\ attachment attach_headers body bold error hdrdefault header index index_author
@@ -407,13 +420,6 @@ syntax keyword muttrcColorField skipwhite contained
 syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
 syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
-
-" CHECKED 2024 Oct 12
-" List of fields in ComposeColorFields in color/command.c
-syntax keyword muttrcColorComposeField skipwhite contained
-	\ header security_both security_encrypt security_none security_sign
-	\ nextgroup=muttrcColorFG,muttrcColorFGNL
-syntax region muttrcColorLine keepend start=/^\s*color\s\+/ skip=+\\$+ end=+$+ contains=muttrcColorKeyword,muttrcComment,muttrcUnHighlightSpace
 
 function! s:boolQuadGen(type, vars, deprecated)
 	let l:novars = copy(a:vars)
@@ -436,8 +442,8 @@ function! s:boolQuadGen(type, vars, deprecated)
 
 endfunction
 
-" CHECKED 2024 Oct 12
-" List of DT_BOOL in MuttVars in mutt_config.c
+" CHECKED 2026 Feb 08
+" List of DT_BOOL in mutt_config.c, */config.c
 call s:boolQuadGen('Bool', [
 	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'ask_bcc',
 	\ 'ask_cc', 'ask_followup_to', 'ask_x_comment_to', 'attach_save_without_prompting',
@@ -445,10 +451,11 @@ call s:boolQuadGen('Bool', [
 	\ 'beep', 'beep_new', 'bounce_delivered', 'braille_friendly',
 	\ 'browser_abbreviate_mailboxes', 'browser_sort_dirs_first', 'change_folder_next',
 	\ 'check_mbox_size', 'check_new', 'collapse_all', 'collapse_flagged', 'collapse_unread',
-	\ 'color_directcolor', 'compose_confirm_detach_first', 'compose_show_user_headers',
-	\ 'confirm_append', 'confirm_create', 'copy_decode_weed', 'count_alternatives',
-	\ 'crypt_auto_encrypt', 'crypt_auto_pgp', 'crypt_auto_sign', 'crypt_auto_smime',
-	\ 'crypt_confirm_hook', 'crypt_encryption_info', 'crypt_opportunistic_encrypt',
+	\ 'color_directcolor', 'compose_confirm_detach_first', 'compose_preview_above_attachments',
+	\ 'compose_show_preview', 'compose_show_user_headers', 'confirm_append', 'confirm_create',
+	\ 'confirm_empty_to', 'copy_decode_weed', 'count_alternatives', 'crypt_auto_encrypt',
+	\ 'crypt_auto_pgp', 'crypt_auto_sign', 'crypt_auto_smime', 'crypt_confirm_hook',
+	\ 'crypt_encryption_info', 'crypt_opportunistic_encrypt',
 	\ 'crypt_opportunistic_encrypt_strong_keys', 'crypt_protected_headers_read',
 	\ 'crypt_protected_headers_save', 'crypt_protected_headers_weed',
 	\ 'crypt_protected_headers_write', 'crypt_reply_encrypt', 'crypt_reply_sign',
@@ -482,8 +489,7 @@ call s:boolQuadGen('Bool', [
 	\ 'sidebar_visible', 'sig_dashes', 'sig_on_top', 'size_show_bytes', 'size_show_fractions',
 	\ 'size_show_mb', 'size_units_on_left', 'smart_wrap', 'smime_ask_cert_label',
 	\ 'smime_decrypt_use_default_key', 'smime_is_default', 'smime_self_encrypt', 'sort_re',
-	\ 'ssl_force_tls', 'ssl_use_sslv2', 'ssl_use_sslv3', 'ssl_use_system_certs',
-	\ 'ssl_use_tlsv1', 'ssl_use_tlsv1_1', 'ssl_use_tlsv1_2', 'ssl_use_tlsv1_3',
+	\ 'ssl_force_tls', 'ssl_use_system_certs', 'ssl_use_tlsv1_2', 'ssl_use_tlsv1_3',
 	\ 'ssl_verify_dates', 'ssl_verify_host', 'ssl_verify_partial_chains', 'status_on_top',
 	\ 'strict_threads', 'suspend', 'text_flowed', 'thorough_search', 'thread_received', 'tilde',
 	\ 'ts_enabled', 'tunnel_is_secure', 'uncollapse_jump', 'uncollapse_new', 'user_agent',
@@ -491,9 +497,9 @@ call s:boolQuadGen('Bool', [
 	\ 'virtual_spool_file', 'wait_key', 'weed', 'wrap_search', 'write_bcc', 'x_comment_to'
 	\ ], 0)
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated Bools
-" List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
+" List of DT_SYNONYM or DT_DEPRECATED Bools in mutt_config.c, */config.c
 call s:boolQuadGen('Bool', [
 	\ 'askbcc', 'askcc', 'ask_follow_up', 'autoedit', 'confirmappend', 'confirmcreate',
 	\ 'crypt_autoencrypt', 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime',
@@ -503,12 +509,13 @@ call s:boolQuadGen('Bool', [
 	\ 'implicit_autoview', 'include_onlyfirst', 'metoo', 'mime_subject', 'pgp_autoencrypt',
 	\ 'pgp_autoinline', 'pgp_autosign', 'pgp_auto_traditional', 'pgp_create_traditional',
 	\ 'pgp_replyencrypt', 'pgp_replyinline', 'pgp_replysign', 'pgp_replysignencrypted',
-	\ 'pgp_self_encrypt_as', 'reverse_realname', 'smime_self_encrypt_as', 'ssl_usesystemcerts',
-	\ 'use_8bitmime', 'virtual_spoolfile', 'xterm_set_titles'
+	\ 'reverse_realname', 'ssl_usesystemcerts', 'ssl_use_sslv2', 'ssl_use_sslv3',
+	\ 'ssl_use_tlsv1', 'ssl_use_tlsv1_1', 'use_8bitmime', 'virtual_spoolfile',
+	\ 'xterm_set_titles'
 	\ ], 1)
 
-" CHECKED 2024 Oct 12
-" List of DT_QUAD in MuttVars in mutt_config.c
+" CHECKED 2026 Feb 08
+" List of DT_QUAD in mutt_config.c, */config.c
 call s:boolQuadGen('Quad', [
 	\ 'abort_noattach', 'abort_nosubject', 'abort_unmodified', 'bounce', 'catchup_newsgroup',
 	\ 'copy', 'crypt_verify_sig', 'delete', 'fcc_attach', 'followup_to_poster',
@@ -517,35 +524,34 @@ call s:boolQuadGen('Quad', [
 	\ 'post_moderated', 'print', 'quit', 'recall', 'reply_to', 'ssl_starttls'
 	\ ], 0)
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated Quads
-" List of DT_SYNONYM or DT_DEPRECATED Quads in MuttVars in mutt_config.c
+" List of DT_SYNONYM or DT_DEPRECATED Quads in mutt_config.c, */config.c
 call s:boolQuadGen('Quad', [
 	\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
 	\ ], 1)
 
-" CHECKED 2024 Oct 12
-" List of DT_NUMBER or DT_LONG in MuttVars in mutt_config.c
+" CHECKED 2026 Feb 08
+" List of DT_NUMBER or DT_LONG in mutt_config.c, */config.c
 syntax keyword muttrcVarNum	skipwhite contained
-	\ debug_level header_cache_compress_level history imap_fetch_chunk_size imap_keep_alive
-	\ imap_pipeline_depth imap_poll_timeout mail_check mail_check_stats_interval menu_context
-	\ net_inc nm_db_limit nm_open_timeout nm_query_window_current_position
-	\ nm_query_window_duration nntp_context nntp_poll pager_context pager_index_lines
-	\ pager_read_delay pager_skip_quoted_context pgp_timeout pop_check_interval read_inc
-	\ reflow_wrap save_history score_threshold_delete score_threshold_flag score_threshold_read
-	\ search_context sendmail_wait sidebar_component_depth sidebar_width sleep_time
-	\ smime_timeout socket_timeout ssl_min_dh_prime_bits timeout time_inc
-	\ toggle_quoted_show_levels wrap wrap_headers write_inc
+	\ compose_preview_min_rows debug_level header_cache_compress_level history
+	\ imap_fetch_chunk_size imap_keep_alive imap_pipeline_depth imap_poll_timeout mail_check
+	\ mail_check_stats_interval menu_context net_inc nm_db_limit nm_open_timeout
+	\ nm_query_window_current_position nm_query_window_duration nntp_context nntp_poll
+	\ pager_context pager_index_lines pager_read_delay pager_skip_quoted_context pgp_timeout
+	\ pop_check_interval read_inc reflow_wrap save_history score_threshold_delete
+	\ score_threshold_flag score_threshold_read search_context sendmail_wait
+	\ sidebar_component_depth sidebar_width sleep_time smime_timeout socket_timeout
+	\ ssl_min_dh_prime_bits timeout time_inc toggle_quoted_show_levels wrap wrap_headers
+	\ write_inc
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated Numbers
 syntax keyword muttrcVarDeprecatedNum
 	\ connect_timeout header_cache_pagesize imap_keepalive pop_checkinterval skip_quoted_offset
 
-" CHECKED 2024 Oct 12
-" List of DT_STRING in MuttVars in mutt_config.c
-" Special cases first, and all the rest at the end
-" Formats themselves must be updated in their respective groups
+" CHECKED 2026 Feb 08
+" List of DT_EXPANDO in mutt_config.c, */config.c
 " See s:escapesConditionals
 syntax match   muttrcVarString	contained skipwhite 'my_[a-zA-Z0-9_]\+' nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 syntax keyword muttrcVarString	contained skipwhite alias_format nextgroup=muttrcVarEqualsAliasFormat
@@ -554,11 +560,14 @@ syntax keyword muttrcVarString	contained skipwhite autocrypt_acct_format nextgro
 syntax keyword muttrcVarString	contained skipwhite compose_format nextgroup=muttrcVarEqualsComposeFormat
 syntax keyword muttrcVarString	contained skipwhite folder_format mailbox_folder_format nextgroup=muttrcVarEqualsFolderFormat
 syntax keyword muttrcVarString	contained skipwhite greeting nextgroup=muttrcVarEqualsGreetingFormat
+syntax keyword muttrcVarString	contained skipwhite group_index_format nextgroup=muttrcVarEqualsGroupIndexFormat
 syntax keyword muttrcVarString	contained skipwhite history_format nextgroup=muttrcVarEqualsHistoryFormat
 syntax keyword muttrcVarString	contained skipwhite
 	\ attribution_intro attribution_trailer forward_attribution_intro forward_attribution_trailer
 	\ forward_format indent_string index_format message_format pager_format
 	\ nextgroup=muttrcVarEqualsIndexFormat
+syntax keyword muttrcVarString	contained skipwhite message_id_format nextgroup=muttrcVarEqualsMsgIdFormat
+syntax keyword muttrcVarString	contained skipwhite inews_command newsrc nextgroup=muttrcVarEqualsNntpFormat
 syntax keyword muttrcVarString	contained skipwhite pattern_format nextgroup=muttrcVarEqualsPatternFormat
 syntax keyword muttrcVarString	contained skipwhite
 	\ pgp_clear_sign_command pgp_decode_command pgp_decrypt_command pgp_encrypt_only_command
@@ -568,22 +577,24 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ nextgroup=muttrcVarEqualsPgpCommandFormat
 syntax keyword muttrcVarString	contained skipwhite pgp_entry_format nextgroup=muttrcVarEqualsPgpEntryFormat
 syntax keyword muttrcVarString	contained skipwhite query_format nextgroup=muttrcVarEqualsQueryFormat
+syntax keyword muttrcVarString	contained skipwhite sidebar_format nextgroup=muttrcVarEqualsSidebarFormat
 syntax keyword muttrcVarString	contained skipwhite
 	\ smime_decrypt_command smime_encrypt_command smime_get_cert_command
 	\ smime_get_cert_email_command smime_get_signer_cert_command smime_import_cert_command
 	\ smime_pk7out_command smime_sign_command smime_verify_command smime_verify_opaque_command
 	\ nextgroup=muttrcVarEqualsSmimeCommandFormat
-syntax keyword muttrcVarString	contained skipwhite status_format ts_icon_format ts_status_format nextgroup=muttrcVarEqualsStatusFormat
+syntax keyword muttrcVarString	contained skipwhite new_mail_command status_format ts_icon_format ts_status_format nextgroup=muttrcVarEqualsStatusFormat
 syntax keyword muttrcVarString	contained skipwhite date_format nextgroup=muttrcVarEqualsStrftimeFormat
-syntax keyword muttrcVarString	contained skipwhite group_index_format nextgroup=muttrcVarEqualsGroupIndexFormat
-syntax keyword muttrcVarString	contained skipwhite sidebar_format nextgroup=muttrcVarEqualsSidebarFormat
+
+" CHECKED 2026 Feb 08
+" List of DT_STRING, DT_SLIST in mutt_config.c, */config.c
 syntax keyword muttrcVarString	contained skipwhite
 	\ abort_key arrow_string assumed_charset attach_charset attach_sep attribution_locale
 	\ charset config_charset content_type crypt_protected_headers_subject default_hook
 	\ dsn_notify dsn_return empty_subject header_cache_backend header_cache_compress_method
 	\ hidden_tags hostname imap_authenticators imap_delim_chars imap_headers imap_login
 	\ imap_pass imap_user mailcap_path maildir_field_delimiter mark_macro_prefix mh_seq_flagged
-	\ mh_seq_replied mh_seq_unseen newsgroups_charset newsrc news_server nm_config_profile
+	\ mh_seq_replied mh_seq_unseen newsgroups_charset news_server nm_config_profile
 	\ nm_default_url nm_exclude_tags nm_flagged_tag nm_query_type nm_query_window_current_search
 	\ nm_query_window_or_terms nm_query_window_timebase nm_record_tags nm_replied_tag
 	\ nm_unread_tag nntp_authenticators nntp_pass nntp_user pgp_default_key pgp_sign_as pipe_sep
@@ -597,12 +608,12 @@ syntax keyword muttrcVarString	contained skipwhite
 " Deprecated strings
 syntax keyword muttrcVarDeprecatedString
 	\ abort_noattach_regexp attach_keyword attribution escape forw_format hdr_format indent_str
-	\ message_cachedir mixmaster mix_entry_format msg_format nm_default_uri
+	\ inews message_cachedir mixmaster mix_entry_format msg_format nm_default_uri
 	\ pgp_clearsign_command pgp_getkeys_command pgp_self_encrypt_as post_indent_str
 	\ post_indent_string print_cmd quote_regexp realname reply_regexp smime_self_encrypt_as
 	\ spoolfile tmpdir vfolder_format visual xterm_icon xterm_title
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of DT_ADDRESS
 syntax keyword muttrcVarString	contained skipwhite envelope_from_address from nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " List of DT_ENUM
@@ -610,7 +621,7 @@ syntax keyword muttrcVarString	contained skipwhite mbox_type use_threads nextgro
 " List of DT_MBTABLE
 syntax keyword muttrcVarString	contained skipwhite crypt_chars flag_chars from_chars status_chars to_chars nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of DT_PATH or D_STRING_MAILBOX
 syntax keyword muttrcVarString	contained skipwhite
 	\ alias_file attach_save_dir autocrypt_dir certificate_file debug_file entropy_file folder
@@ -618,14 +629,14 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ record signature smime_ca_location smime_certificates smime_keys spool_file
 	\ ssl_ca_certificates_file ssl_client_cert tmp_dir trash
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-" List of DT_COMMAND (excluding pgp_*_command and smime_*_command)
+" List of DT_COMMAND (excluding DT_EXPANDO)
 syntax keyword muttrcVarString	contained skipwhite
 	\ account_command display_filter editor external_search_command imap_oauth_refresh_command
-	\ inews ispell mime_type_query_command new_mail_command pager pop_oauth_refresh_command
-	\ print_command query_command sendmail shell smtp_oauth_refresh_command tunnel
+	\ ispell mime_type_query_command pager pop_oauth_refresh_command print_command query_command
+	\ sendmail shell smtp_oauth_refresh_command tunnel
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of DT_REGEX
 syntax keyword muttrcVarString	contained skipwhite
 	\ abort_noattach_regex gecos_mask mask pgp_decryption_okay pgp_good_sign quote_regex
@@ -633,10 +644,10 @@ syntax keyword muttrcVarString	contained skipwhite
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 " List of DT_SORT
 syntax keyword muttrcVarString	contained skipwhite
-	\ pgp_sort_keys sidebar_sort_method sort sort_alias sort_aux sort_browser
+	\ alias_sort browser_sort pgp_key_sort sidebar_sort sort sort_aux
 	\ nextgroup=muttrcSetStrAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of commands in mutt_commands in commands.c
 " Remember to remove hooks, they have already been dealt with
 syntax keyword muttrcCommand	skipwhite alias nextgroup=muttrcAliasGroupDef,muttrcAliasKey,muttrcAliasNL
@@ -649,17 +660,20 @@ syntax keyword muttrcCommand	skipwhite spam nextgroup=muttrcSpamPattern
 syntax keyword muttrcCommand	skipwhite unalias nextgroup=muttrcUnAliasKey,muttrcUnAliasNL
 syntax keyword muttrcCommand	skipwhite unhook nextgroup=muttrcHooks
 syntax keyword muttrcCommand	skipwhite
-	\ alternative_order attachments auto_view cd echo finish hdr_order ifdef ifndef ignore lua
-	\ lua-source mailboxes mailto_allow mime_lookup my_hdr named-mailboxes push score setenv
-	\ sidebar_pin sidebar_unpin source subjectrx subscribe-to tag-formats tag-transforms
-	\ unalternative_order unattachments unauto_view unbind uncolor unhdr_order unignore unmacro
-	\ unmailboxes unmailto_allow unmime_lookup unmono unmy_hdr unscore unsetenv unsubjectrx
-	\ unsubscribe-from unvirtual-mailboxes version virtual-mailboxes
+	\ alternative-order attachments auto-view cd echo finish header-order hooks ifdef ifndef
+	\ ignore lua lua-source mailboxes mailto-allow mime-lookup my-header named-mailboxes push
+	\ score setenv sidebar-pin sidebar-unpin source subject-regex subscribe-to tag-formats
+	\ tag-transforms unalternative-order unattachments unauto-view unbind uncolor unheader-order
+	\ unignore unmacro unmailboxes unmailto-allow unmime-lookup unmono unmy-header unscore
+	\ unsetenv unsubject-regex unsubscribe-from version
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated commands
 syntax keyword muttrcDeprecatedCommand skipwhite
-	\ sidebar_whitelist unsidebar_whitelist
+	\ alternative_order auto_view hdr_order mailto_allow mime_lookup my_hdr pgp-hook sidebar_pin
+	\ sidebar_unpin sidebar_whitelist subjectrx unalternative_order unauto_view unhdr_order
+	\ unmailto_allow unmime_lookup unmy_hdr unsidebar_whitelist unsubjectrx unvirtual-mailboxes
+	\ virtual-mailboxes
 
 function! s:genFunctions(functions)
 	for f in a:functions
@@ -667,67 +681,67 @@ function! s:genFunctions(functions)
 	endfor
 endfunction
 
-" CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " List of functions in functions.c
 " Note: 'noop' is included but is elsewhere in the source
 call s:genFunctions(['noop',
 	\ 'alias-dialog', 'attach-file', 'attach-key', 'attach-message', 'attach-news-message',
 	\ 'autocrypt-acct-menu', 'autocrypt-menu', 'backspace', 'backward-char', 'backward-word',
-	\ 'bol', 'bottom', 'bottom-page', 'bounce-message', 'break-thread', 'buffy-cycle',
-	\ 'buffy-list', 'capitalize-word', 'catchup', 'change-dir', 'change-folder',
-	\ 'change-folder-readonly', 'change-newsgroup', 'change-newsgroup-readonly',
-	\ 'change-vfolder', 'check-new', 'check-stats', 'check-traditional-pgp', 'clear-flag',
-	\ 'collapse-all', 'collapse-parts', 'collapse-thread', 'complete', 'complete-query',
-	\ 'compose-to-sender', 'copy-file', 'copy-message', 'create-account', 'create-alias',
-	\ 'create-mailbox', 'current-bottom', 'current-middle', 'current-top', 'decode-copy',
-	\ 'decode-save', 'decrypt-copy', 'decrypt-save', 'delete-account', 'delete-char',
-	\ 'delete-entry', 'delete-mailbox', 'delete-message', 'delete-pattern', 'delete-subthread',
-	\ 'delete-thread', 'descend-directory', 'detach-file', 'display-address',
-	\ 'display-filename', 'display-message', 'display-toggle-weed', 'downcase-word', 'edit',
-	\ 'edit-bcc', 'edit-cc', 'edit-content-id', 'edit-description', 'edit-encoding', 'edit-fcc',
-	\ 'edit-file', 'edit-followup-to', 'edit-from', 'edit-headers', 'edit-label',
-	\ 'edit-language', 'edit-message', 'edit-mime', 'edit-newsgroups',
-	\ 'edit-or-view-raw-message', 'edit-raw-message', 'edit-reply-to', 'edit-subject',
-	\ 'edit-to', 'edit-type', 'edit-x-comment-to', 'end-cond', 'enter-command', 'enter-mask',
-	\ 'entire-thread', 'eol', 'error-history', 'exit', 'extract-keys', 'fetch-mail',
-	\ 'filter-entry', 'first-entry', 'flag-message', 'followup-message', 'forget-passphrase',
-	\ 'forward-char', 'forward-message', 'forward-to-group', 'forward-word', 'get-attachment',
-	\ 'get-children', 'get-message', 'get-parent', 'goto-folder', 'goto-parent',
-	\ 'group-alternatives', 'group-chat-reply', 'group-multilingual', 'group-related',
-	\ 'group-reply', 'half-down', 'half-up', 'help', 'history-down', 'history-search',
-	\ 'history-up', 'imap-fetch-mail', 'imap-logout-all', 'ispell', 'jump', 'kill-eol',
-	\ 'kill-eow', 'kill-line', 'kill-whole-line', 'kill-word', 'last-entry', 'limit',
-	\ 'limit-current-thread', 'link-threads', 'list-reply', 'list-subscribe',
-	\ 'list-unsubscribe', 'mail', 'mail-key', 'mailbox-cycle', 'mailbox-list', 'mark-as-new',
-	\ 'mark-message', 'middle-page', 'modify-labels', 'modify-labels-then-hide', 'modify-tags',
-	\ 'modify-tags-then-hide', 'move-down', 'move-up', 'new-mime', 'next-entry', 'next-line',
-	\ 'next-new', 'next-new-then-unread', 'next-page', 'next-subthread', 'next-thread',
-	\ 'next-undeleted', 'next-unread', 'next-unread-mailbox', 'parent-message', 'pgp-menu',
-	\ 'pipe-entry', 'pipe-message', 'post-message', 'postpone-message', 'previous-entry',
-	\ 'previous-line', 'previous-new', 'previous-new-then-unread', 'previous-page',
-	\ 'previous-subthread', 'previous-thread', 'previous-undeleted', 'previous-unread',
-	\ 'print-entry', 'print-message', 'purge-message', 'purge-thread', 'quasi-delete', 'query',
-	\ 'query-append', 'quit', 'quote-char', 'read-subthread', 'read-thread', 'recall-message',
-	\ 'reconstruct-thread', 'redraw-screen', 'refresh', 'reload-active', 'rename-attachment',
-	\ 'rename-file', 'rename-mailbox', 'reply', 'resend-message', 'root-message', 'save-entry',
-	\ 'save-message', 'search', 'search-next', 'search-opposite', 'search-reverse',
-	\ 'search-toggle', 'select-entry', 'select-new', 'send-message', 'set-flag', 'shell-escape',
-	\ 'show-limit', 'show-log-messages', 'show-version', 'sidebar-first', 'sidebar-last',
-	\ 'sidebar-next', 'sidebar-next-new', 'sidebar-open', 'sidebar-page-down',
-	\ 'sidebar-page-up', 'sidebar-prev', 'sidebar-prev-new', 'sidebar-toggle-virtual',
-	\ 'sidebar-toggle-visible', 'skip-headers', 'skip-quoted', 'smime-menu', 'sort',
-	\ 'sort-alias', 'sort-alias-reverse', 'sort-mailbox', 'sort-reverse', 'subscribe',
-	\ 'subscribe-pattern', 'sync-mailbox', 'tag-entry', 'tag-message', 'tag-pattern',
-	\ 'tag-prefix', 'tag-prefix-cond', 'tag-subthread', 'tag-thread', 'toggle-active',
-	\ 'toggle-disposition', 'toggle-mailboxes', 'toggle-new', 'toggle-prefer-encrypt',
-	\ 'toggle-quoted', 'toggle-read', 'toggle-recode', 'toggle-subscribed', 'toggle-unlink',
-	\ 'toggle-write', 'top', 'top-page', 'transpose-chars', 'uncatchup', 'undelete-entry',
-	\ 'undelete-message', 'undelete-pattern', 'undelete-subthread', 'undelete-thread',
-	\ 'ungroup-attachment', 'unsubscribe', 'unsubscribe-pattern', 'untag-pattern',
-	\ 'upcase-word', 'update-encoding', 'verify-key', 'vfolder-from-query',
-	\ 'vfolder-from-query-readonly', 'vfolder-window-backward', 'vfolder-window-forward',
-	\ 'vfolder-window-reset', 'view-attach', 'view-attachments', 'view-file', 'view-mailcap',
-	\ 'view-name', 'view-pager', 'view-raw-message', 'view-text', 'what-key', 'write-fcc'
+	\ 'bol', 'bottom', 'bottom-page', 'bounce-message', 'break-thread', 'capitalize-word',
+	\ 'catchup', 'change-dir', 'change-folder', 'change-folder-readonly', 'change-newsgroup',
+	\ 'change-newsgroup-readonly', 'change-vfolder', 'check-new', 'check-stats',
+	\ 'check-traditional-pgp', 'clear-flag', 'collapse-all', 'collapse-parts',
+	\ 'collapse-thread', 'complete', 'complete-query', 'compose-to-sender', 'copy-file',
+	\ 'copy-message', 'create-account', 'create-alias', 'create-mailbox', 'current-bottom',
+	\ 'current-middle', 'current-top', 'decode-copy', 'decode-save', 'decrypt-copy',
+	\ 'decrypt-save', 'delete-account', 'delete-char', 'delete-entry', 'delete-mailbox',
+	\ 'delete-message', 'delete-pattern', 'delete-subthread', 'delete-thread',
+	\ 'descend-directory', 'detach-file', 'display-address', 'display-filename',
+	\ 'display-message', 'display-toggle-weed', 'downcase-word', 'edit', 'edit-bcc', 'edit-cc',
+	\ 'edit-content-id', 'edit-description', 'edit-encoding', 'edit-fcc', 'edit-file',
+	\ 'edit-followup-to', 'edit-from', 'edit-headers', 'edit-label', 'edit-language',
+	\ 'edit-message', 'edit-mime', 'edit-newsgroups', 'edit-or-view-raw-message',
+	\ 'edit-raw-message', 'edit-reply-to', 'edit-subject', 'edit-to', 'edit-type',
+	\ 'edit-x-comment-to', 'end-cond', 'enter-command', 'enter-mask', 'entire-thread', 'eol',
+	\ 'exit', 'extract-keys', 'fetch-mail', 'filter-entry', 'first-entry', 'flag-message',
+	\ 'followup-message', 'forget-passphrase', 'forward-char', 'forward-message',
+	\ 'forward-to-group', 'forward-word', 'get-attachment', 'get-children', 'get-message',
+	\ 'get-parent', 'goto-folder', 'goto-parent', 'group-alternatives', 'group-chat-reply',
+	\ 'group-multilingual', 'group-related', 'group-reply', 'half-down', 'half-up', 'help',
+	\ 'history-down', 'history-search', 'history-up', 'imap-fetch-mail', 'imap-logout-all',
+	\ 'ispell', 'jump', 'kill-eol', 'kill-eow', 'kill-line', 'kill-whole-line', 'kill-word',
+	\ 'last-entry', 'limit', 'limit-current-thread', 'link-threads', 'list-reply',
+	\ 'list-subscribe', 'list-unsubscribe', 'mail', 'mail-key', 'mailbox-cycle', 'mailbox-list',
+	\ 'mark-as-new', 'mark-message', 'middle-page', 'modify-labels', 'modify-labels-then-hide',
+	\ 'modify-tags', 'modify-tags-then-hide', 'move-down', 'move-up', 'new-mime', 'next-entry',
+	\ 'next-line', 'next-new', 'next-new-then-unread', 'next-page', 'next-subthread',
+	\ 'next-thread', 'next-undeleted', 'next-unread', 'next-unread-mailbox', 'parent-message',
+	\ 'pgp-menu', 'pipe-entry', 'pipe-message', 'post-message', 'postpone-message',
+	\ 'preview-page-down', 'preview-page-up', 'previous-entry', 'previous-line', 'previous-new',
+	\ 'previous-new-then-unread', 'previous-page', 'previous-subthread', 'previous-thread',
+	\ 'previous-undeleted', 'previous-unread', 'print-entry', 'print-message', 'purge-message',
+	\ 'purge-thread', 'quasi-delete', 'query', 'query-append', 'quit', 'quote-char',
+	\ 'read-subthread', 'read-thread', 'recall-message', 'reconstruct-thread', 'redraw-screen',
+	\ 'reload-active', 'rename-attachment', 'rename-file', 'rename-mailbox', 'reply',
+	\ 'resend-message', 'root-message', 'save-entry', 'save-message', 'search', 'search-next',
+	\ 'search-opposite', 'search-reverse', 'search-toggle', 'select-entry', 'select-new',
+	\ 'send-message', 'set-flag', 'shell-escape', 'show-limit', 'show-log-messages',
+	\ 'show-version', 'sidebar-first', 'sidebar-last', 'sidebar-next', 'sidebar-next-new',
+	\ 'sidebar-open', 'sidebar-page-down', 'sidebar-page-up', 'sidebar-prev',
+	\ 'sidebar-prev-new', 'sidebar-toggle-virtual', 'sidebar-toggle-visible', 'skip-headers',
+	\ 'skip-quoted', 'smime-menu', 'sort', 'sort-alias', 'sort-alias-reverse', 'sort-mailbox',
+	\ 'sort-reverse', 'subscribe', 'subscribe-pattern', 'sync-mailbox', 'tag-entry',
+	\ 'tag-message', 'tag-pattern', 'tag-prefix', 'tag-prefix-cond', 'tag-subthread',
+	\ 'tag-thread', 'toggle-active', 'toggle-disposition', 'toggle-mailboxes', 'toggle-new',
+	\ 'toggle-prefer-encrypt', 'toggle-quoted', 'toggle-read', 'toggle-recode',
+	\ 'toggle-subscribed', 'toggle-unlink', 'toggle-write', 'top', 'top-page',
+	\ 'transpose-chars', 'uncatchup', 'undelete-entry', 'undelete-message', 'undelete-pattern',
+	\ 'undelete-subthread', 'undelete-thread', 'ungroup-attachment', 'unsubscribe',
+	\ 'unsubscribe-pattern', 'untag-pattern', 'upcase-word', 'update-encoding', 'verify-key',
+	\ 'vfolder-from-query', 'vfolder-from-query-readonly', 'vfolder-window-backward',
+	\ 'vfolder-window-forward', 'vfolder-window-reset', 'view-attach', 'view-attachments',
+	\ 'view-file', 'view-mailcap', 'view-name', 'view-pager', 'view-raw-message', 'view-text',
+	\ 'what-key', 'write-fcc'
 	\ ])
 
 " Define the default highlighting.
@@ -778,6 +792,7 @@ highlight def link muttrcFunction			Macro
 highlight def link muttrcGroupDef			Macro
 highlight def link muttrcSimplePatString		Macro
 
+highlight def link muttrcColorAttrib			muttrcColor
 highlight def link muttrcMonoAttrib			muttrcColor
 
 highlight def link muttrcAlternateKeyword		muttrcCommand
@@ -800,6 +815,8 @@ highlight def link muttrcGreetingFormatEscapes		muttrcEscape
 highlight def link muttrcGroupIndexFormatEscapes	muttrcEscape
 highlight def link muttrcHistoryFormatEscapes		muttrcEscape
 highlight def link muttrcIndexFormatEscapes		muttrcEscape
+highlight def link muttrcMsgIdFormatEscapes		muttrcEscape
+highlight def link muttrcNntpFormatEscapes		muttrcEscape
 highlight def link muttrcPatternFormatEscapes		muttrcEscape
 highlight def link muttrcPgpCommandFormatEscapes	muttrcEscape
 highlight def link muttrcPgpEntryFormatEscapes		muttrcEscape
@@ -820,6 +837,8 @@ highlight def link muttrcGreetingFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcGroupIndexFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcHistoryFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcIndexFormatConditionals	 muttrcFormatConditionals2
+highlight def link muttrcMsgIdFormatConditionals	 muttrcFormatConditionals2
+highlight def link muttrcNntpFormatConditionals		 muttrcFormatConditionals2
 highlight def link muttrcPatternFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcPgpCommandFormatConditionals	 muttrcFormatConditionals2
 highlight def link muttrcPgpEntryFormatConditionals	 muttrcFormatConditionals2
@@ -840,6 +859,8 @@ highlight def link muttrcGreetingFormatString		muttrcString
 highlight def link muttrcGroupIndexFormatString		muttrcString
 highlight def link muttrcHistoryFormatString		muttrcString
 highlight def link muttrcIndexFormatString		muttrcString
+highlight def link muttrcMsgIdFormatString		muttrcString
+highlight def link muttrcNntpFormatString		muttrcString
 highlight def link muttrcPatternFormatString		muttrcString
 highlight def link muttrcPgpCommandFormatString		muttrcString
 highlight def link muttrcPgpEntryFormatString		muttrcString
