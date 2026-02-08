@@ -539,7 +539,7 @@ syntax keyword muttrcVarNum	skipwhite contained
 	\ ssl_min_dh_prime_bits timeout time_inc toggle_quoted_show_levels wrap wrap_headers
 	\ write_inc
 	\ nextgroup=muttrcSetNumAssignment,muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString
-" __CHECKED 2024 Oct 12
+" CHECKED 2026 Feb 08
 " Deprecated Numbers
 syntax keyword muttrcVarDeprecatedNum
 	\ connect_timeout header_cache_pagesize imap_keepalive pop_checkinterval skip_quoted_offset
