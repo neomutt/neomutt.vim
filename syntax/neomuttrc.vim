@@ -437,7 +437,7 @@ function! s:boolQuadGen(type, vars, deprecated)
 endfunction
 
 " CHECKED 2026 Feb 08
-" List of DT_BOOL in MuttVars in mutt_config.c, */config.c
+" List of DT_BOOL in mutt_config.c, */config.c
 call s:boolQuadGen('Bool', [
 	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'ask_bcc',
 	\ 'ask_cc', 'ask_followup_to', 'ask_x_comment_to', 'attach_save_without_prompting',
@@ -493,7 +493,7 @@ call s:boolQuadGen('Bool', [
 
 " CHECKED 2026 Feb 08
 " Deprecated Bools
-" List of DT_SYNONYM or DT_DEPRECATED Bools in MuttVars in mutt_config.c
+" List of DT_SYNONYM or DT_DEPRECATED Bools in mutt_config.c, */config.c
 call s:boolQuadGen('Bool', [
 	\ 'askbcc', 'askcc', 'ask_follow_up', 'autoedit', 'confirmappend', 'confirmcreate',
 	\ 'crypt_autoencrypt', 'crypt_autopgp', 'crypt_autosign', 'crypt_autosmime',
@@ -508,8 +508,8 @@ call s:boolQuadGen('Bool', [
 	\ 'xterm_set_titles'
 	\ ], 1)
 
-" __CHECKED 2024 Oct 12
-" List of DT_QUAD in MuttVars in mutt_config.c
+" CHECKED 2026 Feb 08
+" List of DT_QUAD in mutt_config.c, */config.c
 call s:boolQuadGen('Quad', [
 	\ 'abort_noattach', 'abort_nosubject', 'abort_unmodified', 'bounce', 'catchup_newsgroup',
 	\ 'copy', 'crypt_verify_sig', 'delete', 'fcc_attach', 'followup_to_poster',
