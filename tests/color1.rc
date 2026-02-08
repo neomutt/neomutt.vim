@@ -44,10 +44,10 @@ color tree               white   yellow
 color underline          black   red
 color warning            red     yellow
 
-color compose header           white  green
-color compose security_encrypt red    black
-color compose security_sign    yellow red
-color compose security_both    cyan   magenta
-color compose security_none    blue   white
+color compose_header           white  green
+color compose_security_encrypt red    black
+color compose_security_sign    yellow red
+color compose_security_both    cyan   magenta
+color compose_security_none    blue   white
 
 # vim: syn=neomuttrc

@@ -2,10 +2,10 @@
 " Language:	NeoMutt setup files
 " Maintainer:	Richard Russon <rich@flatcap.org>
 " Previous Maintainer:	Guillaume Brogi <gui-gui@netcourrier.com>
-" Last Change:	2024 Oct 12
+" Last Change:	2026 Feb 08
 " Original version based on syntax/muttrc.vim
 
-" This file covers NeoMutt 2024-10-02
+" This file covers NeoMutt 2026-01-05
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
@@ -409,17 +409,23 @@ syntax match   muttrcMonoLine	"^\s*mono\s\+\S\+"	skipwhite nextgroup=muttrcMonoA
 " CHECKED 2026 Feb 08
 " List of fields in ColorFields in color/command.c
 syntax keyword muttrcColorField skipwhite contained
-	\ attachment attach_headers body bold error hdrdefault header index index_author
-	\ index_collapsed index_date index_flags index_label index_number index_size index_subject
-	\ index_tag index_tags indicator italic markers message normal options progress prompt
-	\ search sidebar_background sidebar_divider sidebar_flagged sidebar_highlight
-	\ sidebar_indicator sidebar_new sidebar_ordinary sidebar_spool_file sidebar_unread signature
-	\ status stripe_even stripe_odd tilde tree underline warning
+	\ attachment attach_headers body bold compose_header compose_security_both
+	\ compose_security_encrypt compose_security_none compose_security_sign error hdrdefault
+	\ header index index_author index_collapsed index_date index_flags index_label index_number
+	\ index_size index_subject index_tag index_tags indicator italic markers message normal
+	\ options progress prompt search sidebar_background sidebar_divider sidebar_flagged
+	\ sidebar_highlight sidebar_indicator sidebar_new sidebar_ordinary sidebar_spool_file
+	\ sidebar_unread signature status stripe_even stripe_odd tilde tree underline warning
 	\ nextgroup=muttrcColor
 
 syntax match   muttrcColorField	contained "\<quoted\d\=\>"
 
-syntax match muttrcColorCompose skipwhite contained /\s*compose\s*/ nextgroup=muttrcColorComposeField
+" CHECKED 2026 Feb 08
+" List of fields in ComposeColorFields in color/command.c
+syntax keyword muttrcColorComposeField skipwhite contained
+	\ header security_both security_encrypt security_none security_sign
+	\ nextgroup=muttrcColorFG,muttrcColorFGNL
+syntax region muttrcColorLine keepend start=/^\s*color\s\+/ skip=+\\$+ end=+$+ contains=muttrcColorKeyword,muttrcComment,muttrcUnHighlightSpace
 
 function! s:boolQuadGen(type, vars, deprecated)
 	let l:novars = copy(a:vars)
