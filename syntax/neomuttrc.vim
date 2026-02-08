@@ -436,8 +436,8 @@ function! s:boolQuadGen(type, vars, deprecated)
 
 endfunction
 
-" __CHECKED 2024 Oct 12
-" List of DT_BOOL in MuttVars in mutt_config.c
+" CHECKED 2026 Feb 08
+" List of DT_BOOL in MuttVars in mutt_config.c, */config.c
 call s:boolQuadGen('Bool', [
 	\ 'abort_backspace', 'allow_8bit', 'allow_ansi', 'arrow_cursor', 'ascii_chars', 'ask_bcc',
 	\ 'ask_cc', 'ask_followup_to', 'ask_x_comment_to', 'attach_save_without_prompting',
@@ -445,10 +445,11 @@ call s:boolQuadGen('Bool', [
 	\ 'beep', 'beep_new', 'bounce_delivered', 'braille_friendly',
 	\ 'browser_abbreviate_mailboxes', 'browser_sort_dirs_first', 'change_folder_next',
 	\ 'check_mbox_size', 'check_new', 'collapse_all', 'collapse_flagged', 'collapse_unread',
-	\ 'color_directcolor', 'compose_confirm_detach_first', 'compose_show_user_headers',
-	\ 'confirm_append', 'confirm_create', 'copy_decode_weed', 'count_alternatives',
-	\ 'crypt_auto_encrypt', 'crypt_auto_pgp', 'crypt_auto_sign', 'crypt_auto_smime',
-	\ 'crypt_confirm_hook', 'crypt_encryption_info', 'crypt_opportunistic_encrypt',
+	\ 'color_directcolor', 'compose_confirm_detach_first', 'compose_preview_above_attachments',
+	\ 'compose_show_preview', 'compose_show_user_headers', 'confirm_append', 'confirm_create',
+	\ 'confirm_empty_to', 'copy_decode_weed', 'count_alternatives', 'crypt_auto_encrypt',
+	\ 'crypt_auto_pgp', 'crypt_auto_sign', 'crypt_auto_smime', 'crypt_confirm_hook',
+	\ 'crypt_encryption_info', 'crypt_opportunistic_encrypt',
 	\ 'crypt_opportunistic_encrypt_strong_keys', 'crypt_protected_headers_read',
 	\ 'crypt_protected_headers_save', 'crypt_protected_headers_weed',
 	\ 'crypt_protected_headers_write', 'crypt_reply_encrypt', 'crypt_reply_sign',
@@ -482,8 +483,7 @@ call s:boolQuadGen('Bool', [
 	\ 'sidebar_visible', 'sig_dashes', 'sig_on_top', 'size_show_bytes', 'size_show_fractions',
 	\ 'size_show_mb', 'size_units_on_left', 'smart_wrap', 'smime_ask_cert_label',
 	\ 'smime_decrypt_use_default_key', 'smime_is_default', 'smime_self_encrypt', 'sort_re',
-	\ 'ssl_force_tls', 'ssl_use_sslv2', 'ssl_use_sslv3', 'ssl_use_system_certs',
-	\ 'ssl_use_tlsv1', 'ssl_use_tlsv1_1', 'ssl_use_tlsv1_2', 'ssl_use_tlsv1_3',
+	\ 'ssl_force_tls', 'ssl_use_system_certs', 'ssl_use_tlsv1_2', 'ssl_use_tlsv1_3',
 	\ 'ssl_verify_dates', 'ssl_verify_host', 'ssl_verify_partial_chains', 'status_on_top',
 	\ 'strict_threads', 'suspend', 'text_flowed', 'thorough_search', 'thread_received', 'tilde',
 	\ 'ts_enabled', 'tunnel_is_secure', 'uncollapse_jump', 'uncollapse_new', 'user_agent',
