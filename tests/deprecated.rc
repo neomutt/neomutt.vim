@@ -1,18 +1,24 @@
-set mime_subject              = yes     # DT_BOOL
-set cursor_overlay            = yes     # DT_BOOL
-set header_cache_compress     = yes     # DT_BOOL
-set ignore_linear_white_space = yes     # DT_BOOL
+# All deprecated config options, colours
+# Last Checked: 2026-02-10
 
-set mix_entry_format          = "xyz"   # DT_EXPANDO
+set cursor_overlay            = ""
+set escape                    = ""
+set header_cache_compress     = ""
+set header_cache_pagesize     = ""
+set ignore_linear_white_space = ""
+set mime_subject              = ""
+set mixmaster                 = ""
+set mix_entry_format          = ""
+set pgp_encrypt_self          = ""
+set smime_encrypt_self        = ""
+set ssl_use_sslv2             = ""
+set ssl_use_sslv3             = ""
+set ssl_use_tlsv1             = ""
+set ssl_use_tlsv1_1           = ""
+set vfolder_format            = ""
+set visual                    = ""
 
-set header_cache_pagesize     = 1234    # DT_LONG
-
-set pgp_encrypt_self          = ask-yes # DT_QUAD
-set smime_encrypt_self        = ask-yes # DT_QUAD
-
-set escape                    = "xyz"   # DT_STRING
-set visual                    = "xyz"   # DT_STRING
-set mixmaster                 = "xyz"   # DT_STRING
-set vfolder_format            = "xyz"   # DT_STRING
+color quoted            red blue
+color sidebar_spoolfile red blue
 
 # vim: syn=neomuttrc

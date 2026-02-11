@@ -1,41 +1,75 @@
-set alias_format           = "%a %c %f %n %r %t %Y"
-set attach_format          = "%c %C %d %D %e %f %F %I %m %M %n %Q %s %t %T %u %X"
-set autocrypt_acct_format  = "%a %k %n %p %s"
-set compose_format         = "%a %h %l %v"
+# All format string config options
+# with all their allowed expandos
+# (excluding: `%(` in index_format which is interpreted as strftime)
+# Last Checked: 2026-02-10
 
-# append-hook, close-hook, open-hook
-set append-hook            = "%f %t"
+# AliasFormatDef
+set alias_format           = "%* %> %| %a %A %C %E %f %i %N %t %Y"
 
-# folder_format, mailbox_folder_format
-set folder_format          = "%a %C %d %D %f %F %g %i %l %m %n %N %p %s %t %u %["
+# AttachFormatDef
+set attach_format          = "%* %> %| %c %C %d %D %e %f %F %I %m %M %n %Q %s %t %T %u %X"
 
+# AutocryptFormatDef
+set autocrypt_acct_format  = "%* %> %| %a %k %n %p %s"
+
+# ComposeFormatDef
+set compose_format         = "%* %> %| %a %h %l %v"
+
+# FolderFormatDef
+# folder_format mailbox_folder_format
+set folder_format          = "%* %> %| %  %a %C %d %D %f %F %g %i %l %m %n %N %p %s %t %u %["
+
+# GreetingFormatDef
 set greeting               = "%n %u %v"
-set group_index_format     = "%a %C %d %f %M %n %N %p %s"
-set history_format         = "%C %s"
 
-# index_format, message_format, pager_format
-set index_format           = "%( %@ %a %A %b %B %c %C %cr %d %D %e %E %f %F %Fp %g %G %H %i %I %J %K %l %L %m %M %n %N %O %P %q %r %R %s %S %t %T %u %v %W %x %X %y %Y %Z %zc %zs %zt %[ %{"
+# GroupIndexFormatDef
+set group_index_format     = "%* %> %| %a %C %d %f %M %n %N %p %s"
 
-set newsrc                 = "%a %p %P %s %S %u"
-set pattern_format         = "%d %e %n"
+# HistoryFormatDef
+set history_format         = "%* %> %| %C %s"
 
-# pgp_clear_sign_command, pgp_decode_command, pgp_decrypt_command,
-# pgp_encrypt_only_command, pgp_encrypt_sign_command, pgp_export_command,
-# pgp_get_keys_command, pgp_import_command, pgp_list_pubring_command,
-# pgp_list_secring_command, pgp_sign_command, pgp_verify_command,
+# IndexFormatDef
+# attribution_intro attribution_trailer forward_attribution_intro
+# forward_attribution_trailer forward_format indent_string index_format
+# message_format pager_format
+set index_format           = "%* %> %| %@a@ %a %A %b %B %cr %c %C %d %D %e %E %f %Fp %F %g %Gx %H %i %I %J %K %l %L %m %M %n %N %O %P %q %r %R %s %S %t %T %u %v %W %x %X %y %Y %Z %zc %zs %zt %[ %{"
+
+# MsgIdFormatDef
+set message_id_format      = "%c %d %f %H %M %m %p %r %S %x %Y %z"
+
+# NntpFormatDef
+# inews_command newsrc
+set inews_command          = "%a %p %P %s %S %u"
+
+# PatternFormatDef
+set pattern_format         = "%* %> %| %d %e %n"
+
+# PgpCommandFormatDef
+# pgp_clear_sign_command pgp_decode_command pgp_decrypt_command
+# pgp_encrypt_only_command pgp_encrypt_sign_command pgp_export_command
+# pgp_get_keys_command pgp_import_command pgp_list_pubring_command
+# pgp_list_secring_command pgp_sign_command pgp_verify_command
 # pgp_verify_key_command
 set pgp_clear_sign_command = "%a %f %p %r %s"
 
-set pgp_entry_format       = "%a %A %c %C %f %F %i %I %k %K %l %L %n %p %t %u %["
-set query_format           = "%a %c %e %n %t %Y"
-set sidebar_format         = "%! %a %B %d %D %F %L %n %N %o %p %r %S %t %Z"
+# PgpEntryFormatDef
+set pgp_entry_format       = "%* %> %| %a %A %c %C %f %F %i %I %k %K %l %L %n %p %t %u %["
 
-# smime_decrypt_command, smime_encrypt_command, smime_get_cert_command,
-# smime_get_cert_email_command, smime_get_signer_cert_command,
-# smime_import_cert_command, smime_pk7out_command, smime_sign_command,
-# smime_verify_command, smime_verify_opaque_command
+# QueryFormatDef
+set query_format           = "%* %> %| %A %C %E %i %N %t %Y"
+
+# SidebarFormatDef
+set sidebar_format         = "%* %> %| %! %a %B %d %D %F %L %n %N %o %p %r %S %t %Z"
+
+# SmimeCommandFormatDef
+# smime_decrypt_command smime_encrypt_command smime_get_cert_command
+# smime_get_cert_email_command smime_get_signer_cert_command
+# smime_import_cert_command smime_pk7out_command smime_sign_command
+# smime_verify_command smime_verify_opaque_command
 set smime_decrypt_command  = "%a %c %C %d %f %i %k %s"
 
-set status_format          = "%b %d %D %f %F %h %l %L %m %M %n %o %p %P %r %R %s %S %t %T %u %v %V"
+# StatusFormatDef
+# new_mail_command status_format ts_icon_format ts_status_format
+set status_format          = "%* %> %| %b %d %D %f %F %h %l %L %m %M %n %o %p %P %r %R %s %S %t %T %u %v %V"
 
 # vim: syn=neomuttrc

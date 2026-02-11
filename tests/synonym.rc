@@ -1,3 +1,6 @@
+# All synonym config options
+# Last Checked: 2026-02-10
+
 set abort_noattach_regexp    = "" # abort_noattach_regex
 set askbcc                   = "" # ask_bcc
 set askcc                    = "" # ask_cc
@@ -28,6 +31,7 @@ set imap_servernoise         = "" # imap_server_noise
 set implicit_autoview        = "" # implicit_auto_view
 set include_onlyfirst        = "" # include_only_first
 set indent_str               = "" # indent_string
+set inews                    = "" # inews_command
 set message_cachedir         = "" # message_cache_dir
 set metoo                    = "" # me_too
 set mime_fwd                 = "" # mime_forward
@@ -45,6 +49,7 @@ set pgp_replyinline          = "" # pgp_reply_inline
 set pgp_replysign            = "" # crypt_reply_sign
 set pgp_replysignencrypted   = "" # crypt_reply_sign_encrypted
 set pgp_self_encrypt_as      = "" # pgp_default_key
+set pgp_sort_keys            = "" # pgp_key_sort
 set pgp_verify_sig           = "" # crypt_verify_sig
 set pop_checkinterval        = "" # pop_check_interval
 set post_indent_str          = "" # post_indent_string
@@ -54,8 +59,11 @@ set quote_regexp             = "" # quote_regex
 set realname                 = "" # real_name
 set reply_regexp             = "" # reply_regex
 set reverse_realname         = "" # reverse_real_name
+set sidebar_sort_method      = "" # sidebar_sort
 set skip_quoted_offset       = "" # pager_skip_quoted_context
 set smime_self_encrypt_as    = "" # smime_default_key
+set sort_alias               = "" # alias_sort
+set sort_browser             = "" # browser_sort
 set spoolfile                = "" # spool_file
 set ssl_usesystemcerts       = "" # ssl_use_system_certs
 set tmpdir                   = "" # tmp_dir

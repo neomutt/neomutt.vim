@@ -127,7 +127,7 @@ call s:escapesConditionals('AutocryptFormat', '[aknps]', 1, 0)
 " Ref: ComposeFormatDef in compose/config.c
 call s:escapesConditionals('ComposeFormat', '[ahlv]', 1, 1)
 " Ref: FolderFormatDef in browser/config.c
-call s:escapesConditionals('FolderFormat', '[aCDdFfgilmNnpstu[]', 1, 1)
+call s:escapesConditionals('FolderFormat', '[ aCDdFfgilmNnpstu[]', 1, 1)
 " Ref: GreetingFormatDef in send/config.c
 call s:escapesConditionals('GreetingFormat', '[nuv]', 0, 0)
 " Ref: GroupIndexFormatDef in browser/config.c
@@ -418,7 +418,7 @@ syntax keyword muttrcColorField skipwhite contained
 	\ sidebar_unread signature status stripe_even stripe_odd tilde tree underline warning
 	\ nextgroup=muttrcColor
 
-syntax match   muttrcColorField	contained "\<quoted\d\=\>"
+syntax match   muttrcColorField	contained "\<quoted\d\>"
 
 " CHECKED 2026 Feb 08
 " List of fields in ComposeColorFields in color/command.c
@@ -445,7 +445,6 @@ function! s:boolQuadGen(type, vars, deprecated)
 		exec 'syntax keyword muttrcVar' . l:type . ' skipwhite contained ' . join(l:novars) . ' nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString'
 		exec 'syntax keyword muttrcVar' . l:type . ' skipwhite contained ' . join(l:invvars) . ' nextgroup=muttrcVPrefix,muttrcVarBool,muttrcVarQuad,muttrcVarNum,muttrcVarString'
 	endif
-
 endfunction
 
 " CHECKED 2026 Feb 08
@@ -532,9 +531,10 @@ call s:boolQuadGen('Quad', [
 
 " CHECKED 2026 Feb 08
 " Deprecated Quads
-" List of DT_SYNONYM or DT_DEPRECATED Quads in mutt_config.c, */config.c
+" List of DT_SYNONYM or DT_DEPRECATED Quads/Sorts in mutt_config.c, */config.c
 call s:boolQuadGen('Quad', [
-	\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self'
+	\ 'mime_fwd', 'pgp_encrypt_self', 'pgp_verify_sig', 'smime_encrypt_self',
+	\ 'pgp_sort_keys', 'sidebar_sort_method', 'sort_alias', 'sort_browser'
 	\ ], 1)
 
 " CHECKED 2026 Feb 08
