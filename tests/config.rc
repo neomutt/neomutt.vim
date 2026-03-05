@@ -476,4 +476,4 @@ set write_bcc                               = no
 set write_inc                               = 10
 set x_comment_to                            = no
 
-# vim: syn=neomuttrc
+# vim: ft=neomuttrc

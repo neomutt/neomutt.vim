@@ -64,4 +64,4 @@ color compose_security_encrypt red     black
 color compose_security_none    blue    white
 color compose_security_sign    yellow  red
 
-# vim: syn=neomuttrc
+# vim: ft=neomuttrc

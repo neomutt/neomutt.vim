@@ -157,4 +157,4 @@ color normal #3b84b2 #3ff436
 color normal #caaa42 #56b81c
 color normal #865817 #fe8d87
 
-# vim: syn=neomuttrc
+# vim: ft=neomuttrc

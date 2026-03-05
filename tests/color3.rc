@@ -33,4 +33,4 @@ color normal italic    reverse   red blue
 
 color normal bold italic reverse standout underline red blue
 
-# vim: syn=neomuttrc
+# vim: ft=neomuttrc

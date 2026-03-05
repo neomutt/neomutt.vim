@@ -72,4 +72,4 @@ set smime_decrypt_command  = "%a %c %C %d %f %i %k %s"
 # new_mail_command status_format ts_icon_format ts_status_format
 set status_format          = "%* %> %| %b %d %D %f %F %h %l %L %m %M %n %o %p %P %r %R %s %S %t %T %u %v %V"
 
-# vim: syn=neomuttrc
+# vim: ft=neomuttrc

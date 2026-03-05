@@ -21,4 +21,4 @@ set visual                    = ""
 color quoted            red blue
 color sidebar_spoolfile red blue
 
-# vim: syn=neomuttrc
+# vim: ft=neomuttrc
