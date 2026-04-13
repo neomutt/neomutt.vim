@@ -256,7 +256,7 @@ syntax region muttrcAlternatesLine keepend start=+^\s*\%(un\)\?alternates\s+ ski
 
 " muttrcVariable includes a prefix because partial strings are considered valid.
 syntax match muttrcVariable	contained "\\\@<![a-zA-Z_-]*\$[a-zA-Z_-]\+" contains=muttrcVariableInner
-syntax match muttrcVariableInner	contained "\$[a-zA-Z_-]\+"
+syntax match muttrcVariableInner	contained "\$[a-zA-Z0-9_-]\+"
 syntax match muttrcEscapedVariable	contained "\\\$[a-zA-Z_-]\+"
 
 syntax match muttrcBadAction	contained "[^<>]\+" contains=muttrcEmail
